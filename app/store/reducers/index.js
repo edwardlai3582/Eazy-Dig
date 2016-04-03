@@ -5,6 +5,8 @@ import feedbackReducer from './feedback_reducer';
 import eventsReducer from './events_reducer';
 import modalReducer from './modal_reducer';
 
+import searchReducer from './search_reducer';
+
 import { routeReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 
@@ -15,6 +17,7 @@ const rootReducer = combineReducers({
 	routing: routeReducer,
     form: formReducer,
     showModal: modalReducer,
+    search: searchReducer
 });
 
 export default rootReducer;

@@ -19,5 +19,8 @@ export default {
     showModal: {
         showSignupform:false,
         showEventform:false
-    } 
+    },
+    search: {
+		result: ""
+	},
 };

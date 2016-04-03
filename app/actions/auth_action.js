@@ -1,6 +1,6 @@
 import C from '../constants';
 import {reset} from 'redux-form';
-import Firebase from 'firebase';
+//import Firebase from 'firebase';
 
 const fireRef = new Firebase(C.FIREBASE);
 

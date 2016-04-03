@@ -1,5 +1,5 @@
 {
-  "name": "react_practice",
+  "name": "eazy-d",
   "version": "1.0.0",
   "description": "just test",
   "main": "index.js",
@@ -19,7 +19,9 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-preset-stage-1": "^6.3.13",
     "css-loader": "^0.23.1",
+    "exports-loader": "^0.6.3",
     "extract-text-webpack-plugin": "^1.0.1",
+    "imports-loader": "^0.6.5",
     "node-sass": "^3.4.2",
     "postcss-loader": "^0.8.0",
     "react-hot-loader": "^1.3.0",
@@ -30,7 +32,6 @@
   },
   "dependencies": {
     "axios": "^0.9.0",
-    "firebase": "^2.4.0",
     "history": "^1.17.0",
     "lodash": "^4.0.0",
     "react": "^0.14.6",
@@ -44,6 +45,15 @@
     "redux": "^3.3.1",
     "redux-form": "^4.1.6",
     "redux-promise": "^0.5.1",
-    "redux-thunk": "^1.0.2"
-  }
+    "redux-thunk": "^1.0.2",
+    "whatwg-fetch": "^0.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/illl48/capstone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/illl48/capstone/issues"
+  },
+  "homepage": "https://github.com/illl48/capstone#readme"
 }

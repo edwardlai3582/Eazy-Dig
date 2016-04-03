@@ -1,5 +1,5 @@
 import C from '../constants';
-import Firebase from 'firebase';
+//import Firebase from 'firebase';
 
 const Ref = new Firebase(C.FIREBASE);
 

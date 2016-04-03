@@ -38,7 +38,10 @@ var config = {
         new ExtractTextPlugin('style.css', {
             allChunks: true
         }),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new webpack.ProvidePlugin({
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+        })
     ],
     postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ]
 };

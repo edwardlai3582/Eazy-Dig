@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router';
 import { Provider } from 'react-redux';
 
 import store from './store';
 import actions from './actions';
 
-import Wrapper from './components/wrapper';
-import Newevent from './components/eventform_div';
+import Search from './components/search';
+import Fav from './components/fav';
 import Toplevel from './components/toplevel';
 
 export class App extends Component {
 	componentWillMount() {
-		store.dispatch(actions.startListeningToAuth());
+		//store.dispatch(actions.startListeningToAuth());
 	}
     
 	render() {
@@ -19,8 +19,9 @@ export class App extends Component {
 			<Provider store={store}>
 				<Router history={browserHistory}>
 					<Route path="/" component={Toplevel}>
-                        <IndexRoute component={Wrapper}/>
-                        <Route path="newevent" component={Newevent}/>
+                        <IndexRoute component={Search}/>
+                        <Route path="/fav" component={Fav}/>
+                        <Redirect path="*" to="/" />
                     </Route>
 				</Router>
 			</Provider>
