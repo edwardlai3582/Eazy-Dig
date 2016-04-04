@@ -7,7 +7,19 @@ const searchActions = {
 		return (dispatch, getState) => {
             console.log(data);
             
-            fetch('https://edwardlai3582.com/discogs?query='+data.recordQuery+'&page=1').then(function(response){
+            let page = 1;
+            
+            if(data.hasOwnProperty("page")){
+                page = data.page;
+            }
+            else{
+                dispatch({
+                    type: "QUERY_ADDED",
+                    query: data.recordQuery
+				});              
+            }
+            
+            fetch('https://edwardlai3582.com/discogs?query='+data.recordQuery+'&page='+page).then(function(response){
                 if(response.ok) {
                     response.json().then(function(myJson) {
                         console.log(myJson);                  
@@ -16,8 +28,9 @@ const searchActions = {
 				            type: "SEARCH_RESULTS_RECEIVED",
 				            page: myJson.pagination.page,
                             pages: myJson.pagination.pages,
-                            results: myJson.results,
+                            results: myJson.results
 				        });
+                        scrollTo(0, 0);
                     });
                 } else {
                     console.log('Network response was not ok.');

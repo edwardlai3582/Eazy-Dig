@@ -4,13 +4,20 @@ import { connect } from 'react-redux';
 import C from '../constants';
 import { routeActions } from 'react-router-redux';
 import { Link } from 'react-router';
-import { Glyphicon } from 'react-bootstrap';
-
+import { Button, Glyphicon } from 'react-bootstrap';
+import actions from '../actions';
 import Release from './release';
 
 class Releases extends Component {
     
-	render() {
+    submitQuery(page) {
+        let data = {};
+        data.page =  this.props.search.page + page;
+        data.recordQuery = this.props.query.queryHistory[this.props.query.queryHistory.length-1];
+        this.props.submitNewRecord(data);
+    }
+
+    render() {
 		const p = this.props;
 		let rows = [];
 		if (p.search.results) {            
@@ -39,18 +46,31 @@ class Releases extends Component {
                 <section className="releasesWrapper">
                     {rows.length===0? 'found nothing' : rows}  
                 </section>
+                <footer className="releasesFooter">
+                    <Button onClick={this.submitQuery.bind(this, -1)} disabled={p.search.page===1}>
+                        <Glyphicon glyph="triangle-left" /> 
+                    </Button>
+                    {p.search.page}/{p.search.pages}
+                    <Button onClick={this.submitQuery.bind(this, 1)} disabled={p.search.page===p.search.pages}>
+                        <Glyphicon glyph="triangle-right" />
+                    </Button>        
+                </footer>
             </div>
 		);
 	}
 }
 
 const mapStateToProps = (appState) => {
-	return { search: appState.search };
+	return { 
+        search: appState.search,
+        query: appState.query
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
         goSomewhere(url) { dispatch(routeActions.push(url)); },
+        submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
 	};
 };
 

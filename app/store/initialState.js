@@ -25,4 +25,8 @@ export default {
         page: 1,
         pages: 1
 	},
+    query: {
+        queryHistory: [],
+        historyLength: 10
+    }
 };
