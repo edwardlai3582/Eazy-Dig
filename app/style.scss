@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Spicy+Rice);
 @import url(https://fonts.googleapis.com/css?family=Sansita+One);
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
 
 body{
     background-color: #E7E8C8;
@@ -28,12 +32,34 @@ body{
     position: relative;
     width: 100%;
     top:63px;
+    .hideLoading{
+        display: none;
+    }
+    .showLoading{
+        display: block;
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: calc(100vh - 63px);
+        background-color: #E7E8C8;
+        color: white;
+        .spinning{
+            animation: spin 1s infinite linear;
+            position: relative;
+            left: 50%;
+            top: 50%;
+            font-size: 36px;
+        }
+    }
 }
 
 .link{
     display:inline;
     color:white;
     margin-left: 20px;
+    &.active{
+        color: red;
+    }
 }
 
 .releasesHeader{
@@ -65,6 +91,8 @@ body{
     justify-content:center;
     align-items:baseline;
     padding: 10px 0;
+    position: relative;
+    bottom:0px;
     Button{
         margin: 0px 10px;
     }

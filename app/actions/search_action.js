@@ -30,7 +30,7 @@ const searchActions = {
                             pages: myJson.pagination.pages,
                             results: myJson.results
 				        });
-                        scrollTo(0, 0);
+                        dispatch({ type: "LOADING_END" });
                     });
                 } else {
                     console.log('Network response was not ok.');

@@ -28,5 +28,8 @@ export default {
     query: {
         queryHistory: [],
         historyLength: 10
+    },
+    loading: {
+        loadingNow: false
     }
 };

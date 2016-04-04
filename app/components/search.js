@@ -13,8 +13,9 @@ class Search extends Component {
 	} 
 
     submitQuery(data) {
-        this.props.submitNewRecord(data);
         this.props.goSomewhere('/releases');
+        this.props.startLoading();
+        this.props.submitNewRecord(data);
         //this.props.resetForm();
     }
     
@@ -61,10 +62,9 @@ const mapDispatchToProps = (dispatch) => {
 	return {
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
         goSomewhere(url) { dispatch(routeActions.push(url)); },
+        startLoading(){ dispatch(actions.startLoading()); }
 	};
 };
-
-//export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 
 Search = reduxForm({

@@ -6,7 +6,7 @@ export default (currentstate, action) => {
 	switch (action.type) {
 		case "QUERY_ADDED":
             if(action.query === currentstate.queryHistory[currentstate.queryHistory.length-1]){
-                return;
+                return currentstate;
             }
             else{
                 let newArr = currentstate.queryHistory.slice(0);

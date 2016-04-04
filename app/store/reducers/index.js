@@ -7,6 +7,7 @@ import modalReducer from './modal_reducer';
 
 import searchReducer from './search_reducer';
 import queryReducer from './query_reducer';
+import loadingReducer from './loading_reducer';
 
 import { routeReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
     form: formReducer,
     showModal: modalReducer,
     search: searchReducer,
-    query: queryReducer
+    query: queryReducer,
+    loading: loadingReducer
 });
 
 export default rootReducer;

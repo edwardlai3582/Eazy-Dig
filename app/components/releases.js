@@ -14,6 +14,7 @@ class Releases extends Component {
         let data = {};
         data.page =  this.props.search.page + page;
         data.recordQuery = this.props.query.queryHistory[this.props.query.queryHistory.length-1];
+        this.props.startLoading();
         this.props.submitNewRecord(data);
     }
 
@@ -71,6 +72,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
         goSomewhere(url) { dispatch(routeActions.push(url)); },
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
+        startLoading(){ dispatch(actions.startLoading()); }
 	};
 };
 
