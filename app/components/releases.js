@@ -50,7 +50,7 @@ class Releases extends Component {
                     <Button onClick={this.submitQuery.bind(this, -1)} disabled={p.search.page===1}>
                         <Glyphicon glyph="triangle-left" /> 
                     </Button>
-                    {p.search.page}/{p.search.pages}
+                    {p.search.page} / {p.search.pages}
                     <Button onClick={this.submitQuery.bind(this, 1)} disabled={p.search.page===p.search.pages}>
                         <Glyphicon glyph="triangle-right" />
                     </Button>        

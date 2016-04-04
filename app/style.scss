@@ -61,7 +61,9 @@ body{
     width: 100%;
     background-color: #2A2C2B;
     color: aliceblue;
-    margin: 0px auto;
+    display:inline-flex;
+    justify-content:center;
+    align-items:baseline;
     padding: 10px 0;
     Button{
         margin: 0px 10px;
