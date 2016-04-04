@@ -6,6 +6,7 @@ import store from './store';
 import actions from './actions';
 
 import Search from './components/search';
+import Releases from './components/Releases';
 import Fav from './components/fav';
 import Toplevel from './components/toplevel';
 
@@ -20,6 +21,7 @@ export class App extends Component {
 				<Router history={browserHistory}>
 					<Route path="/" component={Toplevel}>
                         <IndexRoute component={Search}/>
+                        <Route path="/releases" component={Releases}/>
                         <Route path="/fav" component={Fav}/>
                         <Redirect path="*" to="/" />
                     </Route>

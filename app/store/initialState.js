@@ -21,6 +21,8 @@ export default {
         showEventform:false
     },
     search: {
-		result: ""
+		results: [],
+        page: 1,
+        pages: 1
 	},
 };

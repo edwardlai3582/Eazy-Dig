@@ -7,15 +7,18 @@ const searchActions = {
 		return (dispatch, getState) => {
             console.log(data);
             
-            fetch('https://edwardlai3582.com/discogs?query='+data.recordQuery+'&page=2').then(function(response){
+            fetch('https://edwardlai3582.com/discogs?query='+data.recordQuery+'&page=1').then(function(response){
                 if(response.ok) {
-                    ///*
                     response.json().then(function(myJson) {
                         console.log(myJson);                  
                         //dispatch({ type: 'FINISHED_SEARCH'});
+                        dispatch({
+				            type: "SEARCH_RESULTS_RECEIVED",
+				            page: myJson.pagination.page,
+                            pages: myJson.pagination.pages,
+                            results: myJson.results,
+				        });
                     });
-                    //*/
-                    //console.log(response.json());
                 } else {
                     console.log('Network response was not ok.');
                     //dispatch({ type: 'FINISHED_SEARCH'});

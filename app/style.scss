@@ -1,360 +1,91 @@
-@import url('https://fonts.googleapis.com/css?family=Lobster+Two:700italic');
+@import url(https://fonts.googleapis.com/css?family=Spicy+Rice);
+@import url(https://fonts.googleapis.com/css?family=Sansita+One);
 
 body{
-    background-color: #44D29B;
+    background-color: #E7E8C8;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     user-select: none;
-}
-
-.pac-container {
-    z-index: 1051 !important;
-}
-
-.loginWrapper{
-    position: relative;
-    left: calc( 50% - 125px );
-    text-align: center;
-    background-color: #44D29B;
-    width: 250px;
-}
-
-.loginWrapper *{
     width: 100%;
 }
 
-.loginTitle{
-    font-family: 'Lobster Two', cursive;
-    font-size: 32px;
-    color: darkcyan;
-    margin-top: 75px;
-    margin-bottom: 55px;
+#navbar{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    border-radius: 0;
+    border: 0;
+    background-color: black;
+    color: #DC3522;
+    font-size: 24px;
+    font-family: 'Spicy Rice', cursive;
+    padding: 0 15px 0 15px;
+    display:inline-flex;
+    justify-content:space-between;
+    align-items:baseline;
 }
 
-.loginB{
-    margin-top: 20px;
-    background-color: #F2806C;
-    border-width: 0px;
-    color: white;
-    &:hover{
-        background-color: #D2614D;
-        border-width: 0px;
-        color: white;
-    }
-    &:active{
-        background-color: #D2614D;
-        border-width: 0px;
-        color: white;
-    }
-    &:focus{
-        background-color: #D2614D;
-        border-width: 0px;
-        color: white;
-    }
-}
-
-
-
-.signinAlert{
+.childrenWrapper{
     position: relative;
-    top:-10px;
-    color: #A94442;
-    text-align: left;
+    width: 100%;
+    top:63px;
 }
 
-.signinemailAlert{
-    position: relative;
-    top:-10px;
-    color: #A94442;
-    text-align: left;
-    height: 20px;
-    overflow: hidden;
+.link{
+    display:inline;
+    color:white;
+    margin-left: 20px;
 }
 
-.signUpB{
-    background-color: #44D29B;
-    border-color: white;
-    color: white;
-    margin-top: 15px;
-    &:hover{
-        background-color: darkcyan;
-        border-color: white;
-        color: white;    
-    }
-    &:active{
-        background-color: darkcyan;
-        border-color: white;
-        color: white;    
-    }
-    &:focus{
-        background-color: darkcyan;
-        border-color: white;
-        color: white;    
-    }
-}
-
-.signupformTitle{
-    color: darkcyan;
-    font-weight: bolder;
-}
-
-.signupformForm{
-    width:100%;
-    .signupformSubmitWrapper{
-        text-align: center;
-    }
-    .optionalInfoWrapper{
+.releasesHeader{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    top:63px;
+    background-color: #2A2C2B;
+    color: aliceblue;
+    padding-top: 5px;
+    display:inline-flex;
+    align-items: center;
+    font-size: 20px;
+    h4{
         position: relative;
-        width: 98%;
-        left: 2%;
+        margin: 0px auto;
     }
-    .signupOptionalTitle{
-        font-weight: bolder;
+}
+
+.releasesWrapper{
+    padding: 40px;    
+}
+
+.releaseWrapper{
+    display:inline-flex;
+    justify-content:space-around;
+    
+    margin: 10px;
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    background-color: #043C53;
+    color: white;
+    padding: 10px;
+    img{
+        width: 30%;
+        max-width: 150px;
+        height: 30%;
+    }
+    ul{
+        margin-top: 5px;
+    }
+    li{
+            
+    }
+    .releaseTitle{
+        font-size: 18px;
+        font-family: 'Sansita One', cursive;
+        color: #FDD24F;
+        list-style-type:none;
         margin-bottom: 10px;
     }
-}    
-
-.signupAlert{
-    position: relative;
-    top: -15px;
-    padding-left: 5%;
-    color: #A94442;
-}
-
-.authpanel{
-    width: 100%;
-    position:fixed;
-    background-color: darkcyan;
-    padding: 10px;   
-    z-index: 2;
-    color: white;
-    font-family: 'Lobster Two', cursive;
-    font-size: 28px;
-    .appName{
-        float: left;
-    }
-    .logoutB{
-        float: right;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        color: white;
-        background-color: darkcyan;
-        border-color: white;
-        &:hover{
-            float: right;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            color: white;
-            background-color: #44D29B;
-            border-color: white;
-        }
-        &:active{
-            float: right;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            color: white;
-            background-color: #44D29B;
-            border-color: white;
-        }
-        &:focus{
-            float: right;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            color: white;
-            background-color: #44D29B;
-            border-color: white;
-        }
-    }
-}
-
-.eventslist{
-    z-index: 1;
-    position: relative;
-    width: 90%;
-    top: 15px;
-    left: 5%;
-    padding-top: 85px;
-    padding-bottom: 85px;
-    text-align: center;
-}
-
-.neweventWrapper{
-    z-index: 2;
-    position:fixed;
-    left:0px;
-    bottom:0px;
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: darkcyan;
-}
-
-.neweventB{
-    background-color: #F2806C;
-    border-width: 0px;
-    color: white;
-    &:hover{
-        background-color: #D2614D;
-        border-width: 0px;
-        color: white;    
-    }
-    &:active{
-        background-color: #D2614D;
-        border-width: 0px;
-        color: white;
-    }
-    &:focus{
-        background-color: #D2614D;
-        border-width: 0px;
-        color: white;
-    }
-}
-
-.eventWrapper{
-    text-align: left;
-    .eventTytle{
-        background-color: #CCDDD6;
-        .eventName{
-            font-weight: bolder;
-            font-size: 24px;
-        }
-        .deleteEventWrapper{
-            text-align: right;
-            .deleteEvent{
-
-                color: #DA4242;
-                font-size: 20px;
-                cursor: pointer;
-            }
-        }
-
-    }
-    .others{
-        width: 100%;
-        display:inline-flex;
-        .otherskey{
-            font-weight: bolder;
-            padding-right: 15px;
-        }
-    }
-}
-
-.deleteEventBody{
-    text-align: center;
-    .deleteEventBodytext{
-        padding-top: 10px;
-        padding-bottom: 10px;
-        font-size: 20px;
-    }
-}
-
-.eventformFormWrapper{
-    position: relative;
-    width: 90%;
-    top: 80px;
-    left: 5%;
-    margin-bottom: 15px;
-    background-color: white;
-    border-radius: 5px;
-    .eventformFormTitle{
-        width: 100%;
-        border-bottom: 2px;
-        border-bottom-color: #E5E5E5;
-        border-bottom-style: solid;
-        color:darkcyan;
-        font-size: 20px;
-        padding: 10px;
-    }
-    .eventformForm{
-        position: relative;
-        width: 94%;
-        left: 3%;
-        padding-top: 15px;
-        padding-bottom: 15px;  
-        .eventformTitle{
-            color: darkcyan;
-            font-weight: bolder;
-        }
-        .eventformSubmitWrapper{
-            text-align: center;
-            .betweenTwoB{
-                display: inline-block;
-                width:10px;
-            }
-        }
-    }    
-}
-
-.tooltipx{
-    *{
-     text-align: left;
-    }
-}
-
-.nextToToolTip{
-    //display: inline;
-    //margin-right: 5px;
-}
-
-.labelbasic{
-    width: 100%;
-    &.landscape{
-        display: inline-flex;
-        align-items: baseline;
-        .labelTitle{
-            text-align: center;
-            margin-bottom: 0px;
-        }
-        .nextToToolTip{
-            text-align: right;
-            margin-bottom: 0px;
-            position: relative;
-            left:-5px;
-        }
-        .labelTooltip{
-            margin-left: 0px;
-        }
-    }
-    .labelTitle{
-        text-align: left;
-        margin-bottom: 5px;
-        flex: 0 1 120px ;
-    }
-    .nextToToolTip{
-        text-align: left;        
-        flex: 0 1 100px ; 
-        width: 100px;
-        margin-bottom: 5px;
-        display: inline;
-    }
-    .labelInput{
-        flex: 1 4 500px ;
-    }
-    .labelTooltip{
-        display: inline;
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-}
-
-//for react-select MySelectComponent
-.Select{
-    padding: 0;
-    margin-bottom: 10px;
-    &.alert {
-        input {
-            & + .Select-control{
-                transition: all 0.30s ease-in-out;
-                outline: none;
-                border: 1px solid #A94442;
-                border-radius: 5px;    
-            }
-            &:focus {
-                //background-color: black;
-            }
-            &:focus + .Select-control{
-                outline: none;
-                box-shadow: 0 0 5px #A94442;
-                border: 1px solid #A94442;
-                border-radius: 5px;    
-            }
-        } 
-    } 
 }
 
 

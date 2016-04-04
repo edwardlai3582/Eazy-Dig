@@ -14,8 +14,8 @@ class Search extends Component {
 
     submitQuery(data) {
         this.props.submitNewRecord(data);
-        //this.props.goSomewhere('/');
-        this.props.resetForm();
+        this.props.goSomewhere('/releases');
+        //this.props.resetForm();
     }
     
 	render() {
