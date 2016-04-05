@@ -23,7 +23,7 @@ const searchActions = {
                 if(response.ok) {
                     response.json().then(function(myJson) {
                         console.log(myJson);                  
-                        //dispatch({ type: 'FINISHED_SEARCH'});
+                        
                         dispatch({
 				            type: "SEARCH_RESULTS_RECEIVED",
 				            page: myJson.pagination.page,
@@ -34,13 +34,13 @@ const searchActions = {
                     });
                 } else {
                     console.log('Network response was not ok.');
-                    //dispatch({ type: 'FINISHED_SEARCH'});
+                    dispatch({ type: "LOADING_END" });
                 }
 
             })
             .catch(function(error) {
                 console.log('There has been a problem with your fetch operation: ' + error.message);
-                //dispatch({ type: 'FINISHED_SEARCH'});
+                dispatch({ type: "LOADING_END" });
             });
         };
 	}

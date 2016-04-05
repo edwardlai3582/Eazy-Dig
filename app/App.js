@@ -7,6 +7,7 @@ import actions from './actions';
 
 import Search from './components/search';
 import Releases from './components/Releases';
+import Release  from './components/Release';
 import Fav from './components/fav';
 import Toplevel from './components/toplevel';
 
@@ -22,6 +23,7 @@ export class App extends Component {
 					<Route path="/" component={Toplevel}>
                         <IndexRoute component={Search}/>
                         <Route path="/releases" component={Releases}/>
+                        <Route path="/release"  component={Release}/>
                         <Route path="/fav" component={Fav}/>
                         <Redirect path="*" to="/" />
                     </Route>

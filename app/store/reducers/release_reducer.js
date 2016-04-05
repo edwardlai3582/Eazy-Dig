@@ -1,0 +1,16 @@
+import C from '../../constants';
+import initialState from '../initialstate';
+
+
+export default (currentstate, action) => {    
+	switch (action.type) {
+		case "RELEASE_TITLE_CHOSEN":
+			return { chosen_title: action.chosen_title }; 
+        case "RELEASE_RECEIVED":
+            console.log(action.release);
+            return Object.assign({}, currentstate, {
+				release: action.release
+			});
+		default: return currentstate || initialState.release;
+	}
+};

@@ -5,5 +5,6 @@
 
 import searchActions from './search_action';
 import loadingActions from './loading_action';
+import releaseActions from './release_action';
 
-export default Object.assign({}, searchActions, loadingActions);
+export default Object.assign({}, searchActions, loadingActions, releaseActions);

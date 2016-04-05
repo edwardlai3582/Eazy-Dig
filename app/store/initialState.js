@@ -31,5 +31,9 @@ export default {
     },
     loading: {
         loadingNow: false
+    },
+    release: {
+        chosen_title: '',
+        release: {}
     }
 };

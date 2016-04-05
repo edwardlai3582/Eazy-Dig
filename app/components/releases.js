@@ -6,7 +6,7 @@ import { routeActions } from 'react-router-redux';
 import { Link } from 'react-router';
 import { Button, Glyphicon } from 'react-bootstrap';
 import actions from '../actions';
-import Release from './release';
+import Displayrelease from './displayrelease';
 
 class Releases extends Component {
     
@@ -24,7 +24,7 @@ class Releases extends Component {
 		if (p.search.results) {            
             rows = p.search.results.map((result) =>{
                 return (
-                    <Release 
+                    <Displayrelease 
                         thumb={result.thumb}
                         title={result.title}
                         format={result.format}
@@ -33,6 +33,7 @@ class Releases extends Component {
                         label={result.label}
                         country={result.country}
                         genre={result.genre[0]}
+                        id={result.id}
                     />
                 );
             }); 
