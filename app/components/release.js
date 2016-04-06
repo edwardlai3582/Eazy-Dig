@@ -11,10 +11,6 @@ import DiscogsMarketplace from './discogsMarketplace';
 import Ebay from './ebay';
 
 class Release extends Component {
-    componentDidMount() {
-		//document.createElement('audio');
-        React.createElement('audio');
-	}
     
     searchDiscogsMarketplace(){
         if(!this.props.ui.showDiscogsMarketplace){
