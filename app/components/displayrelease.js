@@ -9,7 +9,7 @@ class Displayrelease extends Component {
     
     getRelease(id, title){
         this.props.goSomewhere('/release');
-        this.props.chooseReleaseTitle(title);
+        this.props.chooseRelease(title, id);
         this.props.startLoading();
         this.props.getRelease(id);
     }
@@ -58,7 +58,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
         goSomewhere(url) { dispatch(routeActions.push(url)); },
         getRelease(data) { dispatch(actions.getRelease(data)); },
-        chooseReleaseTitle(data) { dispatch(actions.chooseReleaseTitle(data)); },
+        chooseRelease(title, id) { dispatch(actions.chooseRelease(title, id)); },
         startLoading(){ dispatch(actions.startLoading()); }
 	};
 };

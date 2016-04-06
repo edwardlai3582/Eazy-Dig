@@ -3,11 +3,12 @@ import C from '../constants';
 
 const releaseActions = {
     
-    chooseReleaseTitle(data){
+    chooseRelease(title, id){
         return (dispatch) => {
             dispatch({
                 type: "RELEASE_TITLE_CHOSEN",
-                chosen_title: data
+                chosen_title: title,
+                id: id
             });     
         };       
     },
@@ -27,6 +28,22 @@ const releaseActions = {
 				        });
                         dispatch({ type: "LOADING_END" });
                     });
+                    //'https://www.discogs.com/sell/history/1985784'
+                    //'https://edwardlai3582.com/discogsprice?id='+data
+                    fetch('https://edwardlai3582.com/discogsprice?id='+data).then(function(response){
+                        if(response.ok) {
+                            response.json().then(function(myJson) {
+                                console.log(myJson);
+                                dispatch({
+                                    type: "PRICE_RECEIVED",
+                                    suggestPrice: myJson
+                                });
+                            });    
+                        }
+                        else {
+                            console.log('PRICE: Network response was not ok.');
+                        }
+                    });   
                 } else {
                     console.log('Network response was not ok.');
                     dispatch({ type: "LOADING_END" });

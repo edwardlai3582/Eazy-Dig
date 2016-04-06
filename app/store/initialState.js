@@ -34,6 +34,17 @@ export default {
     },
     release: {
         chosen_title: '',
+        id: '',
         release: {}
+    },
+    suggestPrice: {
+        suggestPrice: {}
+    },
+    discogsMarketplace: {
+        discogsMarketplace: []
+    },
+    ui: {
+        showDiscogsMarketplace: false,
+        showEbay: false
     }
 };
