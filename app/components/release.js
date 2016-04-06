@@ -8,21 +8,23 @@ import { Button, Panel, Glyphicon } from 'react-bootstrap';
 import actions from '../actions';
 
 import DiscogsMarketplace from './discogsMarketplace';
+import Ebay from './ebay';
 
 class Release extends Component {
-    /*
-    submitQuery(page) {
-        let data = {};
-        data.page =  this.props.search.page + page;
-        data.recordQuery = this.props.query.queryHistory[this.props.query.queryHistory.length-1];
-        this.props.startLoading();
-        this.props.submitNewRecord(data);
-    }
-    */
+    
     searchDiscogsMarketplace(){
+        if(!this.props.ui.showDiscogsMarketplace){
+            this.props.searchDiscogsMarketPlace();    
+        }
         this.props.toggleDiscogsMarketplace(); 
-        this.props.searchDiscogsMarketPlace();
     }
+    
+    searchEbay(){
+        if(!this.props.ui.showEbay){
+            this.props.searchEbay();    
+        }
+        this.props.toggleEbay(); 
+    }    
     
     renderRelease(){
         const r = this.props.release.release;
@@ -98,10 +100,19 @@ class Release extends Component {
                       click
                     </Button>
                     <Panel collapsible expanded={this.props.ui.showDiscogsMarketplace}>
-                        QQQQ
                         <DiscogsMarketplace />
                     </Panel>
-                </section>    
+                </section> 
+                    
+                <section className="releaseTracklistWrapper">
+                    <h5> eBay </h5>
+                    <Button onClick={ this.searchEbay.bind(this) }>
+                      click
+                    </Button>
+                    <Panel collapsible expanded={this.props.ui.showEbay}>
+                        <Ebay />
+                    </Panel>
+                </section> 
                     
                 <section className="releaseTracklistWrapper">
                     <h5> TRACKLIST </h5>
@@ -143,7 +154,9 @@ const mapDispatchToProps = (dispatch) => {
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
         startLoading(){ dispatch(actions.startLoading()); },
         toggleDiscogsMarketplace(){ dispatch(actions.toggleDiscogsMarketplace()); },
-        searchDiscogsMarketPlace(){ dispatch(actions.searchDiscogsMarketPlace()); }
+        searchDiscogsMarketPlace(){ dispatch(actions.searchDiscogsMarketPlace()); },
+        toggleEbay(){ dispatch(actions.toggleEbay()); },
+        searchEbay(){ dispatch(actions.searchEbay()); }
 	};
 };
 

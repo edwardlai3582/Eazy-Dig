@@ -6,6 +6,7 @@ import loadingReducer from './loading_reducer';
 import releaseReducer from './release_reducer';
 import suggestPriceReducer from './suggestPrice_reducer';
 import discogsMarketplaceReducer from './discogsMarketplace_reducer';
+import ebayReducer from './ebay_reducer';
 import uiReducer from './ui_reducer';
 
 import { routeReducer } from 'react-router-redux';
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
     release: releaseReducer,
     suggestPrice: suggestPriceReducer,
     discogsMarketplace: discogsMarketplaceReducer,
+    ebay: ebayReducer,  
     ui: uiReducer 
 });
 

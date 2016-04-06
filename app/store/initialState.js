@@ -43,6 +43,9 @@ export default {
     discogsMarketplace: {
         discogsMarketplace: []
     },
+    ebay: {
+        ebay: []
+    },    
     ui: {
         showDiscogsMarketplace: false,
         showEbay: false
