@@ -11,6 +11,10 @@ import DiscogsMarketplace from './discogsMarketplace';
 import Ebay from './ebay';
 
 class Release extends Component {
+    componentDidMount() {
+		//document.createElement('audio');
+        React.createElement('audio');
+	}
     
     searchDiscogsMarketplace(){
         if(!this.props.ui.showDiscogsMarketplace){
@@ -25,6 +29,32 @@ class Release extends Component {
         }
         this.props.toggleEbay(); 
     }    
+    
+    searchAndPlay(title, artist){
+        fetch('https://api.spotify.com/v1/search?q='+title+'%20artist:'+artist+'&type=track&market=US').then(function(response){
+            if(response.ok) {
+                response.json().then(function(myJson) {
+                    console.log(myJson);
+                    if(myJson.tracks.items.length==0){
+                        alert("not in Spotify");    
+                    }
+                    else{
+                        let audio=document.getElementsByTagName("audio")[0];
+                        audio.src = myJson.tracks.items[0].preview_url;
+                        audio.play();
+                    }
+                });
+            } else {
+                console.log('Network response was not ok.');
+                //dispatch({ type: "LOADING_END" });
+            }
+
+        })
+        .catch(function(error) {
+            console.log('There has been a problem with your fetch operation: ' + error.message);
+            //dispatch({ type: "LOADING_END" });
+        });
+    }
     
     renderRelease(){
         const r = this.props.release.release;
@@ -44,6 +74,9 @@ class Release extends Component {
                 return (
                     <li className="track">
                     {track.position+' '+track.title}
+                        <Button onClick={ this.searchAndPlay.bind(this, track.title, r.artists[0].name) }>
+                          click
+                        </Button>
                     </li>
                 );
             });
@@ -95,25 +128,27 @@ class Release extends Component {
                 </section>
                 
                 <section className="releaseTracklistWrapper">
-                    <h5> Discogs Marketplace </h5>
-                    <Button onClick={ this.searchDiscogsMarketplace.bind(this) }>
-                      click
-                    </Button>
+                    <h5> Discogs Marketplace 
+                        <Button onClick={ this.searchDiscogsMarketplace.bind(this) }>
+                          click
+                        </Button>
+                    </h5>
                     <Panel collapsible expanded={this.props.ui.showDiscogsMarketplace}>
                         <DiscogsMarketplace />
                     </Panel>
                 </section> 
                     
                 <section className="releaseTracklistWrapper">
-                    <h5> eBay </h5>
-                    <Button onClick={ this.searchEbay.bind(this) }>
-                      click
-                    </Button>
+                    <h5> eBay 
+                        <Button onClick={ this.searchEbay.bind(this) }>
+                          click
+                        </Button>
+                    </h5>
                     <Panel collapsible expanded={this.props.ui.showEbay}>
                         <Ebay />
                     </Panel>
                 </section> 
-                    
+                <audio></audio>    
                 <section className="releaseTracklistWrapper">
                     <h5> TRACKLIST </h5>
                     <ul>
