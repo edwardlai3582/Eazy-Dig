@@ -20,7 +20,18 @@ const releaseActions = {
             fetch('https://edwardlai3582.com/discogsrelease?id='+data).then(function(response){
                 if(response.ok) {
                     response.json().then(function(myJson) {
+                        
                         //console.log(myJson);                  
+                        //console.log('==========');
+                        
+                        let showWhosampled= {};
+                        for(let i=0; i<myJson.tracklist.length; i++){
+                            showWhosampled[myJson.tracklist[i].position]=false;    
+                        }
+                        dispatch({
+				            type: "RESET_SHOW_WHOSAMPLED",
+				            showWhosampled: showWhosampled
+				        });
                         
                         dispatch({
 				            type: "RELEASE_RECEIVED",

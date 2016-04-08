@@ -45,9 +45,14 @@ export default {
     },
     ebay: {
         ebay: []
-    },    
+    },
+    whosampled: {
+        currentRelease:'',
+        whosampled: {}
+    },
     ui: {
         showDiscogsMarketplace: false,
-        showEbay: false
+        showEbay: false,
+        showWhosampled: {}
     }
 };

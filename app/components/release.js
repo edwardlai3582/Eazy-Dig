@@ -9,6 +9,7 @@ import actions from '../actions';
 
 import DiscogsMarketplace from './discogsMarketplace';
 import Ebay from './ebay';
+import Whosampled from './whosampled';
 
 class Release extends Component {
     
@@ -52,6 +53,13 @@ class Release extends Component {
         });
     }
     
+    searchWhosampled(title, artist, position){
+        if(!this.props.ui.showWhosampled[position]){
+            this.props.searchSample(title, artist, position); 
+        }
+        this.props.toggleWhosampled(position);  
+    }
+    
     renderRelease(){
         const r = this.props.release.release;
         const p = this.props.suggestPrice.suggestPrice;
@@ -65,6 +73,7 @@ class Release extends Component {
             format_descriptions = format_descriptions.concat(', ').concat(r.formats[0].descriptions[i]);
         }
         
+        
         let trackLi = [];
         trackLi = r.tracklist.map((track) =>{
                 return (
@@ -73,6 +82,12 @@ class Release extends Component {
                         <Button onClick={ this.searchAndPlay.bind(this, track.title, r.artists[0].name) }>
                           click
                         </Button>
+                        <Button onClick={ this.searchWhosampled.bind(this, track.title, r.artists[0].name, track.position) }>
+                          sampled
+                        </Button>
+
+                        <Whosampled position={track.position} />
+                    
                     </li>
                 );
             });
@@ -175,6 +190,7 @@ const mapStateToProps = (appState) => {
 	return { 
         release: appState.release,
         suggestPrice: appState.suggestPrice,
+        whosampled: appState.whosampled,
         ui: appState.ui
     };
 };
@@ -187,7 +203,9 @@ const mapDispatchToProps = (dispatch) => {
         toggleDiscogsMarketplace(){ dispatch(actions.toggleDiscogsMarketplace()); },
         searchDiscogsMarketPlace(){ dispatch(actions.searchDiscogsMarketPlace()); },
         toggleEbay(){ dispatch(actions.toggleEbay()); },
-        searchEbay(){ dispatch(actions.searchEbay()); }
+        searchEbay(){ dispatch(actions.searchEbay()); },
+        toggleWhosampled(position){ dispatch(actions.toggleWhosampled(position)); },
+        searchSample(title, artist, position){ dispatch(actions.searchSample(title, artist, position)); },
 	};
 };
 

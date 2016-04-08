@@ -12,7 +12,16 @@ export default (currentstate, action) => {
 		case "TOGGLE_SHOW_EBAY":
 			return Object.assign({}, currentstate, {
 				showEbay: !currentstate.showEbay
-			});  
+			}); 
+            
+		case "RESET_SHOW_WHOSAMPLED":
+			return Object.assign({}, currentstate, {
+				showWhosampled: action.showWhosampled
+			}); 
+
+		case "TOGGLE_SHOW_WHOSAMPLED":
+            currentstate.showWhosampled[action.position]= !currentstate.showWhosampled[action.position];
+			return Object.assign({}, currentstate );             
             
 		default: return currentstate || initialState.ui;
 	}
