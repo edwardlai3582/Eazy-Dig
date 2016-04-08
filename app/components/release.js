@@ -28,7 +28,7 @@ class Release extends Component {
     }    
     
     searchAndPlay(title, artist){
-        fetch('https://api.spotify.com/v1/search?q='+title+'%20artist:'+artist+'&type=track&market=US').then(function(response){
+        fetch('https://api.spotify.com/v1/search?q='+encodeURI(title)+'%20artist:'+encodeURI(artist)+'&type=track&market=US').then(function(response){
             if(response.ok) {
                 response.json().then(function(myJson) {
                     console.log(myJson);
@@ -183,7 +183,7 @@ class Release extends Component {
 		return (
             <div>
                 <header className="releasesHeader">
-                    <Link to="/releases" className="link"><Glyphicon glyph="circle-arrow-left" /></Link> 
+                    <Glyphicon glyph="circle-arrow-left" onClick={this.props.goBack.bind(this)}/>
                     <h4 style={h4style}>{r.chosen_title}</h4>
                 </header>
                 
@@ -192,6 +192,11 @@ class Release extends Component {
 		);
 	}
 }
+
+/*
+<Link to="/releases" className="link"><Glyphicon glyph="circle-arrow-left" /></Link> 
+*/
+
 
 const mapStateToProps = (appState) => {
 	return { 
@@ -205,6 +210,7 @@ const mapStateToProps = (appState) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
         goSomewhere(url) { dispatch(routeActions.push(url)); },
+        goBack(){ dispatch(routeActions.goBack()); },
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
         startLoading(){ dispatch(actions.startLoading()); },
         toggleDiscogsMarketplace(){ dispatch(actions.toggleDiscogsMarketplace()); },

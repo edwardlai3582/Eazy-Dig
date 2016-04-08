@@ -12,6 +12,13 @@ class Fav extends Component {
     toggleFavorite(id, chosen_title){
         this.props.toggleFavorite(id, chosen_title);    
     }
+
+    getRelease(id, title){
+        this.props.goSomewhere('/release');
+        this.props.chooseRelease(title, id);
+        this.props.startLoading();
+        this.props.getRelease(id);
+    }
     
 	render() {
         
@@ -22,12 +29,10 @@ class Fav extends Component {
             rows = f.map((favorite) =>{
                 return (
                     <li>
-                        <Button onClick={ this.toggleFavorite.bind(this, favorite.id, favorite.chosen_title) }>
+                        <Button onClick={ this.toggleFavorite.bind(this) }>
                           <Glyphicon glyph="remove-circle" />
                        </Button>
-                        <article>
-                            <p>{favorite.chosen_title}</p>
-                        </article>
+                        <p onClick={this.getRelease.bind(this, favorite.id, favorite.chosen_title)}>{favorite.chosen_title}</p>
                     </li>
                 );
             }); 
@@ -55,7 +60,10 @@ const mapStateToProps = (appState) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
         goSomewhere(url) { dispatch(routeActions.push(url)); },
-        toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); }
+        toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); },
+        getRelease(data) { dispatch(actions.getRelease(data)); },
+        chooseRelease(title, id) { dispatch(actions.chooseRelease(title, id)); },
+        startLoading(){ dispatch(actions.startLoading()); }
 	};
 };
 
