@@ -50,6 +50,9 @@ export default {
         currentRelease:'',
         whosampled: {}
     },
+    favorite:{
+        favorite: []  //id&chosen_title
+    },    
     ui: {
         showDiscogsMarketplace: false,
         showEbay: false,

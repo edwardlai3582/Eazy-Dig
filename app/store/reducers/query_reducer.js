@@ -9,13 +9,13 @@ export default (currentstate, action) => {
                 return currentstate;
             }
             else{
-                let newArr = currentstate.queryHistory.slice(0);
-                if(newArr.length===currentstate.historyLength){
-                    newArr.shift();    
+                currentstate.queryHistory.slice(0);
+                if(currentstate.queryHistory.length===currentstate.historyLength){
+                    currentstate.queryHistory.shift();    
                 }
-                newArr.push(action.query);    
+                currentstate.queryHistory.push(action.query);    
 
-                return { queryHistory: newArr };                 
+                return Object.assign({}, currentstate );                 
             }
    
 		default: return currentstate || initialState.query;

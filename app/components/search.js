@@ -7,6 +7,8 @@ import { reduxForm } from 'redux-form';
 import actions from '../actions';
 import { Button, Input } from 'react-bootstrap';
 
+import History from './history';
+
 class Search extends Component {
     constructor() {
 		super();
@@ -24,7 +26,6 @@ class Search extends Component {
         
 		return (
 			<div>
-				SEARCH
                 <form className="eventformForm" autocomplete="on" onSubmit={handleSubmit(this.submitQuery.bind(this))}>
             
                     <label for="recordQuery"> 
@@ -37,7 +38,9 @@ class Search extends Component {
                     {recordQuery.touched && recordQuery.error && <div className="signupAlert">{recordQuery.error}</div>}
                     
                     <Button type="submit">Submit</Button>
-                </form> 
+                </form>
+                
+                <History />         
 			</div>
             
 		);

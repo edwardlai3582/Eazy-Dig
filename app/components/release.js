@@ -60,6 +60,10 @@ class Release extends Component {
         this.props.toggleWhosampled(position);  
     }
     
+    toggleFavorite(){
+        this.props.toggleFavorite(this.props.release.id, this.props.release.chosen_title);        
+    }
+    
     renderRelease(){
         const r = this.props.release.release;
         const p = this.props.suggestPrice.suggestPrice;
@@ -105,7 +109,10 @@ class Release extends Component {
                         <li> {'Genre: ' +r.genres[0]} </li>
                         <li> {'Rating: ' +r.community.rating.average+' / 5'} </li>
                     </ul>
-                    <Glyphicon glyph="heart" />
+                    <Button onClick={ this.toggleFavorite.bind(this) }>
+                          <Glyphicon glyph="heart" />
+                    </Button>
+                    
                 </section>
             
                 <section className="releaseTracklistWrapper">
@@ -206,6 +213,7 @@ const mapDispatchToProps = (dispatch) => {
         searchEbay(){ dispatch(actions.searchEbay()); },
         toggleWhosampled(position){ dispatch(actions.toggleWhosampled(position)); },
         searchSample(title, artist, position){ dispatch(actions.searchSample(title, artist, position)); },
+        toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); }
 	};
 };
 
