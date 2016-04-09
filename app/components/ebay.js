@@ -10,6 +10,8 @@ class Ebay extends Component {
 	render() {
         
         const e = this.props.ebay.ebay;
+        console.log('e');
+        console.log(e);
 		let rows = [];
 		if (e.length !== 0) {            
             rows = e.map((result) =>{
@@ -18,13 +20,15 @@ class Ebay extends Component {
                         <div> {result.title[0] } </div>
                         <div> {'ships form: '+ result.location[0] } </div>
                         <div> {'price: '+ result.sellingStatus[0].convertedCurrentPrice[0]['__value__']+ ' '+ result.sellingStatus[0].convertedCurrentPrice[0]['@currencyId'] } </div>
-                        <div> {'shipping: '+ result.shippingInfo[0].shippingServiceCost[0]['__value__']+ ' '+result.shippingInfo[0].shippingServiceCost[0]['@currencyId'] } </div>
-                        <div> {'condition: '+ result.condition[0].conditionDisplayName[0] } </div>
+                        <div> {result.condition? 'condition: '+ result.condition[0].conditionDisplayName[0] : ''} </div>
+                        
                     </li>
                 );
             }); 
 		}
-        
+/*
+<div> {'shipping: '+ result.shippingInfo[0].shippingServiceCost[0]['__value__']+ ' '+result.shippingInfo[0].shippingServiceCost[0]['@currencyId'] } </div>                        
+*/
 		return (
             <ul>
                 { rows }

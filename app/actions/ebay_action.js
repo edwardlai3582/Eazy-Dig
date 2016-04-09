@@ -10,11 +10,11 @@ const ebayActions = {
                 if(response.ok) {
                     response.json().then(function(myJson) {
                         myJson=JSON.parse(myJson);
-                        //console.log(myJson);                  
+                        console.log(myJson);                  
                         
                         dispatch({
 				            type: "EBAY_RECEIVED",
-				            ebay: myJson.findItemsByKeywordsResponse[0].searchResult[0].item
+				            ebay: myJson.findItemsAdvancedResponse[0].searchResult[0].item
 				        });
                         
                         //dispatch({ type: "LOADING_END" });
