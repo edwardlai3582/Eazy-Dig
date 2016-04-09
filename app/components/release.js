@@ -9,9 +9,15 @@ import actions from '../actions';
 
 import DiscogsMarketplace from './discogsMarketplace';
 import Ebay from './ebay';
+import Spotify from './spotify';
 import Whosampled from './whosampled';
 
 class Release extends Component {
+    
+    audioended(){
+        console.log('audioended');
+        this.props.spotifyEnded();    
+    }
     
     searchDiscogsMarketplace(){
         if(!this.props.ui.showDiscogsMarketplace){
@@ -26,32 +32,6 @@ class Release extends Component {
         }
         this.props.toggleEbay(); 
     }    
-    
-    searchAndPlay(title, artist){
-        fetch('https://api.spotify.com/v1/search?q='+encodeURI(title)+'%20artist:'+encodeURI(artist)+'&type=track&market=US').then(function(response){
-            if(response.ok) {
-                response.json().then(function(myJson) {
-                    console.log(myJson);
-                    if(myJson.tracks.items.length==0){
-                        alert("not in Spotify");    
-                    }
-                    else{
-                        let audio=document.getElementsByTagName("audio")[0];
-                        audio.src = myJson.tracks.items[0].preview_url;
-                        audio.play();
-                    }
-                });
-            } else {
-                console.log('Network response was not ok.');
-                //dispatch({ type: "LOADING_END" });
-            }
-
-        })
-        .catch(function(error) {
-            console.log('There has been a problem with your fetch operation: ' + error.message);
-            //dispatch({ type: "LOADING_END" });
-        });
-    }
     
     searchWhosampled(title, artist, position){
         if(!this.props.ui.showWhosampled[position]){
@@ -83,9 +63,9 @@ class Release extends Component {
                 return (
                     <li className="track">
                     {track.position+' '+track.title}
-                        <Button onClick={ this.searchAndPlay.bind(this, track.title, r.artists[0].name) }>
-                          click
-                        </Button>
+
+                        <Spotify position={track.position} artist={r.artists[0].name} title={track.title} />  
+                    
                         <Button onClick={ this.searchWhosampled.bind(this, track.title, r.artists[0].name, track.position) }>
                           sampled
                         </Button>
@@ -166,7 +146,7 @@ class Release extends Component {
                         <Ebay />
                     </Panel>
                 </section> 
-                <audio></audio>    
+                <audio onEnded={this.audioended.bind(this)} ></audio>    
                 <section className="releaseTracklistWrapper">
                     <h5> TRACKLIST </h5>
                     <ul>
@@ -219,7 +199,8 @@ const mapDispatchToProps = (dispatch) => {
         searchEbay(){ dispatch(actions.searchEbay()); },
         toggleWhosampled(position){ dispatch(actions.toggleWhosampled(position)); },
         searchSample(title, artist, position){ dispatch(actions.searchSample(title, artist, position)); },
-        toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); }
+        toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); },
+        spotifyEnded(){ dispatch(actions.spotifyEnded()); }
 	};
 };
 

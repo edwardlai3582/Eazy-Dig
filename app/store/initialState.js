@@ -46,6 +46,11 @@ export default {
     ebay: {
         ebay: []
     },
+    spotify: {
+        currentPosition: '',
+        link: '',
+        buttonSign: 'play' //stop refresh  
+    },
     whosampled: {
         currentRelease:'',
         whosampled: {}

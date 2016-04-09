@@ -1,0 +1,67 @@
+import C from '../constants';
+
+const spotifyActions = {
+    spotifyEnded(){
+        return (dispatch, getState) => {
+            dispatch({
+                type: 'STOP',
+            });    
+        }    
+    },
+    
+    spotifyPlay(){
+        return (dispatch, getState) => {
+            dispatch({
+                type: 'PLAY',
+            });    
+        }    
+    },
+    
+    spotifyStop(){
+        return (dispatch, getState) => {
+            dispatch({
+                type: 'STOP',
+            });    
+        }    
+    },
+    
+	searchSpotify(title, artist, position) {
+		return (dispatch, getState) => {
+            dispatch({
+                type: 'CHANGE_SONG_START',
+                currentPosition: position
+            });
+            
+            fetch('https://api.spotify.com/v1/search?q='+encodeURI(title)+'%20artist:'+encodeURI(artist)+'&type=track&market=US').then(function(response){
+                if(response.ok) {
+                    response.json().then(function(myJson) {
+                        console.log(myJson);
+                        if(myJson.tracks.items.length==0){
+                            alert("not in Spotify");    
+                        }
+                        else{
+                            let audio=document.getElementsByTagName("audio")[0];
+                            audio.src = myJson.tracks.items[0].preview_url;
+                            audio.play();
+                            dispatch({
+                                type: 'CHANGE_SONG_FINISH',
+                                currentPosition: position,
+                                link: myJson.tracks.items[0].preview_url
+                            });
+                        }
+                    });
+                } else {
+                    console.log('Network response was not ok.');
+                    //dispatch({ type: "LOADING_END" });
+                }
+
+            })
+            .catch(function(error) {
+                console.log('There has been a problem with your fetch operation: ' + error.message);
+                //dispatch({ type: "LOADING_END" });
+            });
+        };
+	}
+};
+
+export default spotifyActions;

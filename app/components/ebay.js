@@ -4,12 +4,7 @@ import C from '../constants';
 import { routeActions } from 'react-router-redux';
 import { Image } from 'react-bootstrap';
 import actions from '../actions';
-/*
-                        <div> {'ships form: '+ result.ships_from } </div>
-                        <div> {'price: '+ result.price } </div>
-                        <div> {'sleeve_condition: '+ result.sleeve_condition } </div>
-                        <div> {'condition: '+ result.condition } </div>
-*/
+
 class Ebay extends Component {
     
 	render() {
