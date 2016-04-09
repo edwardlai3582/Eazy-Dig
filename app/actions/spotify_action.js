@@ -37,7 +37,10 @@ const spotifyActions = {
                     response.json().then(function(myJson) {
                         console.log(myJson);
                         if(myJson.tracks.items.length==0){
-                            alert("not in Spotify");    
+                            alert("not in Spotify");
+                            dispatch({
+                                type: 'SONG_NOT_FOUND'
+                            });                            
                         }
                         else{
                             let audio=document.getElementsByTagName("audio")[0];

@@ -22,6 +22,13 @@ export default (currentstate, action) => {
                 link: '',
 				buttonSign: 'refresh'
 			}); 
+       
+        case "SONG_NOT_FOUND":
+			return Object.assign({}, {
+                currentPosition: action.currentPosition,
+                link: '',
+				buttonSign: 'play'
+			});     
             
         case "CHANGE_SONG_FINISH":
 			return Object.assign({}, {
