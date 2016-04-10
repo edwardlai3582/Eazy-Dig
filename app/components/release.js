@@ -37,7 +37,9 @@ class Release extends Component {
         if(!this.props.ui.showWhosampled[position]){
             this.props.searchSample(title, artist, position); 
         }
-        //this.props.toggleWhosampled(position);  
+        else {
+            this.props.toggleWhosampled(position);
+        }
     }
     
     toggleFavorite(){
@@ -197,7 +199,7 @@ const mapDispatchToProps = (dispatch) => {
         searchDiscogsMarketPlace(){ dispatch(actions.searchDiscogsMarketPlace()); },
         toggleEbay(){ dispatch(actions.toggleEbay()); },
         searchEbay(){ dispatch(actions.searchEbay()); },
-        //toggleWhosampled(position){ dispatch(actions.toggleWhosampled(position)); },
+        toggleWhosampled(position){ dispatch(actions.toggleWhosampled(position)); },
         searchSample(title, artist, position){ dispatch(actions.searchSample(title, artist, position)); },
         toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); },
         spotifyEnded(){ dispatch(actions.spotifyEnded()); }
