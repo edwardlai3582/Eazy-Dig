@@ -37,7 +37,7 @@ class Release extends Component {
         if(!this.props.ui.showWhosampled[position]){
             this.props.searchSample(title, artist, position); 
         }
-        this.props.toggleWhosampled(position);  
+        //this.props.toggleWhosampled(position);  
     }
     
     toggleFavorite(){
@@ -163,7 +163,7 @@ class Release extends Component {
 		return (
             <div>
                 <header className="releasesHeader">
-                    <Glyphicon glyph="circle-arrow-left" onClick={this.props.goBack.bind(this)}/>
+                    <Glyphicon glyph="circle-arrow-left" onClick={this.props.goBack.bind(this)} className="link"/>
                     <h4 style={h4style}>{r.chosen_title}</h4>
                 </header>
                 
@@ -197,7 +197,7 @@ const mapDispatchToProps = (dispatch) => {
         searchDiscogsMarketPlace(){ dispatch(actions.searchDiscogsMarketPlace()); },
         toggleEbay(){ dispatch(actions.toggleEbay()); },
         searchEbay(){ dispatch(actions.searchEbay()); },
-        toggleWhosampled(position){ dispatch(actions.toggleWhosampled(position)); },
+        //toggleWhosampled(position){ dispatch(actions.toggleWhosampled(position)); },
         searchSample(title, artist, position){ dispatch(actions.searchSample(title, artist, position)); },
         toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); },
         spotifyEnded(){ dispatch(actions.spotifyEnded()); }

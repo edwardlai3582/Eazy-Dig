@@ -42,7 +42,7 @@ class Releases extends Component {
 		return (
             <div>
                 <header className="releasesHeader">
-                    <Link to="/" className="link"><Glyphicon glyph="circle-arrow-left" /></Link> 
+                    <Glyphicon glyph="circle-arrow-left" onClick={this.props.goBack.bind(this)} className="link"/>
                     <h4>search results</h4>
                 </header>
                 <section className="releasesWrapper">
@@ -61,7 +61,9 @@ class Releases extends Component {
 		);
 	}
 }
-
+/*
+<Link to="/" className="link"><Glyphicon glyph="circle-arrow-left" /></Link> 
+*/
 const mapStateToProps = (appState) => {
 	return { 
         search: appState.search,
@@ -73,7 +75,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
         goSomewhere(url) { dispatch(routeActions.push(url)); },
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
-        startLoading(){ dispatch(actions.startLoading()); }
+        startLoading(){ dispatch(actions.startLoading()); },
+        goBack(){ dispatch(routeActions.goBack()); },
 	};
 };
 

@@ -43,6 +43,10 @@ const whosampledActions = {
                             position: position,
 				            trackSample: sampleArray
 				        });
+                        dispatch({ 
+                            type: "TOGGLE_SHOW_WHOSAMPLED", 
+                            position: position     
+                        });
                         
                     });
                 } else {
