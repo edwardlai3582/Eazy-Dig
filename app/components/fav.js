@@ -29,7 +29,7 @@ class Fav extends Component {
             rows = f.map((favorite) =>{
                 return (
                     <li>
-                        <Button onClick={ this.toggleFavorite.bind(this) }>
+                        <Button onClick={ this.toggleFavorite.bind(this, favorite.id, favorite.chosen_title) }>
                           <Glyphicon glyph="remove-circle" />
                        </Button>
                         <p onClick={this.getRelease.bind(this, favorite.id, favorite.chosen_title)}>{favorite.chosen_title}</p>

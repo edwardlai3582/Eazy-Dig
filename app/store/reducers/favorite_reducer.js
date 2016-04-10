@@ -6,7 +6,7 @@ export default (currentstate, action) => {
 	switch (action.type) {
 		case "TOGGLE_FAVORITE":
             console.log(action.chosen_title);
-            for(let i=0; i<currentstate.favorite.length; i++){
+            for(let i=0; i<currentstate.favorite.length; i++){                
                 if(action.id === currentstate.favorite[i].id){
                     currentstate.favorite.splice(i, 1); 
                     return Object.assign({}, currentstate ); 
