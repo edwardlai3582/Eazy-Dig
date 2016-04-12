@@ -5,7 +5,7 @@ var webpack = require('webpack');
 
 var config = {
     entry: [
-        
+        'webpack/hot/dev-server',
         path.resolve(__dirname, 'app/index.js')
     ],
     output: {
