@@ -19,6 +19,7 @@ export default (currentstate, action) => {
         case "CHANGE_SONG_START":
 			return Object.assign({}, {
                 currentPosition: action.currentPosition,
+                currentId: action.currentId,
                 link: '',
 				buttonSign: 'refresh'
 			}); 
@@ -26,6 +27,7 @@ export default (currentstate, action) => {
         case "SONG_NOT_FOUND":
 			return Object.assign({}, {
                 currentPosition: action.currentPosition,
+                currentId: action.currentId,
                 link: '',
 				buttonSign: 'play'
 			});     
@@ -33,6 +35,7 @@ export default (currentstate, action) => {
         case "CHANGE_SONG_FINISH":
 			return Object.assign({}, {
                 currentPosition: action.currentPosition,
+                currentId: action.currentId,
                 link: action.link,
 				buttonSign: 'stop'
 			});     
