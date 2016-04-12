@@ -49,6 +49,7 @@ const spotifyActions = {
                             dispatch({
                                 type: 'CHANGE_SONG_FINISH',
                                 currentPosition: position,
+                                currentId: getState().release.id,
                                 link: myJson.tracks.items[0].preview_url
                             });
                         }

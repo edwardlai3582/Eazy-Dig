@@ -48,6 +48,7 @@ export default {
     },
     spotify: {
         currentPosition: '',
+        currentId: '',
         link: '',
         buttonSign: 'play' //stop refresh  
     },

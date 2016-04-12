@@ -11,7 +11,7 @@ class Spotify extends Component {
     clickSpotify(){
         let audio=document.getElementsByTagName("audio")[0];   
             
-        if(this.props.position !== this.props.spotify.currentPosition){
+        if(this.props.position !== this.props.spotify.currentPosition || this.props.release.id != this.props.spotify.currentId ){
             audio.pause();
             this.props.searchSpotify(this.props.title, this.props.artist, this.props.position);
         }
@@ -32,7 +32,7 @@ class Spotify extends Component {
 	render() {
         let s = this.props.spotify;
         
-        if(s.currentPosition === this.props.position){
+        if(s.currentPosition === this.props.position && s.currentId === this.props.release.id){
             return(
                 <Button onClick={ this.clickSpotify.bind(this)} disabled={s.buttonSign==='refresh'}>
                     <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning':''} />
@@ -51,7 +51,8 @@ class Spotify extends Component {
 
 const mapStateToProps = (appState) => {
 	return { 
-        spotify: appState.spotify    
+        spotify: appState.spotify,
+        release: appState.release
     };
 };
 
