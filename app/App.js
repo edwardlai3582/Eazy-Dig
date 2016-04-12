@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Router, Route, IndexRoute, browserHistory, Redirect } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory, Redirect, useRouterHistory } from 'react-router';
+import { createHistory } from 'history'
+import { syncHistory } from 'react-router-redux'
+    
 import { Provider } from 'react-redux';
 
 import store from './store';
@@ -11,6 +14,13 @@ import Release  from './components/Release';
 import Fav from './components/fav';
 import Toplevel from './components/toplevel';
 
+const basename = '/Eazy-Dig'
+
+const history = useRouterHistory(createHistory)({
+  basename
+})
+export const routerMiddleware = syncHistory(history)
+
 export class App extends Component {
 	componentWillMount() {
 		//store.dispatch(actions.startListeningToAuth());
@@ -19,7 +29,7 @@ export class App extends Component {
 	render() {
 		return (
 			<Provider store={store}>
-				<Router history={browserHistory}>
+				<Router history={history}>
 					<Route path="/" component={Toplevel}>
                         <IndexRoute component={Search}/>
                         <Route path="/releases" component={Releases}/>
@@ -59,4 +69,19 @@ export const routes = (
     </Route>
   </Router>
 )
+*/
+
+
+/*
+<Provider store={store}>
+    <Router history={browserHistory}>
+        <Route path="/" component={Toplevel}>
+            <IndexRoute component={Search}/>
+            <Route path="/releases" component={Releases}/>
+            <Route path="/release"  component={Release}/>
+            <Route path="/fav" component={Fav}/>
+            <Redirect path="*" to="/" />
+        </Route>
+    </Router>
+</Provider>
 */

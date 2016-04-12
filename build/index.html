@@ -6,12 +6,26 @@
 		<link rel="SHORTCUT ICON" href="/favicon.ico">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0"/>
+		<link rel="stylesheet" href="./bootstrap.min.css" charset="utf-8">
+		<!--
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		-->
 		<link rel="stylesheet" href="./style.css" charset="utf-8">
 	</head>
 	
 	<body>
 		<div id="root"></div>
+		<script>
+        ///*    
+          if(navigator.serviceWorker){
+              navigator.serviceWorker.register('./service-worker.js').then(function(reg){
+                  console.log('WORKED');              
+              }).catch(function(){
+                  console.log('FAILED');
+              });          
+          }
+        //*/  
+        </script>
 		<script src="http://localhost:8080/webpack-dev-server.js"></script>
 		<script src="./bundle.js"></script>
 	</body>
