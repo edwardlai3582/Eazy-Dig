@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import C from '../constants';
-import { routeActions } from 'react-router-redux';
 import { Button, Panel, Glyphicon } from 'react-bootstrap';
 import actions from '../actions';
 

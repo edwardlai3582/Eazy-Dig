@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import C from '../constants';
-//import { routeActions } from 'react-router-redux';
 import { Link } from 'react-router';
 import { Button, Panel, Glyphicon } from 'react-bootstrap';
 import actions from '../actions';
@@ -191,8 +190,6 @@ const mapStateToProps = (appState) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-        //goSomewhere(url) { dispatch(routeActions.push(url)); },
-        //goBack(){ dispatch(routeActions.goBack()); },
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
         startLoading(){ dispatch(actions.startLoading()); },
         toggleDiscogsMarketplace(){ dispatch(actions.toggleDiscogsMarketplace()); },
@@ -203,7 +200,6 @@ const mapDispatchToProps = (dispatch) => {
         searchSample(title, artist, position){ dispatch(actions.searchSample(title, artist, position)); },
         toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); },
         spotifyEnded(){ dispatch(actions.spotifyEnded()); },
-        changePage(page) { dispatch(actions.changePage(page)); },
         previousPage() { dispatch(actions.previousPage()); }
 	};
 };

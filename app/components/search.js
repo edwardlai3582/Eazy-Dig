@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import C from '../constants';
-//import { routeActions } from 'react-router-redux';
 import { reduxForm } from 'redux-form';
 import actions from '../actions';
 import { Button, Input } from 'react-bootstrap';
@@ -15,7 +14,6 @@ class Search extends Component {
 	} 
 
     submitQuery(data) {
-        //this.props.goSomewhere('/releases');
         this.props.startLoading();
         this.props.submitNewRecord(data);
         this.props.changePage('releases');
@@ -65,7 +63,6 @@ const mapStateToProps = (appState) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
-        //goSomewhere(url) { dispatch(routeActions.push(url)); },
         startLoading(){ dispatch(actions.startLoading()); },
         changePage(page) { dispatch(actions.changePage(page)); }
 	};

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import C from '../constants';
-import { routeActions } from 'react-router-redux';
 import actions from '../actions';
 
 import { Button, Panel, Glyphicon } from 'react-bootstrap';
@@ -14,10 +13,10 @@ class Fav extends Component {
     }
 
     getRelease(id, title){
-        this.props.goSomewhere('/release');
         this.props.chooseRelease(title, id);
         this.props.startLoading();
         this.props.getRelease(id);
+        this.props.changePage('release');
     }
     
 	render() {
@@ -59,11 +58,11 @@ const mapStateToProps = (appState) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-        goSomewhere(url) { dispatch(routeActions.push(url)); },
         toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); },
         getRelease(data) { dispatch(actions.getRelease(data)); },
         chooseRelease(title, id) { dispatch(actions.chooseRelease(title, id)); },
-        startLoading(){ dispatch(actions.startLoading()); }
+        startLoading(){ dispatch(actions.startLoading()); },
+        changePage(page) { dispatch(actions.changePage(page)); },
 	};
 };
 

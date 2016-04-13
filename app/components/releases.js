@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import C from '../constants';
-//import { routeActions } from 'react-router-redux';
-//import { Link } from 'react-router';
 import { Button, Glyphicon } from 'react-bootstrap';
 import actions from '../actions';
 import Displayrelease from './displayrelease';
@@ -73,10 +71,8 @@ const mapStateToProps = (appState) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-        //goSomewhere(url) { dispatch(routeActions.push(url)); },
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
         startLoading(){ dispatch(actions.startLoading()); },
-        //goBack(){ dispatch(routeActions.goBack()); },
         changePage(page) { dispatch(actions.changePage(page)); },
         previousPage() { dispatch(actions.previousPage()); }
 	};

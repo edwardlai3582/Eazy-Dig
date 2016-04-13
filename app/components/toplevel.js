@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { routeActions } from 'react-router-redux'
 import actions from '../actions';    
 import { Button, Glyphicon } from 'react-bootstrap'
 
@@ -44,14 +43,6 @@ class Toplevel extends Component {
 	}
 }
 
-/*
-<nav>
-    <Link to="/fav" className="link" activeClassName="active"><Glyphicon glyph="heart" /></Link>
-    <Link to="/" className="link" ><Glyphicon glyph="search" /></Link>      
-</nav>
-
-{this.props.children}
-*/
 const mapStateToProps = (appState) => {
 	return { 
         loading: appState.loading,
@@ -65,5 +56,5 @@ const mapDispatchToProps = (dispatch) => {
         changePage(page) { dispatch(actions.changePage(page)); }
 	};
 };
-//export default connect(mapStateToProps, routeActions)(Toplevel);
+
 export default connect(mapStateToProps, mapDispatchToProps)(Toplevel);

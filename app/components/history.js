@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import C from '../constants';
-//import { routeActions } from 'react-router-redux';
 import { Image } from 'react-bootstrap';
 import actions from '../actions';
 
 class History extends Component {
     submitQuery(history) {
-        //this.props.goSomewhere('/releases');
         this.props.startLoading();
         let data = {};
         data.recordQuery= history;
@@ -52,7 +50,6 @@ const mapStateToProps = (appState) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
-        //goSomewhere(url) { dispatch(routeActions.push(url)); },
         startLoading(){ dispatch(actions.startLoading()); },
         changePage(page) { dispatch(actions.changePage(page)); }
 	};
