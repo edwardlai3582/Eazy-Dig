@@ -21,7 +21,19 @@ export default (currentstate, action) => {
 
 		case "TOGGLE_SHOW_WHOSAMPLED":
             currentstate.showWhosampled[action.position]= !currentstate.showWhosampled[action.position];
-			return Object.assign({}, currentstate );             
+			return Object.assign({}, currentstate );
+            
+        case "CHANGE_PAGE":
+            console.log('change page to '+action.currentPage);
+            currentstate.previousPage = currentstate.currentPage;
+            currentstate.currentPage = action.currentPage;
+            return Object.assign({}, currentstate); 
+
+        case "GO_BACK":
+            let temp = currentstate.previousPage; 
+            currentstate.previousPage = currentstate.currentPage;
+            currentstate.currentPage = temp;
+            return Object.assign({}, currentstate );             
             
 		default: return currentstate || initialState.ui;
 	}

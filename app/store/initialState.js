@@ -62,6 +62,8 @@ export default {
     ui: {
         showDiscogsMarketplace: false,
         showEbay: false,
-        showWhosampled: {}
+        showWhosampled: {},
+        previousPage: '',
+        currentPage: 'search' //search, releases, release, fav
     }
 };

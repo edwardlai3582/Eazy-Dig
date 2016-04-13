@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import C from '../constants';
-import { routeActions } from 'react-router-redux';
-import { Link } from 'react-router';
+//import { routeActions } from 'react-router-redux';
+//import { Link } from 'react-router';
 import { Button, Glyphicon } from 'react-bootstrap';
 import actions from '../actions';
 import Displayrelease from './displayrelease';
@@ -42,7 +42,7 @@ class Releases extends Component {
 		return (
             <div>
                 <header className="releasesHeader">
-                    <Glyphicon glyph="circle-arrow-left" onClick={this.props.goBack.bind(this)} className="link"/>
+                    <Glyphicon glyph="circle-arrow-left" onClick={this.props.previousPage.bind(this)} className="link"/>
                     <h4>search results</h4>
                 </header>
                 <section className="releasesWrapper">
@@ -73,10 +73,12 @@ const mapStateToProps = (appState) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-        goSomewhere(url) { dispatch(routeActions.push(url)); },
+        //goSomewhere(url) { dispatch(routeActions.push(url)); },
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
         startLoading(){ dispatch(actions.startLoading()); },
-        goBack(){ dispatch(routeActions.goBack()); },
+        //goBack(){ dispatch(routeActions.goBack()); },
+        changePage(page) { dispatch(actions.changePage(page)); },
+        previousPage() { dispatch(actions.previousPage()); }
 	};
 };
 

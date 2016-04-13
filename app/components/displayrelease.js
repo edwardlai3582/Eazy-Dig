@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import C from '../constants';
-import { routeActions } from 'react-router-redux';
+//import { routeActions } from 'react-router-redux';
 import { Image } from 'react-bootstrap';
 import actions from '../actions';
 
 class Displayrelease extends Component {
     
     getRelease(id, title){
-        this.props.goSomewhere('/release');
+        //this.props.goSomewhere('/release');
         this.props.chooseRelease(title, id);
         this.props.startLoading();
         this.props.getRelease(id);
+        this.props.changePage('release');
     }
     
 	render() {
@@ -56,10 +57,11 @@ const mapStateToProps = (appState) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-        goSomewhere(url) { dispatch(routeActions.push(url)); },
+        //goSomewhere(url) { dispatch(routeActions.push(url)); },
         getRelease(data) { dispatch(actions.getRelease(data)); },
         chooseRelease(title, id) { dispatch(actions.chooseRelease(title, id)); },
-        startLoading(){ dispatch(actions.startLoading()); }
+        startLoading(){ dispatch(actions.startLoading()); },
+        changePage(page) { dispatch(actions.changePage(page)); },
 	};
 };
 

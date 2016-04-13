@@ -16,7 +16,7 @@ import { routeReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({
-	routing: routeReducer,
+	//routing: routeReducer,
     form: formReducer,
     
     search: searchReducer,

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import C from '../constants';
-import { routeActions } from 'react-router-redux';
+//import { routeActions } from 'react-router-redux';
 import { Link } from 'react-router';
 import { Button, Panel, Glyphicon } from 'react-bootstrap';
 import actions from '../actions';
@@ -165,7 +165,7 @@ class Release extends Component {
 		return (
             <div>
                 <header className="releasesHeader">
-                    <Glyphicon glyph="circle-arrow-left" onClick={this.props.goBack.bind(this)} className="link"/>
+                    <Glyphicon glyph="circle-arrow-left" onClick={this.props.previousPage.bind(this)} className="link"/>
                     <h4 style={h4style}>{r.chosen_title}</h4>
                 </header>
                 
@@ -191,8 +191,8 @@ const mapStateToProps = (appState) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-        goSomewhere(url) { dispatch(routeActions.push(url)); },
-        goBack(){ dispatch(routeActions.goBack()); },
+        //goSomewhere(url) { dispatch(routeActions.push(url)); },
+        //goBack(){ dispatch(routeActions.goBack()); },
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
         startLoading(){ dispatch(actions.startLoading()); },
         toggleDiscogsMarketplace(){ dispatch(actions.toggleDiscogsMarketplace()); },
@@ -202,7 +202,9 @@ const mapDispatchToProps = (dispatch) => {
         toggleWhosampled(position){ dispatch(actions.toggleWhosampled(position)); },
         searchSample(title, artist, position){ dispatch(actions.searchSample(title, artist, position)); },
         toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); },
-        spotifyEnded(){ dispatch(actions.spotifyEnded()); }
+        spotifyEnded(){ dispatch(actions.spotifyEnded()); },
+        changePage(page) { dispatch(actions.changePage(page)); },
+        previousPage() { dispatch(actions.previousPage()); }
 	};
 };
 

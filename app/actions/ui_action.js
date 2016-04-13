@@ -22,6 +22,28 @@ const uiActions = {
                 position: position     
             });
 	   }
+    },
+    
+    changePage(page){
+		return (dispatch, getState) => {
+            if(page===getState().ui.currentPage){
+                return;    
+            }
+            else{
+                dispatch({ 
+                    type: "CHANGE_PAGE", 
+                    currentPage: page     
+                });    
+            }
+	   }        
+    },
+    
+    previousPage(){
+		return (dispatch) => {
+            dispatch({ 
+                type: "GO_BACK"    
+            });
+	   }       
     }
     
 };

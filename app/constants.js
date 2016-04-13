@@ -1,6 +1,4 @@
 export default {
-	// MISC
-	FIREBASE: 'https://incandescent-heat-2372.firebaseio.com',
 
 	// UI FEEDBACK ACTIONS
 	DISPLAY_ERROR: 'DISPLAY_ERROR',
