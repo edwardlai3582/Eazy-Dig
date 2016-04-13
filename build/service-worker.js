@@ -116,10 +116,11 @@ function serveQuery(ne) {
             console.log('found in db');
             var json = JSON.stringify(event.target.result.result);
             var myBlob = new Blob([json], {type: "application/json"});
-            var init = { "status" : 200 , "statusText" : "ok" };
+            var init = { "status" : 200 , "statusText" : "response from SW" };
             var myResponse = new Response(myBlob,init);
 
-            ne.respondWith(myResponse);            
+            //ne.respondWith(myResponse);
+            return myResponse;
         }
         else{
             console.log('not in db so fetch');
@@ -134,7 +135,8 @@ function serveQuery(ne) {
                     });    
                 }
 
-                ne.respondWith(networkResponse);
+                //ne.respondWith(networkResponse);
+                return networkResponse;
             });            
         }
 

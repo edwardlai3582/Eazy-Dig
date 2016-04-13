@@ -20,6 +20,7 @@ const searchActions = {
             
             fetch('https://edwardlai3582.com/discogs?query='+data.recordQuery+'&page='+page).then(function(response){
                 if(response.ok) {
+                    console.log('statusText is '+response.statusText);
                     response.json().then(function(myJson) {
                         console.log(myJson);                  
                         
