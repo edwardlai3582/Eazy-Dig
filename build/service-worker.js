@@ -88,38 +88,57 @@ self.addEventListener('fetch', function(event) {
     }
     
     if (requestUrl.hostname === 'edwardlai3582.com') {
-      event.respondWith(serveEdward(event.request));
+      //event.respondWith(serveEdward(event.request));
+      serveQuery(event);    
       return;
     }
     
     event.respondWith(
-        caches.match(event.request).then(function(response) {
-            if (response) {
-                return response;
-            }
-            return fetch(event.request);
-        })    
+        caches.open(staticCacheName).then(function(cache) {
+            return cache.match(event.request.url).then(function(response) {
+                if (response) return response;
+
+                return fetch(event.request).then(function(networkResponse) {
+                    cache.put(event.request.url, networkResponse.clone());
+                    return networkResponse;
+                });
+            });
+        })
     );
 });
 
-function serveEdward(request) {
-    console.log('SERVE EDWARD');
-    var storageUrl = request.url;//.replace(/-\d+px\.jpg$/, '');
+function serveQuery(ne) {
+    console.log('SERVE QUERY:'+ ne.request.url);
+    var storageUrl = ne.request.url;
     
-    return fetch(request).then(function(networkResponse) {
-        ///*
-        var response2 = networkResponse.clone();
-        //response2.json().then(function(myJson) {
-        getObjectStore(STORE_NAME, 'readwrite').add({
-            url: storageUrl,
-            result: response2
-        });
-        //*/
-        console.log(networkResponse);
-        console.log('============================')
-        return networkResponse;
-    });
+    getObjectStore(STORE_NAME, 'readwrite').get(storageUrl).onsuccess = function(event) {
+        if(event.target.result){
+            console.log('found in db');
+            var json = JSON.stringify(event.target.result.result);
+            var myBlob = new Blob([json], {type: "application/json"});
+            var init = { "status" : 200 , "statusText" : "ok" };
+            var myResponse = new Response(myBlob,init);
 
+            ne.respondWith(myResponse);            
+        }
+        else{
+            console.log('not in db so fetch');
+            fetch(ne.request).then(function(networkResponse) {
+                var response2 = networkResponse.clone();
+                if(response2.ok){
+                    response2.json().then(function(myJson) {
+                        getObjectStore(STORE_NAME, 'readwrite').add({
+                            url: storageUrl,
+                            result: myJson
+                        });
+                    });    
+                }
+
+                ne.respondWith(networkResponse);
+            });            
+        }
+
+    }; 
 }
 
 
