@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import C from '../constants';
-import { Image } from 'react-bootstrap';
+import { Image, Glyphicon } from 'react-bootstrap';
 import actions from '../actions';
 
 class Ebay extends Component {
     
 	render() {
         
-        const e = this.props.ebay.ebay;
-        console.log('e');
-        console.log(e);
+        const e = this.props.ebay;
+        //console.log('e');
+        //console.log(e.ebay);
 		let rows = [];
-		if (e.length !== 0) {            
-            rows = e.map((result) =>{
+		if (e.ebay.length !== 0) {            
+            rows = e.ebay.map((result) =>{
                 return (
                     <li>
                         <div> {result.title[0] } </div>
@@ -25,13 +25,21 @@ class Ebay extends Component {
                 );
             }); 
 		}
+        if(rows.length===0){
+            rows='0 result';
+        }
 /*
 <div> {'shipping: '+ result.shippingInfo[0].shippingServiceCost[0]['__value__']+ ' '+result.shippingInfo[0].shippingServiceCost[0]['@currencyId'] } </div>                        
 */
 		return (
-            <ul>
+            <section>
+            <div className={e.ebaySearching?'ebayShow':'ebayHide'}>
+            <Glyphicon glyph="refresh" className={e.ebaySearching?'spinning':''} />
+            </div>
+            <ul className={e.ebaySearching?'ebayHide':'ebayShow'}>
                 { rows }
-            </ul>  
+            </ul>
+            </section>
 		);
 	}
 }

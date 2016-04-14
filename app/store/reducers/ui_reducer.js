@@ -27,12 +27,16 @@ export default (currentstate, action) => {
             console.log('change page to '+action.currentPage);
             currentstate.previousPage = currentstate.currentPage;
             currentstate.currentPage = action.currentPage;
+            currentstate.showEbay = false;
+            currentstate.showDiscogsMarketplace = false;
             return Object.assign({}, currentstate); 
 
         case "GO_BACK":
             let temp = currentstate.previousPage; 
             currentstate.previousPage = currentstate.currentPage;
             currentstate.currentPage = temp;
+            currentstate.showEbay = false;
+            currentstate.showDiscogsMarketplace = false;
             return Object.assign({}, currentstate );             
             
 		default: return currentstate || initialState.ui;

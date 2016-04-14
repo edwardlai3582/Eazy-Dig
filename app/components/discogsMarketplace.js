@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import C from '../constants';
-import { Image } from 'react-bootstrap';
+import { Image, Glyphicon } from 'react-bootstrap';
 import actions from '../actions';
 
 class DiscogsMarketplace extends Component {
     
 	render() {
-        const p = this.props.discogsMarketplace.discogsMarketplace;
+        const d = this.props.discogsMarketplace;
 		let rows = [];
-		if (p.length !== 0) {            
-            rows = p.map((result) =>{
+		if (d.discogsMarketplace.length !== 0) {            
+            rows = d.discogsMarketplace.map((result) =>{
                 return (
                     <li>
                         <div> {'ships form: '+ result.ships_from } </div>
@@ -21,11 +21,19 @@ class DiscogsMarketplace extends Component {
                 );
             }); 
 		}
+        if(rows.length===0){
+            rows='0 result';
+        }
         
 		return (
-            <ul>
+            <section>
+            <div className={d.discogsMarketplaceSearching?'discogsMarketplaceShow':'discogsMarketplaceHide'}>
+            <Glyphicon glyph="refresh" className={d.discogsMarketplaceSearching?'spinning':''} />
+            </div>
+            <ul className={d.discogsMarketplaceSearching?'discogsMarketplaceHide':'discogsMarketplaceShow'}>
                 { rows }
-            </ul>  
+            </ul>
+            </section>
 		);
 	}
 }

@@ -16,6 +16,8 @@ class Releases extends Component {
         this.props.submitNewRecord(data);
     }
 
+
+    
     render() {
 		const p = this.props;
 		let rows = [];
@@ -40,7 +42,7 @@ class Releases extends Component {
 		return (
             <div>
                 <header className="releasesHeader">
-                    <Glyphicon glyph="circle-arrow-left" onClick={this.props.previousPage.bind(this)} className="link"/>
+                    <Glyphicon glyph="circle-arrow-left" onClick={this.props.changePage.bind(this,'search')} className="link"/>
                     <h4>search results</h4>
                 </header>
                 <section className="releasesWrapper">
@@ -65,7 +67,8 @@ class Releases extends Component {
 const mapStateToProps = (appState) => {
 	return { 
         search: appState.search,
-        query: appState.query
+        query: appState.query,
+        ui: appState.ui
     };
 };
 

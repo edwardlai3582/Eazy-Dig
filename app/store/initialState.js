@@ -41,10 +41,12 @@ export default {
         suggestPrice: {}
     },
     discogsMarketplace: {
-        discogsMarketplace: []
+        discogsMarketplace: [],
+        discogsMarketplaceSearching: false 
     },
     ebay: {
-        ebay: []
+        ebay: [],
+        ebaySearching: false 
     },
     spotify: {
         currentPosition: '',
@@ -63,7 +65,7 @@ export default {
         showDiscogsMarketplace: false,
         showEbay: false,
         showWhosampled: {},
-        previousPage: '',
+        startFrom: 'search',
         currentPage: 'search' //search, releases, release, fav
     }
 };
