@@ -56,12 +56,8 @@ class Toplevel extends Component {
                 <header id="navbar">
                     <h2>Eazy-Dig</h2>
                     <nav>
-                        <Button onClick={ this.props.changePage.bind(this, 'fav') }>
-                            <Glyphicon glyph="heart" />
-                        </Button>
-                        <Button onClick={ this.props.changePage.bind(this, 'search') }>
-                            <Glyphicon glyph="search" /> 
-                        </Button>        
+                        <Glyphicon glyph="heart" className={this.props.ui.currentPage==="fav"? 'navGlySelected': 'navGly'} onClick={ this.props.changePage.bind(this, 'fav') } />
+                        <Glyphicon glyph="search" className={this.props.ui.currentPage==="search"? 'navGlySelected': 'navGly'} onClick={ this.props.changePage.bind(this, 'search') } />       
                     </nav>
                 </header>
                 <section className="childrenWrapper">
@@ -81,7 +77,11 @@ class Toplevel extends Component {
 		);
 	}
 }
-
+/*
+                        <button className="bannerButton" onClick={ this.props.changePage.bind(this, 'search') }>
+                            <Glyphicon glyph="search" /> 
+                        </button>  
+*/
 const mapStateToProps = (appState) => {
 	return { 
         loading: appState.loading,

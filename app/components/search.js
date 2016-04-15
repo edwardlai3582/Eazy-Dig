@@ -21,26 +21,23 @@ class Search extends Component {
     }
     
 	render() {
-        const { fields: { recordQuery }, handleSubmit } = this.props;
+        const { fields: { recordKeyWord }, handleSubmit } = this.props;
         
 		return (
-			<div>
-                <form className="eventformForm" onSubmit={handleSubmit(this.submitQuery.bind(this))}>
+			<section>
+                <form className="searchForm" onSubmit={handleSubmit(this.submitQuery.bind(this))}>
             
-                    <label htmlFor="recordQuery"> 
-                        <div className="labelTitle">Query</div>
-                        <div className="labelInput">
-                            <Input type="text" id="recordQuery" placeholder="enter record Query" {...recordQuery} autoFocus />
-                        </div>    
-                    </label>         
-
-                    {recordQuery.touched && recordQuery.error && <div className="signupAlert">{recordQuery.error}</div>}
-                    
-                    <Button type="submit">Submit</Button>
+                    <label htmlFor="recordKeyWord">
+                        KEY WORDS:    
+                    </label>  
+                        
+                    <Input type="text" id="recordKeyWord" placeholder="enter record's key words" {...recordKeyWord} bsStyle={recordKeyWord.touched && recordKeyWord.invalid ? 'error' : null} autoFocus autoComplete required/>
+         
+                    <Button type="submit" id="searchButton">SEARCH</Button>
                 </form>
                 
                 <History />         
-			</div>
+			</section>
             
 		);
 	}
@@ -49,8 +46,8 @@ class Search extends Component {
 const validate = values => {
     const errors = {};
 
-    if (!values.recordQuery) {
-        //errors.recordQuery = 'Required field';
+    if (!values.recordKeyWord) {
+        errors.recordKeyWord = 'Required field';
     }
 
     return errors;
@@ -71,7 +68,7 @@ const mapDispatchToProps = (dispatch) => {
 
 Search = reduxForm({
     form: 'eventform',
-    fields: ['recordQuery'],
+    fields: ['recordKeyWord'],
     validate
 }, mapStateToProps, mapDispatchToProps)(Search);
 

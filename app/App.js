@@ -45,18 +45,3 @@ export const routes = (
   </Router>
 )
 */
-
-
-/*
-<Provider store={store}>
-    <Router history={browserHistory}>
-        <Route path="/" component={Toplevel}>
-            <IndexRoute component={Search}/>
-            <Route path="/releases" component={Releases}/>
-            <Route path="/release"  component={Release}/>
-            <Route path="/fav" component={Fav}/>
-            <Redirect path="*" to="/" />
-        </Route>
-    </Router>
-</Provider>
-*/

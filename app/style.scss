@@ -6,7 +6,7 @@
 }
 
 body{
-    background-color: #E7E8C8;
+    background-color: #374140;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     user-select: none;
     width: 100%;
@@ -26,6 +26,23 @@ body{
     display:inline-flex;
     justify-content:space-between;
     align-items:baseline;
+    
+    .navGly{
+        cursor: pointer;
+        color:white;
+        margin-right: 10px;
+        &:hover{
+            color: coral;
+        }
+        &:active{
+            top: 3px;
+        }
+    } 
+    .navGlySelected{
+        cursor: pointer;
+        color:red;
+        margin-right: 10px;
+    }     
 }
 
 .childrenWrapper{
@@ -49,6 +66,66 @@ body{
             left: 50%;
             top: 50%;
             font-size: 36px;
+        }
+    }
+}
+
+.searchForm{
+    width: 90%;
+    position: relative;
+    left: 5%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #374140;
+    color: white;
+    text-align: center;
+    .recordKeyWord{
+        width: 70%;
+    }
+    #searchButton{
+        background-color: #DC3522;
+        color: white;
+        font-weight: bold;
+        &:hover{
+            background-color: coral;    
+        }
+        &:active{
+            top: 3px;
+        }
+    }
+}
+
+#historyWrapper{
+    width: 90%;
+    position: relative;
+    left:5%;
+    margin-top: 40px;
+    background-color: #E7E8C8;
+    border-radius: 10px;
+    
+    h5{
+        text-align: center;
+        font-weight: bold;
+        padding-top:15px;
+        padding-bottom:15px;
+        background-color: #D9CB9E;
+        margin: 0;
+    }
+    
+    ul{
+        padding-left: 0;
+        width: 100%;
+        
+        list-style-type:none;
+        li{
+            cursor: pointer;
+            padding: 5px 0px 5px 10px;
+            &:nth-child(even){
+                background-color: #79BD8E
+            }
+            &:hover{
+                background-color: coral;
+            }
         }
     }
 }

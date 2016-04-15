@@ -23,12 +23,12 @@ const searchActions = {
             else{
                 dispatch({
                     type: "QUERY_ADDED",
-                    query: data.recordQuery,
+                    query: data.recordKeyWord,
                     timestamp: new Date().getTime()
 				});              
             }
             
-            fetch('https://edwardlai3582.com/discogs?query='+data.recordQuery+'&page='+page).then(function(response){
+            fetch('https://edwardlai3582.com/discogs?query='+data.recordKeyWord+'&page='+page).then(function(response){
                 if(response.ok) {
                     console.log('statusText is '+response.statusText);
                     response.json().then(function(myJson) {

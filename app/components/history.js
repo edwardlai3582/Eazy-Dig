@@ -29,8 +29,8 @@ class History extends Component {
         }); 
         
         return (
-            <section>
-                <h5> recent searches </h5>
+            <section id="historyWrapper">
+                <h5> SEARCH HISTORY </h5>
                 
                 <ul >
                     { rows }
