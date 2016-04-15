@@ -4,7 +4,10 @@ import C from '../constants';
 import { Image } from 'react-bootstrap';
 import actions from '../actions';
 
+
+
 class History extends Component {
+    
     submitQuery(history) {
         this.props.startLoading();
         let data = {};
@@ -14,23 +17,18 @@ class History extends Component {
     }
     
 	render() {
-        
         const h = this.props.query.queryHistory;
-		let rows = [];
-        
-		         
-            rows = h.map((history) =>{
+		let rows = [];	         
+        console.log(rows);
+        rows = h.map((history) =>{
                 return (
-                    <li onClick={this.submitQuery.bind(this, history)}>
-                    {history}        
+                    <li onClick={this.submitQuery.bind(this, history.query)} key={history.timestamp}>
+                    {history.query}        
                     </li>
-                );
-            }); 
-		
+                );   
+        }); 
         
-        
-        
-		return (
+        return (
             <section>
                 <h5> recent searches </h5>
                 
@@ -51,7 +49,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
         startLoading(){ dispatch(actions.startLoading()); },
-        changePage(page) { dispatch(actions.changePage(page)); }
+        changePage(page) { dispatch(actions.changePage(page)); },
 	};
 };
 

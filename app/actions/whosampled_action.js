@@ -7,7 +7,8 @@ const whosampledActions = {
             title= encodeURI(title.split(' ').join('-')); 
             artist= encodeURI(artist.split(' ').join('-'));    
 
-            fetch("https://crossorigin.me/https://www.whosampled.com/"+artist+"/"+title+"/").then(function(response){
+            //fetch("https://crossorigin.me/https://www.whosampled.com/"+artist+"/"+title+"/").then(function(response){
+          fetch("https://www.whosampled.com/"+artist+"/"+title+"/", { mode: 'no-cors' }).then(function(response){    
                 if(response.ok) {
                     response.text().then(function(myText) {
                         //console.log(myText);

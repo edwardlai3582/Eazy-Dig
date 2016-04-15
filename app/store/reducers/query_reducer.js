@@ -1,9 +1,21 @@
 import C from '../../constants';
 import initialState from '../initialstate';
 
+import idb from '../../idb';
 
 export default (currentstate, action) => {    
 	switch (action.type) {
+		case "HISTORY_QUERY_FROM_IDB_ADDED":
+            console.log(action.queryHistory);
+            console.log("HISTORY_QUERY_FROM_IDB_ADDED");
+            let temp=[];
+            for(let i=0;i<action.queryHistory.length;i++){
+                temp.push(action.queryHistory[i])
+            }
+            return Object.assign({}, currentstate, {
+				queryHistory: temp
+			}); 
+            
 		case "QUERY_ADDED":
             if(action.query === currentstate.queryHistory[currentstate.queryHistory.length-1]){
                 return currentstate;
@@ -12,9 +24,38 @@ export default (currentstate, action) => {
                 currentstate.queryHistory.slice(0);
                 if(currentstate.queryHistory.length===currentstate.historyLength){
                     currentstate.queryHistory.shift();    
-                }
-                currentstate.queryHistory.push(action.query);    
-
+                }      
+                currentstate.queryHistory.push({query:action.query, timestamp:action.timestamp});
+                ///*
+                idb.open('eazyDig', 2, function(upgradeDb) {
+                    switch (upgradeDb.oldVersion) {
+                        case 0:
+                            upgradeDb.createObjectStore('urls', {
+                                keyPath: 'url'
+                            });
+                        case 1:
+                            var store=upgradeDb.createObjectStore('history', { 
+                                keyPath: "timestamp"
+                            });
+                            store.createIndex('by-time', 'timestamp');
+                    }
+                }).then(function(db){
+                    var tx = db.transaction('history', 'readwrite');
+                    var store = tx.objectStore('history');
+                    store.add({query:action.query, timestamp:action.timestamp});
+                    
+                    // limit store to 10 items
+                    /*
+                    store.index('by-time').openCursor(null, "prev").then(function(cursor) {
+                      return cursor.advance(10);
+                    }).then(function deleteRest(cursor) {
+                      if (!cursor) return;
+                      cursor.delete();
+                      return cursor.continue().then(deleteRest);
+                    });
+                    */    
+                });  
+                //*/
                 return Object.assign({}, currentstate );                 
             }
    

@@ -12,7 +12,7 @@ class DiscogsMarketplace extends Component {
 		if (d.discogsMarketplace.length !== 0) {            
             rows = d.discogsMarketplace.map((result) =>{
                 return (
-                    <li>
+                    <li key={result.id} >
                         <div> {'ships form: '+ result.ships_from } </div>
                         <div> {'price: '+ result.price } </div>
                         <div> {'sleeve_condition: '+ result.sleeve_condition } </div>

@@ -25,9 +25,9 @@ class Search extends Component {
         
 		return (
 			<div>
-                <form className="eventformForm" autocomplete="on" onSubmit={handleSubmit(this.submitQuery.bind(this))}>
+                <form className="eventformForm" onSubmit={handleSubmit(this.submitQuery.bind(this))}>
             
-                    <label for="recordQuery"> 
+                    <label htmlFor="recordQuery"> 
                         <div className="labelTitle">Query</div>
                         <div className="labelInput">
                             <Input type="text" id="recordQuery" placeholder="enter record Query" {...recordQuery} autoFocus />

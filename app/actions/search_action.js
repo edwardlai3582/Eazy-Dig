@@ -2,6 +2,17 @@ import C from '../constants';
 
 const searchActions = {
     
+    getHistoryFromIdb(queries){
+        return (dispatch, getState) => {
+            console.log(queries);
+            console.log('QQQQQQQQQQQQQQQQQQ');
+            dispatch({
+                type: "HISTORY_QUERY_FROM_IDB_ADDED",
+                queryHistory: queries
+            }); 
+        };    
+    },
+    
 	submitNewRecord(data) {
 		return (dispatch, getState) => {
             console.log(data);
@@ -14,7 +25,8 @@ const searchActions = {
             else{
                 dispatch({
                     type: "QUERY_ADDED",
-                    query: data.recordQuery
+                    query: data.recordQuery,
+                    timestamp: new Date().getTime()
 				});              
             }
             

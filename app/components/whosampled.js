@@ -15,7 +15,7 @@ class Whosampled extends Component {
 		if (p in w){            
             rows = w[p].map((sample) =>{
                 return (
-                    <li className="whosampledLi" >
+                    <li className="whosampledLi" key={sample.imgUrl}>
                         <img src={sample.imgUrl} />
                         <article>
                             <p>{sample.sampleArtist}</p>

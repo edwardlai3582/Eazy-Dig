@@ -34,6 +34,7 @@ class Releases extends Component {
                         country={result.country}
                         genre={result.genre[0]}
                         id={result.id}
+                        key={result.id}
                     />
                 );
             }); 

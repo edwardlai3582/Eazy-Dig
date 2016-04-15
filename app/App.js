@@ -8,11 +8,7 @@ import actions from './actions';
 
 import Toplevel from './components/toplevel';
 
-export class App extends Component {
-	componentWillMount() {
-		//store.dispatch(actions.startListeningToAuth());
-	}
-    
+export class App extends Component {    
 	render() {
 		return (
             <Provider store={store}>

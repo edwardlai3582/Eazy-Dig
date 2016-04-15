@@ -4,13 +4,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
 
 var config = {
-    entry: [
-        'webpack/hot/dev-server',
-        path.resolve(__dirname, 'app/index.js')
-    ],
+    entry: {
+        hot: 'webpack/hot/dev-server',
+        bundle: path.resolve(__dirname, 'app/index.js'),
+        service_worker: path.resolve(__dirname, 'app/service-worker.js')
+    },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+        filename: '[name].js'//'bundle.js'
     },
     module: {
         loaders: [
@@ -32,7 +33,7 @@ var config = {
     plugins: [
         new webpack.DefinePlugin({
             "process.env": {
-                NODE_ENV: JSON.stringify("production")
+                //NODE_ENV: JSON.stringify("production")
             }
         }),
         new ExtractTextPlugin('style.css', {

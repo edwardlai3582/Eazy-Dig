@@ -6,6 +6,8 @@ import actions from '../actions';
 
 import { Button, Panel, Glyphicon } from 'react-bootstrap';
 
+
+
 class Fav extends Component {
     
     toggleFavorite(id, chosen_title){

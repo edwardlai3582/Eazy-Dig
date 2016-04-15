@@ -8,8 +8,32 @@ import Search from './search';
 import Releases from './releases';
 import Release  from './release';
 import Fav from './fav';
-    
+
+import idb from '../idb';
+
 class Toplevel extends Component {
+	componentDidMount() {
+        let getHistoryFromIdb=this.props.getHistoryFromIdb;
+        console.log('DID MOUNT');
+        idb.open('eazyDig', 2, function(upgradeDb) {
+            switch (upgradeDb.oldVersion) {
+                case 0:
+                    upgradeDb.createObjectStore('urls', {
+                        keyPath: 'url'
+                    });
+                case 1:
+                    var store=upgradeDb.createObjectStore('history', { 
+                                keyPath: "timestamp"
+                            });
+                    store.createIndex('by-time', 'timestamp');
+            }
+        }).then(function(db){
+            var index = db.transaction('history').objectStore('history');
+            index.getAll().then(function(queries) {
+                getHistoryFromIdb(queries);
+            });
+        });    
+	}
     
 	render() {        
 		return (
@@ -53,7 +77,8 @@ const mapStateToProps = (appState) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-        changePage(page) { dispatch(actions.changePage(page)); }
+        changePage(page) { dispatch(actions.changePage(page)); },
+        getHistoryFromIdb(queries) { dispatch(actions.getHistoryFromIdb(queries)); }
 	};
 };
 

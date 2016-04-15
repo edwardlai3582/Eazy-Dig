@@ -15,7 +15,7 @@ class Ebay extends Component {
 		if (e.ebay.length !== 0) {            
             rows = e.ebay.map((result) =>{
                 return (
-                    <li>
+                    <li key={result.itemId[0]}>
                         <div> {result.title[0] } </div>
                         <div> {'ships form: '+ result.location[0] } </div>
                         <div> {'price: '+ result.sellingStatus[0].convertedCurrentPrice[0]['__value__']+ ' '+ result.sellingStatus[0].convertedCurrentPrice[0]['@currencyId'] } </div>
