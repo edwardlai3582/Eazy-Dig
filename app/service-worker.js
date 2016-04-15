@@ -11,7 +11,7 @@ var allCaches = [
 ];
 
 function openDatabase() {
-  return idb.open('eazyDig', 2, function(upgradeDb) {
+  return idb.open('eazyDig', 3, function(upgradeDb) {
             switch (upgradeDb.oldVersion) {
                 case 0:
                     upgradeDb.createObjectStore('urls', {
@@ -22,6 +22,12 @@ function openDatabase() {
                                 keyPath: "timestamp"
                             });
                     store.createIndex('by-time', 'timestamp');
+                    
+                case 2:
+                    var store=upgradeDb.createObjectStore('fav', { 
+                                keyPath: "id"
+                            });
+                    store.createIndex('by-name', 'chosen_title');      
             }
         });
 }

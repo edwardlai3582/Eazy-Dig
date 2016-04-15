@@ -9,7 +9,7 @@ import { Button, Panel, Glyphicon } from 'react-bootstrap';
 
 
 class Fav extends Component {
-    
+
     toggleFavorite(id, chosen_title){
         this.props.toggleFavorite(id, chosen_title);    
     }
@@ -29,7 +29,7 @@ class Fav extends Component {
 		          
             rows = f.map((favorite) =>{
                 return (
-                    <li>
+                    <li key={favorite.id} >
                         <Button onClick={ this.toggleFavorite.bind(this, favorite.id, favorite.chosen_title) }>
                           <Glyphicon glyph="remove-circle" />
                        </Button>

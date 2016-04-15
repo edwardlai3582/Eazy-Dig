@@ -4,8 +4,6 @@ const searchActions = {
     
     getHistoryFromIdb(queries){
         return (dispatch, getState) => {
-            console.log(queries);
-            console.log('QQQQQQQQQQQQQQQQQQ');
             dispatch({
                 type: "HISTORY_QUERY_FROM_IDB_ADDED",
                 queryHistory: queries

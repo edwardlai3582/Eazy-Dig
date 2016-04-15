@@ -26,8 +26,8 @@ export default (currentstate, action) => {
                     currentstate.queryHistory.shift();    
                 }      
                 currentstate.queryHistory.push({query:action.query, timestamp:action.timestamp});
-                ///*
-                idb.open('eazyDig', 2, function(upgradeDb) {
+                
+                idb.open('eazyDig', 3, function(upgradeDb) {
                     switch (upgradeDb.oldVersion) {
                         case 0:
                             upgradeDb.createObjectStore('urls', {
@@ -38,6 +38,12 @@ export default (currentstate, action) => {
                                 keyPath: "timestamp"
                             });
                             store.createIndex('by-time', 'timestamp');
+                            
+                        case 2:
+                            var store=upgradeDb.createObjectStore('fav', { 
+                                        keyPath: "id"
+                                    });
+                            store.createIndex('by-name', 'chosen_title');      
                     }
                 }).then(function(db){
                     var tx = db.transaction('history', 'readwrite');
@@ -45,17 +51,15 @@ export default (currentstate, action) => {
                     store.add({query:action.query, timestamp:action.timestamp});
                     
                     // limit store to 10 items
-                    /*
                     store.index('by-time').openCursor(null, "prev").then(function(cursor) {
                       return cursor.advance(10);
                     }).then(function deleteRest(cursor) {
                       if (!cursor) return;
                       cursor.delete();
                       return cursor.continue().then(deleteRest);
-                    });
-                    */    
+                    });   
                 });  
-                //*/
+                
                 return Object.assign({}, currentstate );                 
             }
    

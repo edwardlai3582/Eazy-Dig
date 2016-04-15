@@ -13,25 +13,40 @@ import idb from '../idb';
 
 class Toplevel extends Component {
 	componentDidMount() {
-        let getHistoryFromIdb=this.props.getHistoryFromIdb;
+        let getHistoryFromIdb = this.props.getHistoryFromIdb;
+        let getFavFromIdb = this.props.getFavFromIdb;
+        
         console.log('DID MOUNT');
-        idb.open('eazyDig', 2, function(upgradeDb) {
+        
+        idb.open('eazyDig', 3, function(upgradeDb) {
             switch (upgradeDb.oldVersion) {
                 case 0:
                     upgradeDb.createObjectStore('urls', {
                         keyPath: 'url'
                     });
+                    
                 case 1:
                     var store=upgradeDb.createObjectStore('history', { 
                                 keyPath: "timestamp"
                             });
                     store.createIndex('by-time', 'timestamp');
+                    
+                case 2:
+                    var store=upgradeDb.createObjectStore('fav', { 
+                                keyPath: "id"
+                            });
+                    store.createIndex('by-name', 'chosen_title');    
             }
         }).then(function(db){
-            var index = db.transaction('history').objectStore('history');
-            index.getAll().then(function(queries) {
+            var index1 = db.transaction('history').objectStore('history');
+            index1.getAll().then(function(queries) {
                 getHistoryFromIdb(queries);
             });
+            
+            var index2 = db.transaction('fav').objectStore('fav');
+            index2.getAll().then(function(favs) {
+                getFavFromIdb(favs);
+            });            
         });    
 	}
     
@@ -78,7 +93,8 @@ const mapStateToProps = (appState) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
         changePage(page) { dispatch(actions.changePage(page)); },
-        getHistoryFromIdb(queries) { dispatch(actions.getHistoryFromIdb(queries)); }
+        getHistoryFromIdb(queries) { dispatch(actions.getHistoryFromIdb(queries)); },
+        getFavFromIdb(favs) { dispatch(actions.getFavFromIdb(favs)); }
 	};
 };
 
