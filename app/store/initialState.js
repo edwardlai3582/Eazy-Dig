@@ -45,6 +45,8 @@ export default {
     ui: {
         showDiscogsMarketplace: false,
         showEbay: false,
+        showReleaseModal: false,
+        showReleaseModalMessage: '',
         showWhosampled: {},
         startFrom: 'search',
         currentPage: 'search' //search, releases, release, fav

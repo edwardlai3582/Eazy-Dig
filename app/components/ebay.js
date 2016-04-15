@@ -12,33 +12,30 @@ class Ebay extends Component {
         //console.log('e');
         //console.log(e.ebay);
 		let rows = [];
-		if (e.ebay.length !== 0) {            
+		if (e.ebay && e.ebay.length !== 0) {            
             rows = e.ebay.map((result) =>{
                 return (
-                    <li key={result.itemId[0]}>
-                        <div> {result.title[0] } </div>
-                        <div> {'ships form: '+ result.location[0] } </div>
-                        <div> {'price: '+ result.sellingStatus[0].convertedCurrentPrice[0]['__value__']+ ' '+ result.sellingStatus[0].convertedCurrentPrice[0]['@currencyId'] } </div>
-                        <div> {result.condition? 'condition: '+ result.condition[0].conditionDisplayName[0] : ''} </div>
-                        
-                    </li>
+                    <dl key={result.itemId[0]}>
+                        <dt> {result.title[0] } </dt>
+                        <dd><strong>ships form:</strong> {' '+ result.location[0] } </dd>
+                        <dd><strong>price:</strong> {' '+ result.sellingStatus[0].convertedCurrentPrice[0]['__value__']+ ' '+ result.sellingStatus[0].convertedCurrentPrice[0]['@currencyId'] } </dd>
+                        <dd><strong>condition:</strong> { result.condition?' '+ result.condition[0].conditionDisplayName[0] : 'N/A'} </dd>
+                    </dl>
                 );
             }); 
 		}
         if(rows.length===0){
             rows='0 result';
         }
-/*
-<div> {'shipping: '+ result.shippingInfo[0].shippingServiceCost[0]['__value__']+ ' '+result.shippingInfo[0].shippingServiceCost[0]['@currencyId'] } </div>                        
-*/
+
 		return (
             <section>
-            <div className={e.ebaySearching?'ebayShow':'ebayHide'}>
-            <Glyphicon glyph="refresh" className={e.ebaySearching?'spinning':''} />
-            </div>
-            <ul className={e.ebaySearching?'ebayHide':'ebayShow'}>
-                { rows }
-            </ul>
+                <div className={e.ebaySearching?'MarketplaceAndEbayShow':'MarketplaceAndEbayHide'}>
+                    <Glyphicon glyph="refresh" className={e.ebaySearching?'spinning':''} />
+                </div>
+                <section className={e.ebaySearching?'MarketplaceAndEbayHide':'MarketplaceAndEbayShow'} >
+                    { rows }   
+                </section>
             </section>
 		);
 	}

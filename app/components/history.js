@@ -29,7 +29,7 @@ class History extends Component {
         }); 
         
         return (
-            <section id="historyWrapper">
+            <section className="historyWrapper">
                 <h5> SEARCH HISTORY </h5>
                 
                 <ul >

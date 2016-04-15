@@ -37,7 +37,11 @@ const spotifyActions = {
                     response.json().then(function(myJson) {
                         console.log(myJson);
                         if(myJson.tracks.items.length==0){
-                            alert("not in Spotify");
+                            //alert("not in Spotify");
+                            dispatch({
+                                type: 'TOGGLE_RELEASE_MODAL',
+                                message: "can't find the song in Spotify"
+                            });
                             dispatch({
                                 type: 'SONG_NOT_FOUND'
                             });                            
@@ -57,12 +61,26 @@ const spotifyActions = {
                 } else {
                     console.log('Network response was not ok.');
                     //dispatch({ type: "LOADING_END" });
+                    dispatch({
+                        type: 'TOGGLE_RELEASE_MODAL',
+                        message: "Network response was not ok"
+                    });
+                    dispatch({
+                        type: 'SONG_NOT_FOUND'
+                    }); 
                 }
 
             })
             .catch(function(error) {
                 console.log('There has been a problem with your fetch operation: ' + error.message);
                 //dispatch({ type: "LOADING_END" });
+                dispatch({
+                    type: 'TOGGLE_RELEASE_MODAL',
+                    message: "There has been a problem with your fetch operation"
+                });
+                dispatch({
+                    type: 'SONG_NOT_FOUND'
+                }); 
             });
         };
 	}

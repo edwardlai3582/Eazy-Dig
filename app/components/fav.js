@@ -30,10 +30,11 @@ class Fav extends Component {
             rows = f.map((favorite) =>{
                 return (
                     <li key={favorite.id} >
-                        <Button onClick={ this.toggleFavorite.bind(this, favorite.id, favorite.chosen_title) }>
-                          <Glyphicon glyph="remove-circle" />
-                       </Button>
                         <p onClick={this.getRelease.bind(this, favorite.id, favorite.chosen_title)}>{favorite.chosen_title}</p>
+                        
+                        <Button onClick={ this.toggleFavorite.bind(this, favorite.id, favorite.chosen_title) } aria-label="remove this record from favorite">
+                          <Glyphicon glyph="remove" />
+                       </Button>     
                     </li>
                 );
             }); 
@@ -44,11 +45,14 @@ class Fav extends Component {
         }
         
 		return (
-            <article>
-                <ul>
+            <section>
+                <header className="releasesHeader">
+                    <h4>FAVORITE LIST</h4>
+                </header>
+                <ul id="favUl">
                     { rows }
-                </ul> 
-            </article>
+                </ul>
+            </section>
 		);
 	}
 }

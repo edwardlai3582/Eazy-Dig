@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import C from '../constants';
 import { Link } from 'react-router';
-import { Button, Panel, Glyphicon } from 'react-bootstrap';
+import { Modal, Button, Panel, Glyphicon, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import actions from '../actions';
 
 import DiscogsMarketplace from './discogsMarketplace';
@@ -12,6 +12,10 @@ import Spotify from './spotify';
 import Whosampled from './whosampled';
 
 class Release extends Component {
+    
+    closeModal(){
+        this.props.toggleReleaseModal('');
+    }
     
     audioended(){
         console.log('audioended');
@@ -49,6 +53,23 @@ class Release extends Component {
         const r = this.props.release.release;
         const p = this.props.suggestPrice.suggestPrice;
         
+        let inFav = false;
+        for(let i=0; i<this.props.favorite.favorite.length; i++){
+            if(this.props.favorite.favorite[i].id === this.props.release.id){
+                inFav = true;
+            }
+        }
+        
+        let tooltip = (
+            <Tooltip id="tool_tip_for_fav">Add to favorite</Tooltip>
+        );
+        
+        if(inFav){
+            tooltip = (
+                <Tooltip id="tool_tip_for_fav">Remove from favorite</Tooltip>
+            );    
+        }
+        
         if(!r){
             return '';    
         }
@@ -63,9 +84,11 @@ class Release extends Component {
         trackLi = r.tracklist.map((track) =>{
                 return (
                     <li className="track" key={track.position}>
-                    {track.position+' '+track.title}
+                        <strong>{track.position}</strong>
 
                         <Spotify position={track.position} artist={r.artists[0].name} title={track.title} />  
+                    
+                        {track.title}
                     
                         <Button onClick={ this.searchWhosampled.bind(this, track.title, r.artists[0].name, track.position) }>
                           sampled
@@ -79,7 +102,7 @@ class Release extends Component {
         
         
         return (
-            <div className="releaseWrapper">
+            <section className="releaseWrapper">
                 <section className="releaseInfoWrapper">
                     <img src={r.thumb} alt={r.title} />
                     <ul>
@@ -90,13 +113,16 @@ class Release extends Component {
                         <li> {'Genre: ' +r.genres[0]} </li>
                         <li> {'Rating: ' +r.community.rating.average+' / 5'} </li>
                     </ul>
-                    <Button onClick={ this.toggleFavorite.bind(this) }>
-                          <Glyphicon glyph="heart" />
-                    </Button>
-                    
                 </section>
             
-                <section className="releaseTracklistWrapper">
+               
+                <OverlayTrigger placement="bottom" overlay={tooltip}>
+                    <Glyphicon glyph="heart" className={inFav?'removeFav':'addFav'} aria-label="toggle favorite" onClick={this.toggleFavorite.bind(this)}  />
+                </OverlayTrigger>           
+                
+                                
+            
+                <section className="releasePriceWrapper">
                     <h5> PRICE SUGGESTIONS </h5>
                     <ul>
                         {p.hasOwnProperty("Mint (M)")?
@@ -126,35 +152,37 @@ class Release extends Component {
                     </ul>
                 </section>
                 
-                <section className="releaseTracklistWrapper">
+                <section className="releaseMarketAndEbayWrapper">
                     <h5> Discogs Marketplace 
-                        <Button onClick={ this.searchDiscogsMarketplace.bind(this) }>
-                          click
-                        </Button>
+                        <button onClick={ this.searchDiscogsMarketplace.bind(this) }>
+                            <Glyphicon glyph={this.props.ui.showDiscogsMarketplace?"triangle-top":"triangle-bottom"} />
+                        </button>
                     </h5>
-                    <Panel collapsible expanded={this.props.ui.showDiscogsMarketplace}>
+                    <Panel collapsible className="pricePanel" expanded={this.props.ui.showDiscogsMarketplace}>
                         <DiscogsMarketplace />
                     </Panel>
                 </section> 
                     
-                <section className="releaseTracklistWrapper">
+                <section className="releaseMarketAndEbayWrapper">
                     <h5> eBay 
-                        <Button onClick={ this.searchEbay.bind(this) }>
-                          click
-                        </Button>
+                        <button onClick={ this.searchEbay.bind(this) }>
+                            <Glyphicon glyph={this.props.ui.showEbay?"triangle-top":"triangle-bottom"} />
+                        </button>
                     </h5>
-                    <Panel collapsible expanded={this.props.ui.showEbay}>
+                    <Panel collapsible className="pricePanel" expanded={this.props.ui.showEbay}>
                         <Ebay />
                     </Panel>
-                </section> 
+                </section>
+                    
                 <audio onEnded={this.audioended.bind(this)} ></audio>    
+                
                 <section className="releaseTracklistWrapper">
                     <h5> TRACKLIST </h5>
                     <ul>
                         {trackLi}
                     </ul>
                 </section>
-            </div>
+            </section>
         );
     }
     
@@ -169,6 +197,17 @@ class Release extends Component {
                 </header>
                 
                 {this.renderRelease()}
+
+                <Modal show={this.props.ui.showReleaseModal} onHide={this.closeModal.bind(this)}>
+                    <Modal.Header closeButton>
+                    </Modal.Header>        
+                    <Modal.Body id="releaseModalBody">
+                        { this.props.ui.showReleaseModalMessage }
+                    </Modal.Body>
+                    <Modal.Footer>
+                    <Button onClick={this.closeModal.bind(this)}>Close</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
 		);
 	}
@@ -184,6 +223,7 @@ const mapStateToProps = (appState) => {
         release: appState.release,
         suggestPrice: appState.suggestPrice,
         whosampled: appState.whosampled,
+        favorite: appState.favorite,
         ui: appState.ui
     };
 };
@@ -200,7 +240,8 @@ const mapDispatchToProps = (dispatch) => {
         searchSample(title, artist, position){ dispatch(actions.searchSample(title, artist, position)); },
         toggleFavorite(id, chosen_title){ dispatch(actions.toggleFavorite(id, chosen_title)); },
         spotifyEnded(){ dispatch(actions.spotifyEnded()); },
-        previousPage() { dispatch(actions.previousPage()); }
+        previousPage() { dispatch(actions.previousPage()); },
+        toggleReleaseModal(message) { dispatch(actions.toggleReleaseModal(message)); }
 	};
 };
 

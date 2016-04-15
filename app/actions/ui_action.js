@@ -3,6 +3,15 @@ import C from '../constants';
 
 const uiActions = {
     
+    toggleReleaseModal(message){
+        return (dispatch) => {
+            dispatch({ 
+                type: "TOGGLE_RELEASE_MODAL",
+                message: message
+            });
+	   }    
+    },
+    
 	toggleDiscogsMarketplace() {
 		return (dispatch) => {
             dispatch({ type: "TOGGLE_SHOW_DISCOGS_MARKETPLACE" });

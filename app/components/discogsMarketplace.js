@@ -9,15 +9,15 @@ class DiscogsMarketplace extends Component {
 	render() {
         const d = this.props.discogsMarketplace;
 		let rows = [];
-		if (d.discogsMarketplace.length !== 0) {            
+		if (d.discogsMarketplace && d.discogsMarketplace.length !== 0) {            
             rows = d.discogsMarketplace.map((result) =>{
                 return (
-                    <li key={result.id} >
-                        <div> {'ships form: '+ result.ships_from } </div>
-                        <div> {'price: '+ result.price } </div>
-                        <div> {'sleeve_condition: '+ result.sleeve_condition } </div>
-                        <div> {'condition: '+ result.condition } </div>
-                    </li>
+                    <dl key={result.id} >
+                        <dd> <strong>ships form:</strong> {' '+ result.ships_from } </dd>
+                        <dd> <strong>price:</strong>{' '+ result.price } </dd>
+                        <dd> <strong>sleeve_condition:</strong>{' '+ result.sleeve_condition } </dd>
+                        <dd> <strong>condition:</strong>{' '+ result.condition } </dd>
+                    </dl>
                 );
             }); 
 		}
@@ -27,12 +27,14 @@ class DiscogsMarketplace extends Component {
         
 		return (
             <section>
-            <div className={d.discogsMarketplaceSearching?'discogsMarketplaceShow':'discogsMarketplaceHide'}>
-            <Glyphicon glyph="refresh" className={d.discogsMarketplaceSearching?'spinning':''} />
-            </div>
-            <ul className={d.discogsMarketplaceSearching?'discogsMarketplaceHide':'discogsMarketplaceShow'}>
-                { rows }
-            </ul>
+                <div className={d.discogsMarketplaceSearching?'MarketplaceAndEbayShow':'MarketplaceAndEbayHide'}>
+                    <Glyphicon glyph="refresh" className={d.discogsMarketplaceSearching?'spinning':''} />
+                </div>
+
+                <section className={d.discogsMarketplaceSearching?'MarketplaceAndEbayHide':'MarketplaceAndEbayShow'}>
+                    { rows }
+                </section>
+                
             </section>
 		);
 	}
