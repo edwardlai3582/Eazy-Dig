@@ -83,7 +83,7 @@ class Release extends Component {
         let trackLi = [];
         trackLi = r.tracklist.map((track) =>{
                 return (
-                    <li className="track" key={track.position}>
+                    <li className="track" key={track.title}>
                         <strong>{track.position}</strong>
 
                         <Spotify position={track.position} artist={r.artists[0].name} title={track.title} />  
