@@ -41,10 +41,10 @@ class Releases extends Component {
 		}
         
 		return (
-            <div>
+            <section>
                 <header className="releasesHeader">
                     <Glyphicon glyph="circle-arrow-left" onClick={this.props.changePage.bind(this,'search')} className="link"/>
-                    <h4>search results</h4>
+                    <h4>SEARCH RESULTS</h4>
                 </header>
                 <section className="releasesWrapper">
                     {rows.length===0? 'found nothing' : rows}  
@@ -58,7 +58,7 @@ class Releases extends Component {
                         <Glyphicon glyph="triangle-right" />
                     </Button>        
                 </footer>
-            </div>
+            </section>
 		);
 	}
 }

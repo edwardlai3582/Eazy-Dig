@@ -11,7 +11,7 @@ class History extends Component {
     submitQuery(history) {
         this.props.startLoading();
         let data = {};
-        data.recordQuery= history;
+        data.recordKeyWord= history;
         this.props.submitNewRecord(data);
         this.props.changePage('releases');
     }
