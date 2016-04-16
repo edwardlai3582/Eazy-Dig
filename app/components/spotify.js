@@ -33,14 +33,14 @@ class Spotify extends Component {
         
         if(s.currentPosition === this.props.position && s.currentId === this.props.release.id){
             return(
-                <Button onClick={ this.clickSpotify.bind(this)} disabled={s.buttonSign==='refresh'}>
+                <Button onTouchEnd={this.clickSpotify.bind(this)} onClick={this.clickSpotify.bind(this)} disabled={s.buttonSign==='refresh'}>
                     <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning':''} />
                 </Button>    
             );
         }
         else{
             return(
-                <Button onClick={this.clickSpotify.bind(this)}>
+                <Button onTouchEnd={this.clickSpotify.bind(this)} onClick={this.clickSpotify.bind(this)}>
                     <Glyphicon glyph="play" />
                 </Button>    
             );    
