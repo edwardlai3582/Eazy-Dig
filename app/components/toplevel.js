@@ -77,11 +77,7 @@ class Toplevel extends Component {
 		);
 	}
 }
-/*
-                        <button className="bannerButton" onClick={ this.props.changePage.bind(this, 'search') }>
-                            <Glyphicon glyph="search" /> 
-                        </button>  
-*/
+
 const mapStateToProps = (appState) => {
 	return { 
         loading: appState.loading,

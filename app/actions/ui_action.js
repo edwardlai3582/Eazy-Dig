@@ -48,6 +48,7 @@ const uiActions = {
                 return;    
             }
             else{
+                scrollTo(0, 0);
                 dispatch({ 
                     type: "CHANGE_PAGE", 
                     currentPage: page     
@@ -58,6 +59,7 @@ const uiActions = {
     
     previousPage(){
 		return (dispatch) => {
+            scrollTo(0, 0);
             dispatch({ 
                 type: "GO_BACK"    
             });

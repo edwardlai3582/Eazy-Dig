@@ -37,7 +37,7 @@ class Spotify extends Component {
             return(
                 
                     <button onClick={this.clickSpotify.bind(this)}>
-                        <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning playbutton':'playbutton'} />
+                        <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning':''} />
                     </button>
                
             );
@@ -45,7 +45,7 @@ class Spotify extends Component {
         else{
             return(
                 
-                    <button onClick={this.clickSpotify.bind(this)} className="playbutton">
+                    <button onClick={this.clickSpotify.bind(this)} >
                         <Glyphicon glyph="play" />
                     </button>
                 

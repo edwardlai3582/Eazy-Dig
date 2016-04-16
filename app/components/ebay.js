@@ -9,8 +9,6 @@ class Ebay extends Component {
 	render() {
         
         const e = this.props.ebay;
-        //console.log('e');
-        //console.log(e.ebay);
 		let rows = [];
 		if (e.ebay && e.ebay.length !== 0) {            
             rows = e.ebay.map((result) =>{

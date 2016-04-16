@@ -3,6 +3,7 @@
 <html>
 	<head>
 		<title>Eazy-Dig</title>
+		<link rel="manifest" href="/manifest.json">
 		<link rel="SHORTCUT ICON" href="/favicon.ico">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0"/>
@@ -13,7 +14,7 @@
 	<body>
 		<div id="root"></div>
 		<script>
-        /*    
+        ///*    
           if(navigator.serviceWorker){
               navigator.serviceWorker.register('./service_worker.js').then(function(reg){
                   console.log('WORKED');              
@@ -21,7 +22,7 @@
                   console.log('FAILED');
               });          
           }
-        */  
+        //*/  
         </script>        
 		<script src="http://localhost:8080/webpack-dev-server.js"></script>
 		<script src="./bundle.js"></script>

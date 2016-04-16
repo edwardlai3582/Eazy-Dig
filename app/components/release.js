@@ -59,17 +59,6 @@ class Release extends Component {
                 inFav = true;
             }
         }
-        /*
-        let tooltip = (
-            <Tooltip id="tool_tip_for_fav">Add to favorite</Tooltip>
-        );
-        
-        if(inFav){
-            tooltip = (
-                <Tooltip id="tool_tip_for_fav">Remove from favorite</Tooltip>
-            );    
-        }
-        */
         
         if(!r){
             return '';    
@@ -95,13 +84,15 @@ class Release extends Component {
                           sampled
                         </Button>
 
-                        <Whosampled position={track.position} />
+                        
                     
                     </li>
                 );
             });
         
-        
+/*
+<Whosampled position={track.position} />
+*/
         return (
             <section className="releaseWrapper">
                 <section className="releaseInfoWrapper">
@@ -219,13 +210,6 @@ class Release extends Component {
 		);
 	}
 }
-
-/*
- 
-
-<Link to="/releases" className="link"><Glyphicon glyph="circle-arrow-left" /></Link> 
-*/
-
 
 const mapStateToProps = (appState) => {
 	return { 

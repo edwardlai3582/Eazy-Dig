@@ -62,9 +62,7 @@ class Releases extends Component {
 		);
 	}
 }
-/*
-<Link to="/" className="link"><Glyphicon glyph="circle-arrow-left" /></Link> 
-*/
+
 const mapStateToProps = (appState) => {
 	return { 
         search: appState.search,
