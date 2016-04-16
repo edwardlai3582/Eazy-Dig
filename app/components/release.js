@@ -80,9 +80,7 @@ class Release extends Component {
                     
                         {track.title}
                     
-                        <Button onClick={ this.searchWhosampled.bind(this, track.title, r.artists[0].name, track.position) }>
-                          sampled
-                        </Button>
+
 
                         
                     
@@ -91,6 +89,9 @@ class Release extends Component {
             });
         
 /*
+<Button onClick={ this.searchWhosampled.bind(this, track.title, r.artists[0].name, track.position) }>
+  sampled
+</Button>
 <Whosampled position={track.position} />
 */
         return (
