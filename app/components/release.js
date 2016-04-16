@@ -63,12 +63,13 @@ class Release extends Component {
         let tooltip = (
             <Tooltip id="tool_tip_for_fav">Add to favorite</Tooltip>
         );
-        */
+        
         if(inFav){
             tooltip = (
                 <Tooltip id="tool_tip_for_fav">Remove from favorite</Tooltip>
             );    
         }
+        */
         
         if(!r){
             return '';    
