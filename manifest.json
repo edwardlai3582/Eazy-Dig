@@ -1,0 +1,13 @@
+{
+  "name": "Eazy-Dig",
+  "short_name": "Eazy-Dig",
+  "icons": [
+    {
+      "src": "icon_144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "standalone"
+}
