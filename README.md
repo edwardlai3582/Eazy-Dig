@@ -1,6 +1,10 @@
 ##Udacity project 5 - Eazy-Dig
 
  a responsive web application that allows the user to search information about records.
+ 
+Live Demo
+-------------
+https://illl48.github.io/Eazy-Dig/ 
 
 Install
 -------------
