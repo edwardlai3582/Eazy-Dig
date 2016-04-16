@@ -5,6 +5,8 @@ import C from '../constants';
 import { Button, Panel, Glyphicon } from 'react-bootstrap';
 import actions from '../actions';
 
+import Tappable from 'react-tappable';
+
 class Spotify extends Component {
     
     clickSpotify(){
@@ -33,21 +35,34 @@ class Spotify extends Component {
         
         if(s.currentPosition === this.props.position && s.currentId === this.props.release.id){
             return(
-                <Button onTouchEnd={this.clickSpotify.bind(this)} onClick={this.clickSpotify.bind(this)} disabled={s.buttonSign==='refresh'}>
-                    <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning':''} />
-                </Button>    
+                <Tappable onTap={this.clickSpotify.bind(this)}>
+                    <Button disabled={s.buttonSign==='refresh'} >
+                        <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning':''} />
+                    </Button>
+                </Tappable>
             );
         }
         else{
             return(
-                <Button onTouchEnd={this.clickSpotify.bind(this)} onClick={this.clickSpotify.bind(this)}>
-                    <Glyphicon glyph="play" />
-                </Button>    
+                <Tappable onTap={this.clickSpotify.bind(this)}>
+                    <Button>
+                        <Glyphicon glyph="play" />
+                    </Button>
+                </Tappable>
             );    
         }
 	}
 }
+/*
+<Button onClick={this.clickSpotify.bind(this)} disabled={s.buttonSign==='refresh'} className="clickable">
+    <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning':''} />
+</Button>    
 
+
+<Button onClick={this.clickSpotify.bind(this)} className="clickable">
+                    <Glyphicon glyph="play" />
+                </Button>
+*/
 const mapStateToProps = (appState) => {
 	return { 
         spotify: appState.spotify,
