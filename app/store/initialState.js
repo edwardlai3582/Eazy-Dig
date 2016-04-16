@@ -47,6 +47,8 @@ export default {
         showEbay: false,
         showReleaseModal: false,
         showReleaseModalMessage: '',
+        showQuaggaModal: false,
+        showQuaggaModalMessage: '',
         showWhosampled: {},
         startFrom: 'search',
         currentPage: 'search' //search, releases, release, fav

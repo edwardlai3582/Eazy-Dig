@@ -4,6 +4,11 @@ import initialState from '../initialstate';
 
 export default (currentstate, action) => {    
 	switch (action.type) {
+        case "TOGGLE_QUAGGA_MODAL":
+            currentstate.showQuaggaModal = !currentstate.showQuaggaModal;
+            currentstate.showQuaggaModalMessage = action.message;
+			return Object.assign({}, currentstate );    
+            
         case "TOGGLE_RELEASE_MODAL":
             currentstate.showReleaseModal = !currentstate.showReleaseModal;
             currentstate.showReleaseModalMessage = action.message;

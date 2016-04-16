@@ -95,6 +95,28 @@ body{
     }
 }
 
+#searchByBarcodeWrapper{
+    width: 100%;
+    text-align: center;
+    
+    h6{
+        color: white;
+        font-weight: bolder;
+    }
+    
+    #searchByCodeButton{
+        background-color: #DC3522;
+        color: white;
+        font-weight: bold;
+        &:hover{
+            background-color: coral;    
+        }
+        &:active{
+            top: 3px;
+        }    
+    }    
+}
+
 .historyWrapper{
     width: 90%;
     position: relative;
@@ -446,4 +468,34 @@ body{
         align-items:baseline;
         font-weight: bolder;
     }    
+}
+
+.quaggaWrapper{
+    width: 100%;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    padding: 5px;
+    background-color: #DC3522;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    &:hover{
+        background-color: coral;    
+    }
 }

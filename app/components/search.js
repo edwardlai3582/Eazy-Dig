@@ -7,6 +7,7 @@ import actions from '../actions';
 import { Button, Input } from 'react-bootstrap';
 
 import History from './history';
+import MyQuagga from './myQuagga';
 
 class Search extends Component {
     constructor() {
@@ -36,6 +37,12 @@ class Search extends Component {
                     <Button type="submit" id="searchButton">SEARCH</Button>
                 </form>
                 
+                <section id="searchByBarcodeWrapper">
+                    <h6>- OR -</h6>
+                    
+                    <MyQuagga /> 
+                </section>                    
+                    
                 <History />         
 			</section>
             

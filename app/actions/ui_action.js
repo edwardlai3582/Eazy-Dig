@@ -3,6 +3,15 @@ import C from '../constants';
 
 const uiActions = {
     
+    toggleQuaggaModal(message){
+        return (dispatch) => {
+            dispatch({ 
+                type: "TOGGLE_QUAGGA_MODAL",
+                message: message
+            });
+	   }    
+    },
+    
     toggleReleaseModal(message){
         return (dispatch) => {
             dispatch({ 
