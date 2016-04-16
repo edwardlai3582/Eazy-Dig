@@ -35,25 +35,27 @@ class Spotify extends Component {
         
         if(s.currentPosition === this.props.position && s.currentId === this.props.release.id){
             return(
-                <Tappable onTap={this.clickSpotify.bind(this)}>
-                    <Button disabled={s.buttonSign==='refresh'} >
+                
+                    <button onClick={this.clickSpotify.bind(this)}>
                         <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning':''} />
-                    </Button>
-                </Tappable>
+                    </button>
+               
             );
         }
         else{
             return(
-                <Tappable onTap={this.clickSpotify.bind(this)}>
-                    <Button>
+                
+                    <button onClick={this.clickSpotify.bind(this)}>
                         <Glyphicon glyph="play" />
-                    </Button>
-                </Tappable>
+                    </button>
+                
             );    
         }
 	}
 }
 /*
+<Tappable onTap={this.clickSpotify.bind(this)}>
+
 <Button onClick={this.clickSpotify.bind(this)} disabled={s.buttonSign==='refresh'} className="clickable">
     <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning':''} />
 </Button>    

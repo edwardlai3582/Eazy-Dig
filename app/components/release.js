@@ -59,11 +59,11 @@ class Release extends Component {
                 inFav = true;
             }
         }
-        
+        /*
         let tooltip = (
             <Tooltip id="tool_tip_for_fav">Add to favorite</Tooltip>
         );
-        
+        */
         if(inFav){
             tooltip = (
                 <Tooltip id="tool_tip_for_fav">Remove from favorite</Tooltip>
@@ -116,9 +116,9 @@ class Release extends Component {
                 </section>
             
                
-                <OverlayTrigger placement="bottom" overlay={tooltip}>
+                
                     <Glyphicon glyph="heart" className={inFav?'removeFav':'addFav'} aria-label="toggle favorite" onClick={this.toggleFavorite.bind(this)}  />
-                </OverlayTrigger>           
+                        
                 
                                 
             
@@ -195,6 +195,12 @@ class Release extends Component {
                     <Glyphicon glyph="circle-arrow-left" onClick={this.props.previousPage.bind(this)} className="link"/>
                     <h4 style={h4style}>{r.chosen_title}</h4>
                 </header>
+                    
+                <header className="dummyHeader">
+                    <Glyphicon glyph="circle-arrow-left" className="link"/>
+                    <h4>{r.chosen_title}</h4>
+                </header>                       
+
                 
                 {this.renderRelease()}
 
@@ -214,6 +220,8 @@ class Release extends Component {
 }
 
 /*
+ 
+
 <Link to="/releases" className="link"><Glyphicon glyph="circle-arrow-left" /></Link> 
 */
 

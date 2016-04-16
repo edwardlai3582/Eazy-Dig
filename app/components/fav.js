@@ -41,7 +41,8 @@ class Fav extends Component {
 		
         
         if(rows.length===0){
-            rows='no favorite added';
+            //rows='no favorite added';
+            rows=(<li>no favorite added</li>);
         }
         
 		return (
