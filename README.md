@@ -8,9 +8,9 @@ Whosampled doesn't provide any API, so I need to have a server to GET the webpag
 I already have one on AWS but I think Whosampled ban it,
 so I have another one on cloud9 to deal with Whosampled request.
 
-Cloud9 shutdown the server regularly, so Whosampled fuction may not work.
+Cloud9 shutdown the server regularly, so Whosampled fuction may not work most of the time.
 
-Below is my server code
+Below is my server code (nodejs)
 
 ```
 var http = require('http');
