@@ -5,9 +5,11 @@ import idb from './idb';
 
 var staticCacheName = 'eazyDig-static-v0';
 var contentImgsCache = 'eazyDig-content-imgs';
+var contentAudiosCache = 'eazyDig-content-audios';
 var allCaches = [
   staticCacheName,
-  contentImgsCache
+  contentImgsCache,
+  contentAudiosCache    
 ];
 
 function openDatabase() {
@@ -71,12 +73,16 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     var requestUrl = new URL(event.request.url);    
     
-    if (requestUrl.hostname === 'api-img.discogs.com' || requestUrl.hostname === 'whosampled.com') {
+    if (requestUrl.hostname === 'api-img.discogs.com' || (event.request.url.indexOf("whosampled.com") !== -1)) {
       event.respondWith(servePhoto(event.request));
       return;
     }
-    else if (requestUrl.hostname === 'edwardlai3582.com') {
-      //event.respondWith(serveQuery(event));
+    else if ( event.request.url.indexOf("mp3-preview") !== -1)  {
+      event.respondWith(serveSpotify(event.request));
+      return;
+    }
+    //|| requestUrl.hostname === 'thawing-savannah-20177.herokuapp.com'
+    else if (requestUrl.hostname === 'edwardlai3582.com' || requestUrl.hostname === 'whosampled-illl48.c9users.io') {
       serveQuery(event);    
       return;
     }
@@ -125,6 +131,11 @@ function serveQuery(ne) {
                     var response2 = networkResponse.clone();
                     if(response2.ok){
                         response2.json().then(function(myJson) {
+                            if(myJson==='error'){
+                                console.log('get error from fetch '+storageUrl);
+                                return;
+                            }
+                            
                             openDatabase().then(function(db){
                                 db.transaction('urls', 'readwrite').objectStore('urls').add({
                                     url: storageUrl,
@@ -145,7 +156,7 @@ function serveQuery(ne) {
 }
 
 function servePhoto(request) {
-    console.log('SERVE PHOTO');
+    console.log('SERVE PHOTO:' + request.url);
   var storageUrl = request.url;//.replace(/-\d+px\.jpg$/, '');
 
   return caches.open(contentImgsCache).then(function(cache) {
@@ -160,3 +171,18 @@ function servePhoto(request) {
   });
 }
 
+function serveSpotify(request) {
+    console.log('SERVE SPOTIFY:' + request.url);
+  var storageUrl = request.url;
+
+  return caches.open(contentAudiosCache).then(function(cache) {
+    return cache.match(storageUrl).then(function(response) {
+      if (response) return response;
+
+      return fetch(request).then(function(networkResponse) {
+        cache.put(storageUrl, networkResponse.clone());
+        return networkResponse;
+      });
+    });
+  });
+}

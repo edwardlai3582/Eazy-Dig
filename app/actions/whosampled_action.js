@@ -9,9 +9,9 @@ const whosampledActions = {
 
             //fetch("https://crossorigin.me/https://www.whosampled.com/"+artist+"/"+title+"/").then(function(response){
             //"https://www.whosampled.com/"+artist+"/"+title+"/"
-            //https://thawing-savannah-20177.herokuapp.com/
+            //https://floating-beach-59451.herokuapp.com/
             //https://whosampled-illl48.c9users.io/
-          fetch("https://thawing-savannah-20177.herokuapp.com/whosampled?title="+title+"&artist="+artist).then(function(response){    
+          fetch("https://whosampled-illl48.c9users.io/whosampled?title="+title+"&artist="+artist).then(function(response){    
                 if(response.ok) {
                     response.text().then(function(myText) {
                         myText=myText.replace('\\\"',"\"").replace(/\\/g,'');
