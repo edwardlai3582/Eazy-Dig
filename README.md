@@ -1,6 +1,8 @@
 ##Udacity project 5 - Eazy-Dig
 
- a responsive web application that allows the user to search information about records.
+ A responsive web application that allows the user to search information about records.
+ 
+ You can test the barcode function with the pictures in barcode_pics if you don't have any records with you.
  
 About Whosampled fuction
 -------------
