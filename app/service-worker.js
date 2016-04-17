@@ -77,10 +77,13 @@ self.addEventListener('fetch', function(event) {
       event.respondWith(servePhoto(event.request));
       return;
     }
+    /*
+    //not work for gh-pages
     else if ( event.request.url.indexOf("mp3-preview") !== -1)  {
       event.respondWith(serveSpotify(event.request));
       return;
     }
+    */
     //|| requestUrl.hostname === 'thawing-savannah-20177.herokuapp.com'
     else if (requestUrl.hostname === 'edwardlai3582.com' || requestUrl.hostname === 'whosampled-illl48.c9users.io') {
       serveQuery(event);    
