@@ -400,21 +400,54 @@ body{
             }
         }
         .track{
-            Button{
-                margin-left: 15px;
-                margin-right: 15px;
-                border-radius: 5px;
-                border-width: 0;
-                
-            }    
+            .trackSection{
+                display:flex;
+                 justify-content:space-between;
+                section{
+                    display:inline-flex; 
+                    justify-content:flex-start;
+                    align-items:center;
+                }
+                Button{
+                    margin-left: 15px;
+                    margin-right: 15px;
+                    border-radius: 5px;
+                    border-width: 0;
+                }
+            }
+
+            .whosampledWrapper{
+                width: 98%;
+                ul{
+                    text-align: left;
+                    padding-left: 0;
+                    width: 100%;
+                    list-style-type:none;
+                    width: 100%;
+
+                    li{
+                        display:flex;
+                        justify-content:flex-start;
+                        background-color: #F2FFE3;
+                        padding: 5px 10px 5px 10px;
+                        font-weight: bolder;
+                        &:nth-child(even){
+                            background-color: #BFEBA0;    
+                        }
+                        &:first-child { 
+                            margin-top: 10px;
+                        }
+                        
+                        img{
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            } 
         }
     }
 }
 
-.whosampledLi{
-    display:flex;
-    justify-content:flex-start;
-}
 
 .hidden{
     display: none;
@@ -488,6 +521,9 @@ body{
         justify-content:space-between;
         align-items:baseline;
         font-weight: bolder;
+        p{
+            cursor: pointer;    
+        }
     }    
 }
 
@@ -530,3 +566,5 @@ body{
 button{
     cursor:pointer;
 }
+
+   

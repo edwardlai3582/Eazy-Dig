@@ -72,28 +72,24 @@ class Release extends Component {
         
         let trackLi = [];
         trackLi = r.tracklist.map((track) =>{
-                return (
-                    <li className="track" key={track.title}>
-                        <strong>{track.position}</strong>
+            return (
+                <li className="track" key={track.title}>
+                    <section className="trackSection">
+                        <section>
+                            <strong>{track.position}</strong>
+                            <Spotify position={track.position} artist={r.artists[0].name} title={track.title} />  
+                            {track.title}             
+                        </section>
+                
+                        <Button onClick={ this.searchWhosampled.bind(this, track.title, r.artists[0].name, track.position) }>
+                          {this.props.ui.showWhosampled[track.position]?'hide WhoSampled': 'show WhoSampled'}
+                        </Button>
+                    </section>
+                    <Whosampled position={track.position} />
+                </li>
+            );
+        });
 
-                        <Spotify position={track.position} artist={r.artists[0].name} title={track.title} />  
-                    
-                        {track.title}
-                    
-
-
-                        
-                    
-                    </li>
-                );
-            });
-        
-/*
-<Button onClick={ this.searchWhosampled.bind(this, track.title, r.artists[0].name, track.position) }>
-  sampled
-</Button>
-<Whosampled position={track.position} />
-*/
         return (
             <section className="releaseWrapper">
                 <section className="releaseInfoWrapper">

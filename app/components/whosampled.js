@@ -15,25 +15,27 @@ class Whosampled extends Component {
 		if (p in w){            
             rows = w[p].map((sample) =>{
                 return (
-                    <li className="whosampledLi" key={sample.imgUrl}>
-                        <img src={sample.imgUrl} />
-                        <article>
-                            <p>{sample.sampleArtist}</p>
-                            <p>{sample.sampleTitle}</p>
-                        </article>
+                    <li key={sample.imgUrl}>
+                        <img src={sample.imgUrl} alt={sample.sampleArtist+"'s "+sample.sampleTitle}/>
+                        <dl>
+                            <dd>{sample.sampleArtist}</dd>
+                            <dd>{sample.sampleTitle}</dd>
+                        </dl>
                     </li>
                 );
             }); 
 		}
         
         if(rows.length===0){
-            rows='no sample found on WhoSampled';
+            rows=(<li>no sample found on WhoSampled</li>);
         }
         
 		return (
-            <ul className={this.props.ui.showWhosampled[p] ? '' : 'hidden'}>
-                { rows }
-            </ul>  
+            <section className="whosampledWrapper">
+                <ul className={this.props.ui.showWhosampled[p] ? '' : 'hidden'}>
+                    { rows }
+                </ul>
+            </section>
 		);
 	}
 }

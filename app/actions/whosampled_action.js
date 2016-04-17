@@ -8,15 +8,20 @@ const whosampledActions = {
             artist= encodeURI(artist.split(' ').join('-'));    
 
             //fetch("https://crossorigin.me/https://www.whosampled.com/"+artist+"/"+title+"/").then(function(response){
-          fetch("https://www.whosampled.com/"+artist+"/"+title+"/", { mode: 'no-cors' }).then(function(response){    
+            //"https://www.whosampled.com/"+artist+"/"+title+"/"
+            
+          fetch("https://whosampled-illl48.c9users.io/whosampled?title="+title+"&artist="+artist).then(function(response){    
                 if(response.ok) {
                     response.text().then(function(myText) {
-                        //console.log(myText);
+                        myText=myText.replace('\\\"',"\"").replace(/\\/g,'');
+                        
+                        
                         let whoSampledUrl= 'https://www.whosampled.com';
                         let sampleArray= [];
                         
                         let parser=new DOMParser();
                         let htmlDoc=parser.parseFromString(myText, "text/html");
+                        //console.log(htmlDoc);
                         let aArray= htmlDoc.getElementsByTagName('a');
                         
                         for(let i=0; i< aArray.length; i++){
@@ -27,6 +32,7 @@ const whosampledActions = {
                                         //console.log(aArray[i].childNodes[0].attributes.src.nodeValue);
                                         let temp={};
                                         temp.imgUrl= whoSampledUrl+aArray[i].childNodes[0].attributes.src.nodeValue;
+                                        
                                         let title = aArray[i].attributes.title.nodeValue.split("'s ");
                                         temp.sampleArtist=title[0];
                                         temp.sampleTitle=title[1];
@@ -37,6 +43,8 @@ const whosampledActions = {
                                 }                                
                             }
                         }
+                        
+                        console.log(sampleArray);
                         
                         dispatch({
 				            type: "WHOSAMPLED_RECEIVED",

@@ -71,7 +71,7 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     var requestUrl = new URL(event.request.url);    
     
-    if (requestUrl.hostname === 'api-img.discogs.com') {
+    if (requestUrl.hostname === 'api-img.discogs.com' || requestUrl.hostname === 'whosampled.com') {
       event.respondWith(servePhoto(event.request));
       return;
     }
