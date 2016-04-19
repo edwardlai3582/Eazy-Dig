@@ -85,7 +85,7 @@ self.addEventListener('fetch', function(event) {
     }
     //*/
     //|| requestUrl.hostname === 'thawing-savannah-20177.herokuapp.com'
-    else if (requestUrl.hostname === 'edwardlai3582.com' || requestUrl.hostname === 'whosampled-illl48.c9users.io') {
+    else if (requestUrl.hostname === 'edwardlai3582.com' || requestUrl.hostname === 'whosampled-illl48.c9users.io' || requestUrl.hostname === 'api.discogs.com') {
       serveQuery(event);    
       return;
     }
