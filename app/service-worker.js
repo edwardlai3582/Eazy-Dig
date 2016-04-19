@@ -79,7 +79,7 @@ self.addEventListener('fetch', function(event) {
     }
     ///*
     //not work for gh-pages
-    else if ( event.request.url.indexOf("mp3-preview") !== -1)  {
+    else if ( event.request.url.indexOf("mp3-preview") !== -1 || requestUrl.hostname === 'api.spotify.com' )  {
       //event.respondWith(serveSpotify(event.request));
       return;
     }
