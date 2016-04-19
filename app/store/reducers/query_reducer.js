@@ -1,4 +1,3 @@
-import C from '../../constants';
 import initialState from '../initialstate';
 
 import idb from '../../idb';

@@ -1,4 +1,3 @@
-import C from '../constants';
 
 export default {
     search: {

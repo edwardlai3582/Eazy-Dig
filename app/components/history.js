@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import C from '../constants';
 import { Image } from 'react-bootstrap';
 import actions from '../actions';
 

@@ -1,4 +1,3 @@
-import C from '../constants';
 
 const ebayActions = {
     

@@ -1,7 +1,5 @@
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import C from '../constants';
 import { Modal, Button } from 'react-bootstrap';
 import Quagga from 'quagga';
 //import FileInput from 'react-file-input';

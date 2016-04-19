@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import C from '../constants';
 import { Link } from 'react-router';
 import { Modal, Button, Panel, Glyphicon, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import actions from '../actions';

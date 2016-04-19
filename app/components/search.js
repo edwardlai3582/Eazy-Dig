@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import C from '../constants';
 import { reduxForm } from 'redux-form';
 import actions from '../actions';
 import { Button, Input } from 'react-bootstrap';

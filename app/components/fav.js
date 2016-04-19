@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
-import C from '../constants';
 import actions from '../actions';
 
 import { Button, Panel, Glyphicon } from 'react-bootstrap';

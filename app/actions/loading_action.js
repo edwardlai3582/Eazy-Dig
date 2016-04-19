@@ -1,5 +1,3 @@
-import C from '../constants';
-
 
 const loadingActions = {
     
