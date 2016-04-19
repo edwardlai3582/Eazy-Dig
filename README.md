@@ -12,6 +12,9 @@ so I have another one on cloud9 to deal with Whosampled request.
 
 Cloud9 shutdown the server regularly, so Whosampled fuction may not work most of the time.
 
+This is the link: https://ide.c9.io/illl48/whosampled
+You can send me a request through Cloud9 so you can have the access to it then run the server when you need.
+
 Below is my server code (nodejs)
 
 ```
