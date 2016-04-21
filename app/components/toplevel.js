@@ -54,7 +54,7 @@ class Toplevel extends Component {
 		return (
             <div>
                 <header id="navbar">
-                    <h2>Eazy-Dig</h2>
+                    <h2 onClick={ this.props.changePage.bind(this, 'search') }>Eazy-Dig</h2>
                     <nav>
                         <Glyphicon glyph="heart" className={this.props.ui.currentPage==="fav"? 'navGlySelected': 'navGly'} onClick={ this.props.changePage.bind(this, 'fav') } />
                         <Glyphicon glyph="search" className={this.props.ui.currentPage==="search"? 'navGlySelected': 'navGly'} onClick={ this.props.changePage.bind(this, 'search') } />       
