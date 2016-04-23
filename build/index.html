@@ -7,7 +7,7 @@
 		<link rel="SHORTCUT ICON" href="/favicon.ico">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0"/>
-		<link rel="stylesheet" href="./bootstrap.min.css" charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./style.css" charset="utf-8">
 	</head>
 	
@@ -17,9 +17,9 @@
         ///*    
           if(navigator.serviceWorker){
               navigator.serviceWorker.register('./service_worker.js').then(function(reg){
-                  console.log('WORKED');              
+                  console.log('serviceWorker WORKED');              
               }).catch(function(){
-                  console.log('FAILED');
+                  console.log('serviceWorker FAILED');
               });          
           }
         //*/  

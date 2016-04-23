@@ -38,14 +38,8 @@ function openDatabase() {
 self.addEventListener('install', function(event) {
     var urlsToCache = [
         '/',
-        'bootstrap.min.css',
         'bundle.js',
         'style.css',
-        '/fonts/glyphicons-halflings-regular.eot',
-        '/fonts/glyphicons-halflings-regular.svg',
-        '/fonts/glyphicons-halflings-regular.ttf',
-        '/fonts/glyphicons-halflings-regular.woff',
-        '/fonts/glyphicons-halflings-regular.woff2'
     ];
     
     event.waitUntil(

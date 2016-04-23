@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "axios": "^0.9.0",
-    "bootstrap": "^3.3.6",
+    "file-loader": "^0.8.5",
     "history": "^1.17.0",
     "lodash": "^4.0.0",
     "quagga": "^0.10.3",
@@ -50,6 +50,7 @@
     "redux-form": "^4.1.6",
     "redux-promise": "^0.5.1",
     "redux-thunk": "^1.0.2",
+    "url-loader": "^0.5.7",
     "whatwg-fetch": "^0.11.0"
   },
   "repository": {
