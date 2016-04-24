@@ -14,10 +14,17 @@ class Search extends Component {
 	} 
 
     submitQuery(data) {
-        this.props.startLoading();
-        this.props.submitNewRecord(data);
-        this.props.changePage('releases');
-        //this.props.resetForm();
+        if(data.recordKeyWord===''){
+            this.props.setInputEmptyWarning("This field can't be empty!");
+            return;
+        }
+        else{
+            this.props.setInputEmptyWarning("");
+            this.props.startLoading();
+            this.props.submitNewRecord(data);
+            this.props.changePage('releases');
+            //this.props.resetForm();
+        }
     }
     
 	render() {
@@ -32,6 +39,8 @@ class Search extends Component {
                     </label>  
                         
                     <Input type="text" id="recordKeyWord" placeholder="enter record's key words" {...recordKeyWord} bsStyle={recordKeyWord.touched && recordKeyWord.invalid ? 'error' : null} autoFocus autoComplete required/>
+                        
+                    { this.props.ui.inputEmptyWarning   }
          
                     <Button type="submit" id="searchButton">SEARCH</Button>
                 </form>
@@ -60,14 +69,17 @@ const validate = values => {
 };
 
 const mapStateToProps = (appState) => {
-	return { };
+	return {
+        ui: appState.ui
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
         submitNewRecord(data) { dispatch(actions.submitNewRecord(data)); },
         startLoading(){ dispatch(actions.startLoading()); },
-        changePage(page) { dispatch(actions.changePage(page)); }
+        changePage(page) { dispatch(actions.changePage(page)); },
+        setInputEmptyWarning(message) { dispatch(actions.setInputEmptyWarning(message)); }
 	};
 };
 

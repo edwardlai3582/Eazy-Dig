@@ -1,5 +1,13 @@
 
 const uiActions = {
+    setInputEmptyWarning(message){
+        return (dispatch) => {
+            dispatch({ 
+                type: "SET_INPUT_EMPTY_WARNING",
+                message: message
+            });
+	   }    
+    },
     
     toggleQuaggaModal(message){
         return (dispatch) => {
@@ -49,7 +57,11 @@ const uiActions = {
                 scrollTo(0, 0);
                 dispatch({
                     type: 'STOP',
-                });  
+                });
+                dispatch({ 
+                    type: "SET_INPUT_EMPTY_WARNING",
+                    message: ''
+                });
                 dispatch({ 
                     type: "CHANGE_PAGE", 
                     currentPage: page     

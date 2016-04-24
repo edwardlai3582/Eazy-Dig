@@ -35,6 +35,20 @@ const releaseActions = {
 				            type: "RELEASE_RECEIVED",
 				            release: myJson
 				        });
+                        ///////////////
+                                        scrollTo(0, 0);
+                dispatch({
+                    type: 'STOP',
+                });
+                dispatch({ 
+                    type: "SET_INPUT_EMPTY_WARNING",
+                    message: ''
+                });
+                dispatch({ 
+                    type: "CHANGE_PAGE", 
+                    currentPage: 'release'     
+                });  
+                        ////////////////
                         dispatch({ type: "LOADING_END" });
                     });
                     //'https://www.discogs.com/sell/history/1985784'

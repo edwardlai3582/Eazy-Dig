@@ -16,7 +16,6 @@ class Fav extends Component {
         this.props.chooseRelease(title, id);
         this.props.startLoading();
         this.props.getRelease(id);
-        this.props.changePage('release');
     }
     
 	render() {

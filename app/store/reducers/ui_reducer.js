@@ -3,15 +3,20 @@ import initialState from '../initialstate';
 
 export default (currentstate, action) => {    
 	switch (action.type) {
+        case "SET_INPUT_EMPTY_WARNING":
+			return Object.assign({}, currentstate, {inputEmptyWarning: action.message} );  
+            
         case "TOGGLE_QUAGGA_MODAL":
-            currentstate.showQuaggaModal = !currentstate.showQuaggaModal;
-            currentstate.showQuaggaModalMessage = action.message;
-			return Object.assign({}, currentstate );    
+			return Object.assign({}, currentstate,{
+                showQuaggaModal : !currentstate.showQuaggaModal,
+                showQuaggaModalMessage : action.message
+            } );    
             
         case "TOGGLE_RELEASE_MODAL":
-            currentstate.showReleaseModal = !currentstate.showReleaseModal;
-            currentstate.showReleaseModalMessage = action.message;
-			return Object.assign({}, currentstate );
+			return Object.assign({}, currentstate, {
+                showReleaseModal : !currentstate.showReleaseModal,
+                showReleaseModalMessage : action.message
+            } );
             
 		case "TOGGLE_SHOW_DISCOGS_MARKETPLACE":
 			return Object.assign({}, currentstate, {
@@ -29,24 +34,33 @@ export default (currentstate, action) => {
 			}); 
 
 		case "TOGGLE_SHOW_WHOSAMPLED":
-            currentstate.showWhosampled[action.position]= !currentstate.showWhosampled[action.position];
-			return Object.assign({}, currentstate );
+            let tempObj= {...currentstate.showWhosampled};
+            tempObj[action.position]=!currentstate.showWhosampled[action.position];
+            
+			return Object.assign({}, currentstate, {
+                showWhosampled: tempObj
+            } );
             
         case "CHANGE_PAGE":
-            console.log('change page to '+action.currentPage);
-            currentstate.previousPage = currentstate.currentPage;
-            currentstate.currentPage = action.currentPage;
-            currentstate.showEbay = false;
-            currentstate.showDiscogsMarketplace = false;
-            return Object.assign({}, currentstate); 
+            //console.log('change page to '+action.currentPage);
+            return Object.assign({}, currentstate, {
+                previousPage : currentstate.currentPage,
+                currentPage : action.currentPage,
+                showEbay : false,
+                showDiscogsMarketplace : false    
+            }); 
 
         case "GO_BACK":
             let temp = currentstate.previousPage; 
-            currentstate.previousPage = currentstate.currentPage;
-            currentstate.currentPage = temp;
-            currentstate.showEbay = false;
-            currentstate.showDiscogsMarketplace = false;
-            return Object.assign({}, currentstate );             
+            let previousPage = currentstate.currentPage;
+            let currentPage = temp;
+            
+            return Object.assign({}, currentstate, {
+                previousPage : previousPage,
+                currentPage : currentPage,
+                showEbay : false,
+                showDiscogsMarketplace : false    
+            } );             
             
 		default: return currentstate || initialState.ui;
 	}

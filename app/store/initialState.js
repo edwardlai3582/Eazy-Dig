@@ -7,6 +7,7 @@ export default {
 	},
     query: {
         queryHistory: [], //query, timestamp
+        currentQuery: '',
         historyLength: 10
     },
     loading: {
@@ -42,6 +43,7 @@ export default {
         favorite: []  //id&chosen_title
     },    
     ui: {
+        inputEmptyWarning: '',//This field can't be empty
         showDiscogsMarketplace: false,
         showEbay: false,
         showReleaseModal: false,

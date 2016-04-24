@@ -10,7 +10,7 @@ class Releases extends Component {
     submitQuery(page) {
         let data = {};
         data.page =  this.props.search.page + page;
-        data.recordQuery = this.props.query.queryHistory[this.props.query.queryHistory.length-1];
+        data.recordKeyWord = this.props.query.currentQuery;
         this.props.startLoading();
         this.props.submitNewRecord(data);
     }

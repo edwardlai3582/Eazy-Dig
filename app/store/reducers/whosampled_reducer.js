@@ -11,12 +11,19 @@ export default (currentstate, action) => {
                 let temp={};
                 temp[action.position]=action.trackSample;
                 
-                return {  currentRelease: action.currentRelease,  whosampled: temp };     
+                return Object.assign({}, currentstate, {
+				    currentRelease: action.currentRelease,  
+                    whosampled: temp
+			    });    
             }
             else{
-                currentstate.whosampled[action.position]=action.trackSample;
+                //currentstate.whosampled[action.position]=action.trackSample;
+                let tempObj= {...currentstate.whosampled};
+                tempObj[action.position]=action.trackSample;
                 
-                return Object.assign({}, currentstate );                
+                return Object.assign({}, currentstate, {
+                    whosampled: tempObj    
+                });                
             }
 			 
 		default: return currentstate || initialState.whosampled;

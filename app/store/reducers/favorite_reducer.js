@@ -42,9 +42,16 @@ export default (currentstate, action) => {
                         var store = tx.objectStore('fav');
                         console.log(action.id);
                         store.delete(action.id);
-                    });                    
-                    currentstate.favorite.splice(i, 1); 
-                    return Object.assign({}, currentstate ); 
+                    });            
+                    //let temp = [];
+                    //temp =temp.concat(currentstate.favorite).splice(i, 1);
+                    //currentstate.favorite.splice(i, 1); 
+                    return Object.assign({}, currentstate,{
+                        favorite: [
+                            ...currentstate.favorite.slice(0,i),
+                            ...currentstate.favorite.slice(i+1)
+                        ]
+                    } ); 
                 }
             }
             
@@ -72,9 +79,15 @@ export default (currentstate, action) => {
                 console.log(action.id);
                 store.add({id: action.id, chosen_title: action.chosen_title});
             });            
-            currentstate.favorite.push({id: action.id, chosen_title: action.chosen_title});
-            return Object.assign({}, currentstate ); 
+            //let temp=[];
+            //temp = temp.concat(currentstate.favorite).push({id: action.id, chosen_title: action.chosen_title});
+            //temp = [...currentstate.favorite, {id: action.id, chosen_title: action.chosen_title}];
+            //currentstate.favorite.push({id: action.id, chosen_title: action.chosen_title});
+            return Object.assign({}, currentstate,{
+                favorite: [...currentstate.favorite, {id: action.id, chosen_title: action.chosen_title}]    
+            } ); 
             
 		default: return currentstate || initialState.favorite;
 	}
 };
+         

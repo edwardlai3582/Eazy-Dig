@@ -44,7 +44,7 @@ const whosampledActions = {
                             }
                         }
                         
-                        console.log(sampleArray);
+                        //console.log(sampleArray);
                         
                         dispatch({
 				            type: "WHOSAMPLED_RECEIVED",

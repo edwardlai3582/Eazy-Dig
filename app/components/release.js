@@ -64,30 +64,34 @@ class Release extends Component {
         }
         
         let format_descriptions = '';
-        for(let i=0; i<r.formats[0].descriptions.length; i++){
-            format_descriptions = format_descriptions.concat(', ').concat(r.formats[0].descriptions[i]);
+        if(r.formats){
+            for(let i=0; i<r.formats[0].descriptions.length; i++){
+                format_descriptions = format_descriptions.concat(', ').concat(r.formats[0].descriptions[i]);
+            }    
         }
         
         
         let trackLi = [];
-        trackLi = r.tracklist.map((track) =>{
-            return (
-                <li className="track" key={track.title}>
-                    <section className="trackSection">
-                        <section>
-                            <strong>{track.position}</strong>
-                            <Spotify position={track.position} artist={r.artists[0].name} title={track.title} />  
-                            {track.title}             
+        if(r.tracklist){
+            trackLi = r.tracklist.map((track) =>{
+                return (
+                    <li className="track" key={track.title}>
+                        <section className="trackSection">
+                            <section>
+                                <strong>{track.position}</strong>
+                                <Spotify position={track.position} artist={r.artists[0].name} title={track.title} />  
+                                {track.title}             
+                            </section>
+
+                            <Button onClick={ this.searchWhosampled.bind(this, track.title, r.artists[0].name, track.position) }>
+                              {this.props.ui.showWhosampled[track.position]?'hide WhoSampled': 'show WhoSampled'}
+                            </Button>
                         </section>
-                
-                        <Button onClick={ this.searchWhosampled.bind(this, track.title, r.artists[0].name, track.position) }>
-                          {this.props.ui.showWhosampled[track.position]?'hide WhoSampled': 'show WhoSampled'}
-                        </Button>
-                    </section>
-                    <Whosampled position={track.position} />
-                </li>
-            );
-        });
+                        <Whosampled position={track.position} />
+                    </li>
+                );
+            });            
+        }
 
         return (
             <section className="releaseWrapper">

@@ -18,15 +18,19 @@ export default (currentstate, action) => {
 		case "QUERY_ADDED":
             for(let i=0; i<currentstate.queryHistory.length; i++){
                 if(currentstate.queryHistory[i].query===action.query){
-                    return currentstate;    
+                    //return currentstate;
+                    return Object.assign({}, currentstate,{
+                        currentQuery: action.query
+                    } ); 
                 }
             }
             
-            currentstate.queryHistory.slice(0);
-            if(currentstate.queryHistory.length===currentstate.historyLength){
-                currentstate.queryHistory.shift();    
+            //currentstate.queryHistory.slice(0);
+            let tempArray=currentstate.queryHistory.slice(0);
+            if(tempArray.length===currentstate.historyLength){
+                tempArray.shift();    
             }      
-            currentstate.queryHistory.push({query:action.query, timestamp:action.timestamp});
+            tempArray.push({query:action.query, timestamp:action.timestamp});
 
             idb.open('eazyDig', 3, function(upgradeDb) {
                 switch (upgradeDb.oldVersion) {
@@ -61,7 +65,10 @@ export default (currentstate, action) => {
                 });   
             });  
 
-            return Object.assign({}, currentstate );                 
+            return Object.assign({}, currentstate,{
+                queryHistory: tempArray,
+                currentQuery: action.query
+            } );                 
             
 		default: return currentstate || initialState.query;
 	}

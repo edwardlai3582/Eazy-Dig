@@ -17,7 +17,7 @@ export default (currentstate, action) => {
         
         case "CHANGE_SONG_START":
             console.log("CHANGE_SONG_START");
-			return Object.assign({}, {
+			return Object.assign({}, currentstate, {
                 currentPosition: action.currentPosition,
                 currentId: action.currentId,
                 link: '',
@@ -25,7 +25,7 @@ export default (currentstate, action) => {
 			}); 
        
         case "SONG_NOT_FOUND":
-			return Object.assign({}, {
+			return Object.assign({}, currentstate, {
                 currentPosition: action.currentPosition,
                 currentId: action.currentId,
                 link: '',
@@ -34,7 +34,7 @@ export default (currentstate, action) => {
             
         case "CHANGE_SONG_FINISH":
             console.log("CHANGE_SONG_FINISH");
-			return Object.assign({}, {
+			return Object.assign({}, currentstate, {
                 currentPosition: action.currentPosition,
                 currentId: action.currentId,
                 link: action.link,

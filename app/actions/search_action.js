@@ -27,6 +27,8 @@ const searchActions = {
 				});              
             }
             console.log('data.recordKeyWord='+data.recordKeyWord);
+            console.log('data.page='+data.page);
+            
             fetch('https://edwardlai3582.com/discogs?query='+data.recordKeyWord+'&page='+page).then(function(response){
                 if(response.ok) {
                     console.log('statusText is '+response.statusText);
