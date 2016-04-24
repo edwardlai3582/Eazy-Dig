@@ -18,7 +18,7 @@ class Toplevel extends Component {
         
         console.log('DID MOUNT');
         
-        idb.open('eazyDig', 3, function(upgradeDb) {
+        idb.open('eazyDig', 3, (upgradeDb)=> {
             switch (upgradeDb.oldVersion) {
                 case 0:
                     upgradeDb.createObjectStore('urls', {
@@ -37,14 +37,14 @@ class Toplevel extends Component {
                             });
                     store.createIndex('by-name', 'chosen_title');    
             }
-        }).then(function(db){
+        }).then((db)=>{
             var index1 = db.transaction('history').objectStore('history');
-            index1.getAll().then(function(queries) {
+            index1.getAll().then((queries)=> {
                 getHistoryFromIdb(queries);
             });
             
             var index2 = db.transaction('fav').objectStore('fav');
-            index2.getAll().then(function(favs) {
+            index2.getAll().then((favs)=> {
                 getFavFromIdb(favs);
             });            
         });    

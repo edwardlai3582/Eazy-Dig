@@ -31,9 +31,9 @@ const spotifyActions = {
                 currentPosition: position
             });
             
-            fetch('https://api.spotify.com/v1/search?q='+encodeURI(title)+'%20artist:'+encodeURI(artist)+'&type=track&market=US').then(function(response){
+            fetch('https://api.spotify.com/v1/search?q='+encodeURI(title)+'%20artist:'+encodeURI(artist)+'&type=track&market=US').then((response)=>{
                 if(response.ok) {
-                    response.json().then(function(myJson) {
+                    response.json().then((myJson)=> {
                         console.log(myJson);
                         if(myJson.tracks.items.length==0){
                             //alert("not in Spotify");
@@ -70,7 +70,7 @@ const spotifyActions = {
                 }
 
             })
-            .catch(function(error) {
+            .catch((error)=> {
                 console.log('There has been a problem with your fetch operation: ' + error.message);
                 //dispatch({ type: "LOADING_END" });
                 dispatch({

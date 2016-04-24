@@ -10,9 +10,9 @@ const whosampledActions = {
             //"https://www.whosampled.com/"+artist+"/"+title+"/"
             //https://floating-beach-59451.herokuapp.com/
             //https://whosampled-illl48.c9users.io/
-          fetch("https://whosampled-illl48.c9users.io/whosampled?title="+title+"&artist="+artist).then(function(response){    
+          fetch("https://whosampled-illl48.c9users.io/whosampled?title="+title+"&artist="+artist).then((response)=>{    
                 if(response.ok) {
-                    response.text().then(function(myText) {
+                    response.text().then((myText)=> {
                         myText=myText.replace('\\\"',"\"").replace(/\\/g,'');
                         
                         
@@ -64,7 +64,7 @@ const whosampledActions = {
                 }
 
             })
-            .catch(function(error) {
+            .catch((error)=> {
                 console.log('There has been a problem with your fetch operation: ' + error.message);
                 //dispatch({ type: "LOADING_END" });
             }); 

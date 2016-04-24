@@ -32,7 +32,7 @@ export default (currentstate, action) => {
             }      
             tempArray.push({query:action.query, timestamp:action.timestamp});
 
-            idb.open('eazyDig', 3, function(upgradeDb) {
+            idb.open('eazyDig', 3, (upgradeDb)=> {
                 switch (upgradeDb.oldVersion) {
                     case 0:
                         upgradeDb.createObjectStore('urls', {
@@ -50,13 +50,13 @@ export default (currentstate, action) => {
                                 });
                         store.createIndex('by-name', 'chosen_title');      
                 }
-            }).then(function(db){
+            }).then((db)=>{
                 var tx = db.transaction('history', 'readwrite');
                 var store = tx.objectStore('history');
                 store.add({query:action.query, timestamp:action.timestamp});
 
                 // limit store to 10 items
-                store.index('by-time').openCursor(null, "prev").then(function(cursor) {
+                store.index('by-time').openCursor(null, "prev").then((cursor)=> {
                   return cursor.advance(10);
                 }).then(function deleteRest(cursor) {
                   if (!cursor) return;

@@ -8,9 +8,9 @@ const discogsMarketplaceActions = {
                 discogsMarketplace: []
             });            
             //getState().auth.currently 
-            fetch('https://api.discogs.com/marketplace/search?release_id='+getState().release.id).then(function(response){
+            fetch('https://api.discogs.com/marketplace/search?release_id='+getState().release.id).then((response) => {
                 if(response.ok) {
-                    response.json().then(function(myJson) {
+                    response.json().then((myJson) => {
                         console.log(myJson);                  
                         
                         dispatch({
@@ -29,7 +29,7 @@ const discogsMarketplaceActions = {
                 }
 
             })
-            .catch(function(error) {
+            .catch((error) => {
                 console.log('There has been a problem with your fetch operation: ' + error.message);
                 //dispatch({ type: "LOADING_END" });
                 dispatch({

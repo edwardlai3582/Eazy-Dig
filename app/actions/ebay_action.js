@@ -8,9 +8,9 @@ const ebayActions = {
                 ebay: []
             });
             
-            fetch('https://edwardlai3582.com/ebay?keywords='+getState().release.chosen_title).then(function(response){
+            fetch('https://edwardlai3582.com/ebay?keywords='+getState().release.chosen_title).then((response)=>{
                 if(response.ok) {
-                    response.json().then(function(myJson) {
+                    response.json().then((myJson)=> {
                         myJson=JSON.parse(myJson);
                         console.log(myJson);                  
                         
@@ -30,7 +30,7 @@ const ebayActions = {
                 }
 
             })
-            .catch(function(error) {
+            .catch((error)=> {
                 console.log('There has been a problem with your fetch operation: ' + error.message);
                 dispatch({
                         type: "EBAY_RECEIVED",

@@ -19,7 +19,7 @@ export default (currentstate, action) => {
             //console.log(action.chosen_title);
             for(let i=0; i<currentstate.favorite.length; i++){                
                 if(action.id === currentstate.favorite[i].id){
-                    idb.open('eazyDig', 3, function(upgradeDb) {
+                    idb.open('eazyDig', 3, (upgradeDb)=> {
                         switch (upgradeDb.oldVersion) {
                             case 0:
                                 upgradeDb.createObjectStore('urls', {
@@ -37,7 +37,7 @@ export default (currentstate, action) => {
                                         });
                                 store.createIndex('by-name', 'chosen_title');      
                         }
-                    }).then(function(db){
+                    }).then((db)=>{
                         var tx = db.transaction('fav', 'readwrite');
                         var store = tx.objectStore('fav');
                         console.log(action.id);
@@ -55,7 +55,7 @@ export default (currentstate, action) => {
                 }
             }
             
-            idb.open('eazyDig', 3, function(upgradeDb) {
+            idb.open('eazyDig', 3, (upgradeDb)=> {
                 switch (upgradeDb.oldVersion) {
                     case 0:
                         upgradeDb.createObjectStore('urls', {
@@ -73,7 +73,7 @@ export default (currentstate, action) => {
                                 });
                         store.createIndex('by-name', 'chosen_title');      
                 }
-            }).then(function(db){
+            }).then((db)=>{
                 var tx = db.transaction('fav', 'readwrite');
                 var store = tx.objectStore('fav');
                 console.log(action.id);

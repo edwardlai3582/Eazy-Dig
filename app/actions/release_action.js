@@ -15,9 +15,9 @@ const releaseActions = {
 		return (dispatch, getState) => {
             console.log(data);
             
-            fetch('https://edwardlai3582.com/discogsrelease?id='+data).then(function(response){
+            fetch('https://edwardlai3582.com/discogsrelease?id='+data).then((response)=>{
                 if(response.ok) {
-                    response.json().then(function(myJson) {
+                    response.json().then((myJson)=> {
                         
                         //console.log(myJson);                  
                         //console.log('==========');
@@ -53,9 +53,9 @@ const releaseActions = {
                     });
                     //'https://www.discogs.com/sell/history/1985784'
                     //'https://edwardlai3582.com/discogsprice?id='+data
-                    fetch('https://edwardlai3582.com/discogsprice?id='+data).then(function(response){
+                    fetch('https://edwardlai3582.com/discogsprice?id='+data).then((response)=>{
                         if(response.ok) {
-                            response.json().then(function(myJson) {
+                            response.json().then((myJson)=> {
                                 console.log(myJson);
                                 dispatch({
                                     type: "PRICE_RECEIVED",
@@ -73,7 +73,7 @@ const releaseActions = {
                 }
 
             })
-            .catch(function(error) {
+            .catch((error)=> {
                 console.log('There has been a problem with your fetch operation: ' + error.message);
                 dispatch({ type: "LOADING_END" });
             });

@@ -29,7 +29,7 @@ const searchActions = {
             console.log('data.recordKeyWord='+data.recordKeyWord);
             console.log('data.page='+data.page);
             
-            fetch('https://edwardlai3582.com/discogs?query='+data.recordKeyWord+'&page='+page).then(function(response){
+            fetch('https://edwardlai3582.com/discogs?query='+data.recordKeyWord+'&page='+page).then((response)=>{
                 if(response.ok) {
                     console.log('statusText is '+response.statusText);
                     response.json().then(function(myJson) {
@@ -49,7 +49,7 @@ const searchActions = {
                 }
 
             })
-            .catch(function(error) {
+            .catch((error)=> {
                 console.log('There has been a problem with your fetch operation: ' + error.message);
                 dispatch({ type: "LOADING_END" });
             });
