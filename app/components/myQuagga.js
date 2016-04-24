@@ -37,7 +37,7 @@ class MyQuagga extends Component {
             src: URL.createObjectURL(event.target.files[0])
         };
         
-        Quagga.decodeSingle(state, function(result){
+        Quagga.decodeSingle(state, (result)=>{
             if(result){
                 if(result.codeResult) {
                     console.log("result", result.codeResult.code);
@@ -48,7 +48,7 @@ class MyQuagga extends Component {
                 console.log("not detected");
                 this.toggleModal("can't detect barcode");
             }
-        }.bind(this));
+        });
     }
     
 	render() {

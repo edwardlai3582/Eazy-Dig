@@ -7,14 +7,35 @@
 		<link rel="SHORTCUT ICON" href="/favicon.ico">
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0"/>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-		<link rel="stylesheet" href="./style.css" charset="utf-8">
+        <style>
+            #dummyNavbar{
+                position: fixed;
+                z-index: 2;
+                width: 100%;
+                border-radius: 0;
+                border: 0;
+                background-color: black;
+                color: #DC3522;
+                font-size: 24px;
+                font-family: 'Spicy Rice', cursive;
+                padding: 0 15px 0 15px;
+                display:inline-flex;
+                justify-content:space-between;
+                align-items:baseline;  
+            }
+        </style>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css" async>
+		<link rel="stylesheet" href="./style.css" charset="utf-8" async>
 	</head>
 	
 	<body>
-		<div id="root"></div>
+		<div id="root">
+		    <header id="dummyNavbar">
+                    <h2 >Eazy-Dig</h2>
+            </header>
+		</div>
 		<script>
-        ///*    
+        /*    
           if(navigator.serviceWorker){
               navigator.serviceWorker.register('./service_worker.js').then(function(reg){
                   console.log('serviceWorker WORKED');              
@@ -22,7 +43,7 @@
                   console.log('serviceWorker FAILED');
               });          
           }
-        //*/  
+        */  
         </script>        
 		<script src="http://localhost:8080/webpack-dev-server.js"></script>
 		<script src="./bundle.js"></script>
