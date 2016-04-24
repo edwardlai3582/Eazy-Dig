@@ -103,7 +103,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 function serveQuery(ne) {
-    console.log('SERVE QUERY:'+ ne.request.url);
+    //console.log('SERVE QUERY:'+ ne.request.url);
     var storageUrl = ne.request.url;
 
     ne.respondWith(
@@ -112,7 +112,7 @@ function serveQuery(ne) {
         
         return index.get(storageUrl).then(function(result){
             if(result){
-                console.log('result= '+result);
+                //console.log('result= '+result);
                 var json = JSON.stringify(result.result);
                 var myBlob = new Blob([json], {type: "application/json"});
                 var init = { "status" : 200 , "statusText" : "DAMNok" };
@@ -121,8 +121,8 @@ function serveQuery(ne) {
                 return myResponse;
             }
             else{
-                console.log('result= 0');
-                console.log(ne.request.url);
+                //console.log('result= 0');
+                //console.log(ne.request.url);
                 
                 return fetch(ne.request).then(function(networkResponse) {
                     var response2 = networkResponse.clone();
@@ -153,7 +153,7 @@ function serveQuery(ne) {
 }
 
 function servePhoto(request) {
-    console.log('SERVE PHOTO:' + request.url);
+    //console.log('SERVE PHOTO:' + request.url);
   var storageUrl = request.url;//.replace(/-\d+px\.jpg$/, '');
 
   return caches.open(contentImgsCache).then(function(cache) {
@@ -169,7 +169,7 @@ function servePhoto(request) {
 }
 
 function serveSpotify(request) {
-    console.log('SERVE SPOTIFY:' + request.url);
+    //console.log('SERVE SPOTIFY:' + request.url);
   var storageUrl = request.url;
 
   return caches.open(contentAudiosCache).then(function(cache) {
