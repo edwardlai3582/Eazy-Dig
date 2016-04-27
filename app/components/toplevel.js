@@ -51,9 +51,9 @@ class Toplevel extends Component {
         });    
 	}
     
-        audioended(){
+    audioended(){
         console.log('audioended');
-        this.props.spotifyEnded();    
+        this.props.spotifyEnded();  
     }
     
 	render() {        
@@ -101,7 +101,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
         changePage(page) { dispatch(actions.changePage(page)); },
         getHistoryFromIdb(queries) { dispatch(actions.getHistoryFromIdb(queries)); },
-        getFavFromIdb(favs) { dispatch(actions.getFavFromIdb(favs)); }
+        getFavFromIdb(favs) { dispatch(actions.getFavFromIdb(favs)); },
+        spotifyEnded(){ dispatch(actions.spotifyEnded()); }
 	};
 };
 
