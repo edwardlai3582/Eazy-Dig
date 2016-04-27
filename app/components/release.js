@@ -12,20 +12,12 @@ import Whosampled from './whosampled';
 
 class Release extends Component {
 
-    componentDidMount(){
-        let audio=document.getElementsByTagName("audio")[0];  
-         audio.src = 'noise.mp3';
-         audio.play();
-    }
     
     closeModal(){
         this.props.toggleReleaseModal('');
     }
     
-    audioended(){
-        console.log('audioended');
-        this.props.spotifyEnded();    
-    }
+
     
     searchDiscogsMarketplace(){
         if(!this.props.ui.showDiscogsMarketplace){
@@ -172,7 +164,7 @@ class Release extends Component {
                     </Panel>
                 </section>
                     
-                <audio onEnded={this.audioended.bind(this)} ></audio>    
+                 
                 
                 <section className="releaseTracklistWrapper">
                     <h5> TRACKLIST </h5>

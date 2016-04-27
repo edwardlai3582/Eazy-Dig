@@ -51,6 +51,11 @@ class Toplevel extends Component {
         });    
 	}
     
+        audioended(){
+        console.log('audioended');
+        this.props.spotifyEnded();    
+    }
+    
 	render() {        
 		return (
             <div>
@@ -66,6 +71,9 @@ class Toplevel extends Component {
                     <div className={this.props.loading.loadingNow? 'showLoading': 'hideLoading'} >
                         <Glyphicon glyph="refresh" className="spinning" />    
                     </div>
+                        
+                        <audio onEnded={this.audioended.bind(this)} ></audio>   
+                        
                     {(() => {
                         switch (this.props.ui.currentPage) {
                             case "releases": return <Releases />;
