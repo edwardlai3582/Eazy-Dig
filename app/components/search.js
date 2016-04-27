@@ -41,7 +41,7 @@ class Search extends Component {
                     <Input type="text" id="recordKeyWord" placeholder="enter record's key words" {...recordKeyWord} bsStyle={recordKeyWord.touched && recordKeyWord.invalid ? 'error' : null} autoFocus autoComplete required/>
                     
                     {recordKeyWord.touched && recordKeyWord.error && <div aria-label="input warning" className="Alert">{recordKeyWord.error}</div>}   
-                    { this.props.ui.inputEmptyWarning   }
+                   
          
                     <Button type="submit" id="searchButton">SEARCH</Button>
                 </form>
