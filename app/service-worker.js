@@ -1,9 +1,8 @@
-//importScripts('./serviceworker-cache-polyfill.js');
 import './serviceworker-cache-polyfill'
 import idb from './idb';
 
 
-var staticCacheName = 'eazyDig-static-v0';
+var staticCacheName = 'eazyDig-static-v1';
 var contentImgsCache = 'eazyDig-content-imgs';
 var contentAudiosCache = 'eazyDig-content-audios';
 var allCaches = [
@@ -67,7 +66,7 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     var requestUrl = new URL(event.request.url);    
     
-    if (requestUrl.hostname === 'api-img.discogs.com' || (event.request.url.indexOf("whosampled.com") !== -1)) {
+    if (requestUrl.hostname === 'api-img.discogs.com' || (event.request.url.indexOf("whosampled.com") !== -1) || event.request.url.indexOf("yelpcdn") !== -1) {
       event.respondWith(servePhoto(event.request));
       return;
     }
