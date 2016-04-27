@@ -54,6 +54,9 @@ const uiActions = {
                 return;    
             }
             else{
+                let audio=document.getElementsByTagName("audio")[0];   
+                audio.pause();
+                  
                 scrollTo(0, 0);
                 dispatch({
                     type: 'STOP',
@@ -72,6 +75,11 @@ const uiActions = {
     
     previousPage(){
 		return (dispatch) => {
+            let audio=document.getElementsByTagName("audio")[0];   
+            audio.pause();
+            dispatch({
+                type: 'STOP',
+            }); 
             scrollTo(0, 0);
             dispatch({
                     type: 'STOP',
