@@ -11,6 +11,7 @@ import whosampledReducer from './whosampled_reducer';
 import uiReducer from './ui_reducer';
 import favoriteReducer from './favorite_reducer';
 import spotifyReducer from './spotify_reducer';
+import shopReducer from './shop_reducer';
 
 import { routeReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
@@ -29,7 +30,8 @@ const rootReducer = combineReducers({
     whosampled: whosampledReducer,
     ui: uiReducer,
     favorite: favoriteReducer,
-    spotify: spotifyReducer
+    spotify: spotifyReducer,
+    shop: shopReducer
 });
 
 export default rootReducer;

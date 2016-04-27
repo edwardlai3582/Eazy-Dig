@@ -8,6 +8,7 @@ import Search from './search';
 import Releases from './releases';
 import Release  from './release';
 import Fav from './fav';
+import Shop from './shop';
 
 import idb from '../idb';
 
@@ -56,6 +57,7 @@ class Toplevel extends Component {
                 <header id="navbar">
                     <h2 onClick={ this.props.changePage.bind(this, 'search') }>Eazy-Dig</h2>
                     <nav>
+                        <Glyphicon glyph="cd" className={this.props.ui.currentPage==="shop"? 'navGlySelected': 'navGly'} onClick={ this.props.changePage.bind(this, 'shop') } /> 
                         <Glyphicon glyph="heart" className={this.props.ui.currentPage==="fav"? 'navGlySelected': 'navGly'} onClick={ this.props.changePage.bind(this, 'fav') } />
                         <Glyphicon glyph="search" className={this.props.ui.currentPage==="search"? 'navGlySelected': 'navGly'} onClick={ this.props.changePage.bind(this, 'search') } />       
                     </nav>
@@ -69,6 +71,7 @@ class Toplevel extends Component {
                             case "releases": return <Releases />;
                             case "release":  return <Release />;
                             case "fav":      return <Fav />;
+                            case "shop":      return <Shop />;
                             default:         return <Search />;
                         }
                     })()}

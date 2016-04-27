@@ -41,7 +41,11 @@ export default {
     },
     favorite:{
         favorite: []  //id&chosen_title
-    },    
+    },
+    shop:{
+        shop:[],
+        shopSearching: false 
+    },
     ui: {
         inputEmptyWarning: '',//This field can't be empty
         showDiscogsMarketplace: false,
@@ -52,6 +56,6 @@ export default {
         showQuaggaModalMessage: '',
         showWhosampled: {},
         startFrom: 'search',
-        currentPage: 'search' //search, releases, release, fav
+        currentPage: 'search' //search, releases, release, fav, shop
     }
 };

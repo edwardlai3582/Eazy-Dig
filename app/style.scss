@@ -582,4 +582,45 @@ button{
     cursor:pointer;
 }
 
-   
+#shopWrapper{
+    padding-top: 45px;
+    padding-left: 0;
+    width: 100%;
+    color: white;  
+    
+    .shopHide{
+        display: none;
+    }
+    .shopShowGly{
+        text-align: center;
+    }
+    .shopListWRapper{
+        
+        .shopList{
+            display:inline-flex;
+             align-items:center;
+            margin: 10px;
+            border-style: solid;
+            border-width: 0px;
+            border-color: black;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            
+            img{
+                width: 100px;
+                height: 100px;
+            }
+            
+            dl{
+                margin-left: 10px;
+                
+                dt{
+                    font-family: 'Sansita One', cursive;
+                    color: #FDD24F;
+                }
+            }
+        }        
+    }
+}
+

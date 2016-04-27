@@ -7,5 +7,6 @@ import ebayActions from './ebay_action';
 import whosampledActions from './whosampled_action';
 import favoriteActions from './favorite_action';
 import spotifyActions from './spotify_action';
+import shopActions from './shop_action';
 
-export default Object.assign({}, searchActions, loadingActions, releaseActions, discogsMarketplaceActions, ebayActions, whosampledActions, uiActions, favoriteActions, spotifyActions);
+export default Object.assign({}, searchActions, loadingActions, releaseActions, discogsMarketplaceActions, ebayActions, whosampledActions, uiActions, favoriteActions, spotifyActions, shopActions);
