@@ -28,8 +28,8 @@ const searchActions = {
             }
             console.log('data.recordKeyWord='+data.recordKeyWord);
             console.log('data.page='+data.page);
-            
-            fetch('https://edwardlai3582.com/discogs?query='+data.recordKeyWord+'&page='+page).then((response)=>{
+            // https://edwardlai3582.com/
+            fetch('https://whosampled-illl48.c9users.io/discogs?query='+data.recordKeyWord+'&page='+page).then((response)=>{
                 if(response.ok) {
                     console.log('statusText is '+response.statusText);
                     response.json().then(function(myJson) {

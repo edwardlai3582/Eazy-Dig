@@ -14,8 +14,8 @@ const releaseActions = {
 	getRelease(data) {
 		return (dispatch, getState) => {
             console.log(data);
-            
-            fetch('https://edwardlai3582.com/discogsrelease?id='+data).then((response)=>{
+            //https://edwardlai3582.com
+            fetch('https://whosampled-illl48.c9users.io/discogsrelease?id='+data).then((response)=>{
                 if(response.ok) {
                     response.json().then((myJson)=> {
                         

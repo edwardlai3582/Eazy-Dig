@@ -39,7 +39,8 @@ class Search extends Component {
                     </label>  
                         
                     <Input type="text" id="recordKeyWord" placeholder="enter record's key words" {...recordKeyWord} bsStyle={recordKeyWord.touched && recordKeyWord.invalid ? 'error' : null} autoFocus autoComplete required/>
-                        
+                    
+                    {recordKeyWord.touched && recordKeyWord.error && <div className="Alert">{recordKeyWord.error}</div>}   
                     { this.props.ui.inputEmptyWarning   }
          
                     <Button type="submit" id="searchButton">SEARCH</Button>
@@ -62,9 +63,12 @@ const validate = values => {
     const errors = {};
 
     if (!values.recordKeyWord) {
-        errors.recordKeyWord = 'Required field';
+        //errors.recordKeyWord = 'Required field';
     }
-
+    else if (values.recordKeyWord.trim() === "") {
+        errors.recordKeyWord = "Required field, can't not be space";
+    }
+ 
     return errors;
 };
 

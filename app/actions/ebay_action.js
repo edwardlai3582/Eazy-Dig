@@ -7,8 +7,8 @@ const ebayActions = {
                 type: "EBAY_START_SEARCH",
                 ebay: []
             });
-            
-            fetch('https://edwardlai3582.com/ebay?keywords='+getState().release.chosen_title).then((response)=>{
+            //https://edwardlai3582.com/
+            fetch('https://whosampled-illl48.c9users.io/ebay?keywords='+getState().release.chosen_title).then((response)=>{
                 if(response.ok) {
                     response.json().then((myJson)=> {
                         myJson=JSON.parse(myJson);
