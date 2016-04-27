@@ -28,7 +28,8 @@ const spotifyActions = {
 		return (dispatch, getState) => {
             dispatch({
                 type: 'CHANGE_SONG_START',
-                currentPosition: position
+                currentPosition: position,
+                currentId: getState().release.id,
             });
             
             fetch('https://api.spotify.com/v1/search?q='+encodeURI(title)+'%20artist:'+encodeURI(artist)+'&type=track&market=US').then((response)=>{
