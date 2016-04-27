@@ -5,7 +5,7 @@ var webpack = require('webpack');
 
 var config = {
     entry: {
-        //hot: 'webpack/hot/dev-server',
+        hot: 'webpack/hot/dev-server',
         bundle: path.resolve(__dirname, 'app/index.js'),
         service_worker: path.resolve(__dirname, 'app/service-worker.js')
     },
