@@ -11,6 +11,12 @@ import Spotify from './spotify';
 import Whosampled from './whosampled';
 
 class Release extends Component {
+
+    componentDidMount(){
+        let audio=document.getElementsByTagName("audio")[0];  
+         audio.src = 'noise.mp3';
+         audio.play();
+    }
     
     closeModal(){
         this.props.toggleReleaseModal('');

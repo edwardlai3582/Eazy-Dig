@@ -2,7 +2,7 @@ import './serviceworker-cache-polyfill'
 import idb from './idb';
 
 
-var staticCacheName = 'eazyDig-static-v2';
+var staticCacheName = 'eazyDig-static-v3';
 var contentImgsCache = 'eazyDig-content-imgs';
 var contentAudiosCache = 'eazyDig-content-audios';
 var allCaches = [
