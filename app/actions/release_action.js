@@ -53,7 +53,7 @@ const releaseActions = {
                     });
                     //'https://www.discogs.com/sell/history/1985784'
                     //'https://edwardlai3582.com/discogsprice?id='+data
-                    fetch('https://edwardlai3582.com/discogsprice?id='+data).then((response)=>{
+                    fetch('https://whosampled-illl48.c9users.io/discogsprice?id='+data).then((response)=>{
                         if(response.ok) {
                             response.json().then((myJson)=> {
                                 console.log(myJson);
