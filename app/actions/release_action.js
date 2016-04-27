@@ -1,5 +1,11 @@
 
 const releaseActions = {
+
+    componentDidMount(){
+        let audio=document.getElementsByTagName("audio")[0];  
+         audio.src = 'noise.mp3';
+         audio.play();
+    }
     
     chooseRelease(title, id){
         return (dispatch) => {
