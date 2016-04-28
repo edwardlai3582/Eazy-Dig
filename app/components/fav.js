@@ -16,6 +16,10 @@ class Fav extends Component {
         this.props.chooseRelease(title, id);
         this.props.startLoading();
         this.props.getRelease(id);
+        
+        let audio=document.getElementsByTagName("audio")[0];  
+        audio.src = 'noise.mp3';
+        audio.play();
     }
     
 	render() {
