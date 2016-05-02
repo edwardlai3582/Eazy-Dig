@@ -41,6 +41,9 @@ self.addEventListener('install', function(event) {
         'style.css',
     ];
     
+    //skipWainting
+    if (self.skipWaiting) { self.skipWaiting(); }
+    
     event.waitUntil(
         caches.open(staticCacheName).then(function(cache){
             return cache.addAll(urlsToCache);
