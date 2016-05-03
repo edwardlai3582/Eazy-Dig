@@ -1,3 +1,4 @@
+import C from '../constants';
 
 const ebayActions = {
     
@@ -7,8 +8,8 @@ const ebayActions = {
                 type: "EBAY_START_SEARCH",
                 ebay: []
             });
-            //https://edwardlai3582.com/
-            fetch('https://whosampled-illl48.c9users.io/ebay?keywords='+getState().release.chosen_title).then((response)=>{
+            //https://whosampled-illl48.c9users.io
+            fetch(C.SERVERLINK+'ebay?keywords='+getState().release.chosen_title).then((response)=>{
                 if(response.ok) {
                     response.json().then((myJson)=> {
                         myJson=JSON.parse(myJson);

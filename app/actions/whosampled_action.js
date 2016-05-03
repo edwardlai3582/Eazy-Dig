@@ -1,3 +1,4 @@
+import C from '../constants';
 
 const whosampledActions = {
     
@@ -6,11 +7,7 @@ const whosampledActions = {
             title= encodeURI(title.split(' ').join('-')); 
             artist= encodeURI(artist.split(' ').join('-'));    
 
-            //fetch("https://crossorigin.me/https://www.whosampled.com/"+artist+"/"+title+"/").then(function(response){
-            //"https://www.whosampled.com/"+artist+"/"+title+"/"
-            //https://floating-beach-59451.herokuapp.com/
-            //https://whosampled-illl48.c9users.io/
-          fetch("https://whosampled-illl48.c9users.io/whosampled?title="+title+"&artist="+artist).then((response)=>{    
+            fetch(C.WHOSAMPLE+"whosampled?title="+title+"&artist="+artist).then((response)=>{    
                 if(response.ok) {
                     response.text().then((myText)=> {
                         myText=myText.replace('\\\"',"\"").replace(/\\/g,'');

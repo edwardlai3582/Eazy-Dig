@@ -1,3 +1,4 @@
+import C from '../constants';
 
 const shopActions = {
     
@@ -13,8 +14,7 @@ const shopActions = {
                 let lat = pos.coords.latitude;
                 let lng = pos.coords.longitude;
                 
-                //'https://edwardlai3582.com/' &callback=JSON_CALLBACK'
-                fetch('https://whosampled-illl48.c9users.io/yelp?lat='+lat+'&lng='+lng).then((response)=>{
+                fetch(C.SERVERLINK+'vinylyelp?lat='+lat+'&lng='+lng).then((response)=>{
                 if(response.ok) {
                     response.json().then((myJson)=> {
                         

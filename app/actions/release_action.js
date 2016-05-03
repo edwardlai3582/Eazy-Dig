@@ -1,3 +1,4 @@
+import C from '../constants';
 
 const releaseActions = {
     
@@ -14,8 +15,8 @@ const releaseActions = {
 	getRelease(data) {
 		return (dispatch, getState) => {
             console.log(data);
-            //https://edwardlai3582.com
-            fetch('https://whosampled-illl48.c9users.io/discogsrelease?id='+data).then((response)=>{
+            
+            fetch(C.SERVERLINK+'discogsrelease?id='+data).then((response)=>{
                 if(response.ok) {
                     response.json().then((myJson)=> {
                         
@@ -36,24 +37,24 @@ const releaseActions = {
 				            release: myJson
 				        });
                         ///////////////
-                                        scrollTo(0, 0);
-                dispatch({
-                    type: 'STOP',
-                });
-                dispatch({ 
-                    type: "SET_INPUT_EMPTY_WARNING",
-                    message: ''
-                });
-                dispatch({ 
-                    type: "CHANGE_PAGE", 
-                    currentPage: 'release'     
-                });  
+                        scrollTo(0, 0);
+                        dispatch({
+                            type: 'STOP',
+                        });
+                        dispatch({ 
+                            type: "SET_INPUT_EMPTY_WARNING",
+                            message: ''
+                        });
+                        dispatch({ 
+                            type: "CHANGE_PAGE", 
+                            currentPage: 'release'     
+                        });  
                         ////////////////
                         dispatch({ type: "LOADING_END" });
                     });
                     //'https://www.discogs.com/sell/history/1985784'
-                    //'https://edwardlai3582.com/discogsprice?id='+data
-                    fetch('https://whosampled-illl48.c9users.io/discogsprice?id='+data).then((response)=>{
+
+                    fetch(C.SERVERLINK+'discogsprice?id='+data).then((response)=>{
                         if(response.ok) {
                             response.json().then((myJson)=> {
                                 console.log(myJson);

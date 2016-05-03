@@ -1,3 +1,4 @@
+import C from '../constants';
 
 const searchActions = {
     
@@ -29,7 +30,7 @@ const searchActions = {
             console.log('data.recordKeyWord='+data.recordKeyWord);
             console.log('data.page='+data.page);
             // https://edwardlai3582.com/
-            fetch('https://whosampled-illl48.c9users.io/discogs?query='+data.recordKeyWord+'&page='+page).then((response)=>{
+            fetch(C.SERVERLINK+'discogs?query='+data.recordKeyWord+'&page='+page).then((response)=>{
                 if(response.ok) {
                     console.log('statusText is '+response.statusText);
                     response.json().then(function(myJson) {
