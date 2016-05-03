@@ -72,6 +72,18 @@ class Release extends Component {
         let trackLi = [];
         if(r.tracklist){
             trackLi = r.tracklist.map((track) =>{
+                if(!track.position){
+                    return(
+                        <li className="track" key={track.title}>
+                            <section className="trackSection">
+                                <section className="noPosition"> 
+                                    {track.title}             
+                                </section>
+                            </section>
+                        </li>                    
+                    );
+                }
+                
                 return (
                     <li className="track" key={track.title}>
                         <section className="trackSection">

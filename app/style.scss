@@ -415,9 +415,18 @@ body{
             }
         }
         .track{
+            
             .trackSection{
                 display:flex;
-                 justify-content:space-between;
+                justify-content:space-between;
+                
+                .noPosition{
+                    border-radius: 5%;
+                    padding: 5px;
+                    background-color: black;
+                    color: white;    
+                }
+                
                 section{
                     display:inline-flex; 
                     justify-content:flex-start;
