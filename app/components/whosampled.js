@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Image } from 'react-bootstrap';
 import actions from '../actions';
+import Spotify from './spotify';
 
 class Whosampled extends Component {
     
@@ -16,10 +17,13 @@ class Whosampled extends Component {
                 return (
                     <li key={sample.imgUrl}>
                         <img src={sample.imgUrl} alt={sample.sampleArtist+"'s "+sample.sampleTitle}/>
+
                         <dl>
                             <dd>{sample.sampleArtist}</dd>
                             <dd>{sample.sampleTitle}</dd>
                         </dl>
+                    
+                        <Spotify position={sample.sampleArtist+"_"+sample.sampleTitle} artist={sample.sampleArtist.replace(/ feat.*/, '')} title={sample.sampleTitle} className="whoSpotify" />
                     </li>
                 );
             }); 

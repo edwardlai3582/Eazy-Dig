@@ -450,6 +450,7 @@ body{
                     width: 100%;
 
                     li{
+                        align-items:center;
                         display:flex;
                         justify-content:flex-start;
                         background-color: #F2FFE3;
@@ -464,6 +465,8 @@ body{
                         
                         img{
                             margin-right: 5px;
+                            width: 60px;
+                            height: 60px;
                         }
                     }
                 }
@@ -633,3 +636,10 @@ button{
     }
 }
 
+.whoSpotify{
+    background-color: black;
+    color: white;
+    margin-left: 20px;
+    border: none;
+    border-radius: 5px;
+}

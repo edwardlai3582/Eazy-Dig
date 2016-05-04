@@ -35,7 +35,7 @@ class Spotify extends Component {
         if(s.currentPosition === this.props.position && s.currentId === this.props.release.id){
             return(
                 
-                    <button onClick={this.clickSpotify.bind(this)}>
+                    <button onClick={this.clickSpotify.bind(this)} className={this.props.className}>
                         <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning':''} />
                     </button>
                
@@ -44,7 +44,7 @@ class Spotify extends Component {
         else{
             return(
                 
-                    <button onClick={this.clickSpotify.bind(this)} >
+                    <button onClick={this.clickSpotify.bind(this)} className={this.props.className}>
                         <Glyphicon glyph="play" />
                     </button>
                 
