@@ -6,8 +6,7 @@ const shopActions = {
 		return (dispatch, getState) => {
             
             dispatch({
-                type: "SHOP_START_SEARCH",
-                ebay: []
+                type: "SHOP_START_SEARCH"
             });
             
             navigator.geolocation.getCurrentPosition((pos)=>{
