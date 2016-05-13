@@ -72,7 +72,7 @@ class Toplevel extends Component {
                         <Glyphicon glyph="refresh" className="spinning" />    
                     </div>
                         
-                        <audio onEnded={this.audioended.bind(this)} ></audio>   
+                    <audio onEnded={this.audioended.bind(this)} ></audio>   
                         
                     {(() => {
                         switch (this.props.ui.currentPage) {
@@ -90,7 +90,7 @@ class Toplevel extends Component {
 }
 
 const mapStateToProps = (appState) => {
-	return { 
+    return { 
         loading: appState.loading,
         query: appState.query,
         ui: appState.ui
@@ -98,12 +98,12 @@ const mapStateToProps = (appState) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return {
+    return {
         changePage(page) { dispatch(actions.changePage(page)); },
         getHistoryFromIdb(queries) { dispatch(actions.getHistoryFromIdb(queries)); },
         getFavFromIdb(favs) { dispatch(actions.getFavFromIdb(favs)); },
         spotifyEnded(){ dispatch(actions.spotifyEnded()); }
-	};
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toplevel);
