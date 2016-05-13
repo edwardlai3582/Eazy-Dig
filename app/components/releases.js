@@ -14,8 +14,6 @@ class Releases extends Component {
         this.props.startLoading();
         this.props.submitNewRecord(data);
     }
-
-
     
     render() {
 		const p = this.props;

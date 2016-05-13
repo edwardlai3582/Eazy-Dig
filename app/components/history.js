@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Image } from 'react-bootstrap';
 import actions from '../actions';
 
-
-
 class History extends Component {
     
     submitQuery(history) {

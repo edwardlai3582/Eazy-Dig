@@ -7,7 +7,6 @@ import Spotify from './spotify';
 class Whosampled extends Component {
     
 	render() {
-        
         const p = this.props.position;
         const w = this.props.whosampled.whosampled;
 		let rows = [];

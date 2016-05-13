@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Panel, Glyphicon } from 'react-bootstrap';
@@ -52,18 +51,7 @@ class Spotify extends Component {
         }
 	}
 }
-/*
-<Tappable onTap={this.clickSpotify.bind(this)}>
 
-<Button onClick={this.clickSpotify.bind(this)} disabled={s.buttonSign==='refresh'} className="clickable">
-    <Glyphicon glyph={s.buttonSign} className={s.buttonSign==='refresh'?'spinning':''} />
-</Button>    
-
-
-<Button onClick={this.clickSpotify.bind(this)} className="clickable">
-                    <Glyphicon glyph="play" />
-                </Button>
-*/
 const mapStateToProps = (appState) => {
 	return { 
         spotify: appState.spotify,

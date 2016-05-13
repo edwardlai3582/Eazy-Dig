@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory, Redirect} from 'react-router';
-    
 import { Provider } from 'react-redux';
-
 import store from './store';
 import actions from './actions';
-
 import Toplevel from './components/toplevel';
 
 export class App extends Component {    

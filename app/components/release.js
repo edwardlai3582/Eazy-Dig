@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Modal, Button, Panel, Glyphicon, OverlayTrigger, Tooltip } from 'react-bootstrap';
@@ -12,12 +11,9 @@ import Whosampled from './whosampled';
 
 class Release extends Component {
 
-    
     closeModal(){
         this.props.toggleReleaseModal('');
     }
-    
-
     
     searchDiscogsMarketplace(){
         if(!this.props.ui.showDiscogsMarketplace){

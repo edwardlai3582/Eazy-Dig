@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 import Quagga from 'quagga';
 //import FileInput from 'react-file-input';
-
 import actions from '../actions';
 
 class MyQuagga extends Component {

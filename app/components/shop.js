@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
-
 import { Button, Panel, Glyphicon } from 'react-bootstrap';
-
-
 
 class Shop extends Component {
     
@@ -16,8 +13,7 @@ class Shop extends Component {
         this.props.getShop();
     }
     
-	render() {
-        
+	render() {    
         const s = this.props.shop;
 		let rows = [];
         
