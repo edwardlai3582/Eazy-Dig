@@ -3,6 +3,11 @@
  A responsive web application that allows the user to search information about records.
  
  You can test the barcode function with the pictures in barcode_pics if you don't have any records with you.
+ 
+Live Demo
+-------------
+https://illl48.github.io/Eazy-Dig/  
+
 
 About Whosampled feature
 -------------
@@ -54,10 +59,7 @@ server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
   console.log("Chat server listening at", addr.address + ":" + addr.port);
 });
 ```
- 
-Live Demo
--------------
-https://illl48.github.io/Eazy-Dig/ 
+
 
 Install
 -------------
