@@ -56,7 +56,7 @@ class MyQuagga extends Component {
             <section  className="quaggaWrapper">
             
                 <input type="file" name="barcode_picture" id="barcode_picture" className="inputfile" accept="image/*" capture="camera"  onChange={this.fileChange.bind(this)} />
-                <label htmlFor="barcode_picture">SEARCH BY BARCODE</label>  
+                <label id='searchByCodeButton' htmlFor="barcode_picture">SEARCH BY BARCODE</label>  
                 
                 <Modal show={this.props.ui.showQuaggaModal} onHide={this.toggleModal.bind(this,'')}>
                     <Modal.Header closeButton>

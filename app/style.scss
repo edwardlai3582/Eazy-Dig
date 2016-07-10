@@ -7,7 +7,7 @@
 }
 
 body{
-    background-color: #374140;
+    background-color: #FDD24F;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     user-select: none;
     width: 100%;
@@ -27,8 +27,8 @@ body{
     width: 100%;
     border-radius: 0;
     border: 0;
-    background-color: black;
-    color: #DC3522;
+    background-color: #A8216B;
+    color: white;
     font-size: 24px;
     font-family: 'Spicy Rice', cursive;
     padding: 0 15px 0 15px;
@@ -53,7 +53,7 @@ body{
     } 
     .navGlySelected{
         cursor: pointer;
-        color:red;
+        color:#FDD24F;
         margin-right: 10px;
     }     
 }
@@ -71,8 +71,8 @@ body{
         z-index: 2;
         width: 100%;
         height: calc(100vh - 63px);
-        background-color: #374140;
-        color: white;
+        background-color: #FDD24F;/*#374140;*/
+        color: black;/*white;*/
         .spinning{
             animation: spin 1s infinite linear;
             position: relative;
@@ -89,14 +89,14 @@ body{
     left: 5%;
     padding-top: 15px;
     padding-bottom: 15px;
-    background-color: #374140;
-    color: white;
+    background-color: #FDD24F;/*#374140;*/
+    color: black;
     text-align: center;
     .recordKeyWord{
         width: 70%;
     }
     #searchButton{
-        background-color: #DC3522;
+        background-color: #F26A44;/*#DC3522;*/
         color: white;
         font-weight: bold;
         &:hover{
@@ -113,12 +113,12 @@ body{
     text-align: center;
     
     h6{
-        color: white;
+        color: black;
         font-weight: bolder;
     }
     
     #searchByCodeButton{
-        background-color: #DC3522;
+        background-color: #F26A44;/*#DC3522;*/
         color: white;
         font-weight: bold;
         &:hover{
@@ -126,7 +126,8 @@ body{
         }
         &:active{
             top: 3px;
-        }    
+        } 
+        border:none;
     }    
 }
 
@@ -143,7 +144,8 @@ body{
         font-weight: bold;
         padding-top:15px;
         padding-bottom:15px;
-        background-color: #D9CB9E;
+        background-color: teal;/*#D9CB9E;*/
+        color:white;
         margin: 0;
     }
     
@@ -156,7 +158,7 @@ body{
             cursor: pointer;
             padding: 5px 0px 5px 10px;
             &:nth-child(even){
-                background-color: #79BD8E
+                background-color: lightsalmon;/*#79BD8E;*/
             }
             &:hover{
                 background-color: coral;
@@ -269,7 +271,7 @@ body{
     .releaseTitle{
         font-size: 18px;
         font-family: 'Sansita One', cursive;
-        color: #FDD24F;
+        color: teal;
         list-style-type:none;
         margin-bottom: 10px;
     }
@@ -279,10 +281,10 @@ body{
     position: relative;
     /*top: 39px;*/
     width: 100%;
-    background-color: #374140;
+    background-color: #FDD24F;/*#374140;*/
     .releaseInfoWrapper{
         padding: 10px 35px 10px 10px;
-        color: aliceblue;
+        color: black;
         display:inline-flex;
         
         img{
@@ -334,7 +336,7 @@ body{
             font-weight: bold;
             padding-top:15px;
             padding-bottom:15px;
-            background-color: #D9CB9E;
+            background-color: #2E9598;/*#D9CB9E;*/
             margin: 0;
         }
 
@@ -346,7 +348,7 @@ body{
             li{
                 padding: 5px 0px 5px 10px;
                 &:nth-child(even){
-                    background-color: #79BD8E
+                    background-color: salmon;/*#79BD8E*/
                 }
             }
         }
@@ -363,7 +365,7 @@ body{
             font-weight: bold;
             padding-top:15px;
             padding-bottom:15px;
-            background-color: #D9CB9E;
+            background-color: #2E9598;/*#D9CB9E;*/
             margin: 0;
         }
         
@@ -532,10 +534,10 @@ body{
 }
 
 #favUl{
-    padding-top: 40px;
+    padding-top: 38px;
     padding-left: 0;
     width: 100%;
-    color: white;
+    color: black;
 
     list-style-type:none;
     li{    
@@ -629,7 +631,7 @@ button{
                 
                 dt{
                     font-family: 'Sansita One', cursive;
-                    color: #FDD24F;
+                    color: #EC1B4B;
                 }
             }
         }        
