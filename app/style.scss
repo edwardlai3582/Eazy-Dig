@@ -158,10 +158,10 @@ body{
             cursor: pointer;
             padding: 5px 0px 5px 10px;
             &:nth-child(even){
-                background-color: lightsalmon;/*#79BD8E;*/
+                /*background-color: #79BD8E;*/
             }
             &:hover{
-                background-color: coral;
+                background-color: #7BC67F;
             }
         }
     }
@@ -271,7 +271,7 @@ body{
     .releaseTitle{
         font-size: 18px;
         font-family: 'Sansita One', cursive;
-        color: teal;
+        color: #E7E8C8;
         list-style-type:none;
         margin-bottom: 10px;
     }
@@ -348,7 +348,7 @@ body{
             li{
                 padding: 5px 0px 5px 10px;
                 &:nth-child(even){
-                    background-color: salmon;/*#79BD8E*/
+                    
                 }
             }
         }
