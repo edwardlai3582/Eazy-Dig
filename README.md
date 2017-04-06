@@ -1,4 +1,4 @@
-##Udacity project 5 - Eazy-Dig
+## Udacity project 5 - Eazy-Dig
 
  A responsive web application that allows the user to search information about records.
  
